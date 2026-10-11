@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Granado Espada 韓版十月任務更新搶先看繁體中文整理。">
+  <title>十月任務更新搶先看｜開發者筆記</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div>
+        <p class="site-kicker">GRANADO ESPADA</p>
+        <p class="site-name">開發者筆記</p>
+      </div>
+      <p class="site-meta">韓版新資訊 · 2026.09.30</p>
+    </div>
+  </header>
+
+  <main>
+    <article class="article-shell">
+      <section class="hero">
+        <img src="./assets/hero-full.png" alt="開發者筆記：十月任務更新搶先看完整主視覺">
+      </section>
+
+      <section class="article-heading" aria-labelledby="page-title">
+        <p class="eyebrow">DEVELOPER'S NOTE · OCTOBER UPDATE</p>
+        <h1 id="page-title">十月任務更新搶先看</h1>
+        <p>居里塔提歐紀錄擴充、獎勵調整與每日任務改版。</p>
+      </section>
+
+      <section class="intro prose">
+        <p>大家好，我是開發者 Silo。</p>
+        <p>這次開發者筆記，要向各位介紹預計於 10 月進行的任務更新內容。</p>
+        <p>首先，「居里塔提歐紀錄：混沌方舟」將開放第六至第十項，共 5 項新紀錄。如先前「開拓地圖擴充與任務改版計畫說明」開發者筆記中所承諾的，我們也調整了居里塔提歐紀錄的獎勵，讓各位能取得符合任務難度的報酬。</p>
+        <p>此外，也將說明作為任務改版基礎的「每日任務獎勵重新分配」之詳細變更內容。現在就一起來看看吧！</p>
+        <aside class="notice">以下內容仍在開發中，測試及正式更新時可能有所變動，敬請留意。</aside>
+      </section>
+
+      <section class="content-section" id="chronicle">
+        <figure class="section-banner">
+          <img src="./assets/chronicle-banner.jpg" alt="居里塔提歐紀錄擴充主視覺">
+        </figure>
+        <p class="section-label">UPDATE 01</p>
+        <h2>居里塔提歐紀錄擴充</h2>
+        <div class="prose">
+          <p>居里塔提歐紀錄即將擴充！</p>
+          <p>新加入的紀錄任務也和先前相同，可在「空虛的舞會」的第一座石像，選擇【紀錄 6】至【紀錄 10】之一進入。</p>
+        </div>
+
+        <figure class="media-frame media-frame--wide">
+          <img src="./assets/record-selector.jpg" alt="第一座石像的紀錄選擇畫面">
+          <figcaption>與第一座石像對話後，可選擇新開放的紀錄。</figcaption>
+        </figure>
+
+        <div class="table-scroll" role="region" aria-label="紀錄六至十的任務資料" tabindex="0">
+          <table>
+            <thead>
+              <tr><th>紀錄</th><th>種族類型</th><th>限制時間</th><th>侵蝕數值</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>第六項</td><td>無生物型</td><td rowspan="4">15 分鐘</td><td class="danger">13</td></tr>
+              <tr><td>第七項</td><td>不死型</td><td class="danger">16</td></tr>
+              <tr><td>第八項</td><td>人型</td><td class="danger">19</td></tr>
+              <tr><td>第九項</td><td>生物型</td><td class="danger">22</td></tr>
+              <tr><td>第十項</td><td>惡魔型</td><td>20 分鐘</td><td class="danger">24</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="prose">
+          <p>【紀錄 6】至【紀錄 10】的任務並未另設小隊任務，全部都能以【個人】方式遊玩。此外，和先前【紀錄 5】相同，首次通關【紀錄 10】的家族，可額外獲得「紀錄的第一個片段」500 點。</p>
+        </div>
+
+        <div class="record-grid" id="record-gallery">
+          <figure class="media-frame">
+            <div class="media-stage"><img src="./assets/record-six.jpg" alt="第六項紀錄任務場景"></div>
+            <figcaption>第六項紀錄</figcaption>
+          </figure>
+          <figure class="media-frame">
+            <div class="media-stage"><img src="./assets/record-eight.jpg" alt="第八項紀錄任務場景"></div>
+            <figcaption>第八項紀錄</figcaption>
+          </figure>
+          <figure class="media-frame media-frame--feature">
+            <div class="media-stage"><img src="./assets/record-ten.jpg" alt="第十項紀錄的新怪物"></div>
+            <figcaption>第十項紀錄將出現以往任務從未登場過的全新怪物。</figcaption>
+          </figure>
+        </div>
+
+        <aside class="quote-card">
+          看起來似乎有些神似「空虛的舞會」中的石像……在崩塌方舟的紀錄中，這個石像模樣的怪物究竟是什麼身分，又與方舟有什麼關係呢？敬請期待！
+        </aside>
+      </section>
+
+      <section class="content-section content-section--tint" id="rewards">
+        <p class="section-label">UPDATE 02</p>
+        <h2>「紀錄的第一個片段」獎勵調整與高級商店</h2>
+        <div class="prose">
+          <p>隨著新紀錄開放，既有【紀錄 1】至【紀錄 5】的通關獎勵也會一併提升。</p>
+        </div>
+
+        <div class="table-scroll" role="region" aria-label="紀錄的第一個片段點數調整" tabindex="0">
+          <table>
+            <thead><tr><th>紀錄</th><th>變更前</th><th>變更後</th></tr></thead>
+            <tbody>
+              <tr><td>第 1 項</td><td>2</td><td>5</td></tr>
+              <tr><td>第 2 項</td><td>5</td><td>7</td></tr>
+              <tr><td>第 3 項</td><td>7</td><td>10</td></tr>
+              <tr><td>第 4 項</td><td>10</td><td>15</td></tr>
+              <tr><td>第 5 項</td><td>15</td><td>20</td></tr>
+              <tr><td>第 6 項</td><td rowspan="5">新增</td><td>25</td></tr>
+              <tr><td>第 7 項</td><td>30</td></tr>
+              <tr><td>第 8 項</td><td>35</td></tr>
+              <tr><td>第 9 項</td><td>40</td></tr>
+              <tr><td>第 10 項</td><td>50</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="feature-split">
+          <div class="feature-copy">
+            <p class="mini-label">NEW ITEM</p>
+            <h3>次元之沙</h3>
+            <p>中級商店將新增道具【次元之沙】。這是縮短開拓地圖任務再次進場等待時間的道具；隊長角色使用後，可使進場限制時間減少 1 天。</p>
+            <p class="warning-text">沒有進場限制的角色無法使用。</p>
+          </div>
+          <figure class="media-frame media-frame--plain">
+            <img src="./assets/dimensional-sand.png" alt="次元之沙與高級商店道具畫面">
+          </figure>
+        </div>
+
+        <div class="feature-split feature-split--reverse">
+          <div class="feature-copy">
+            <p class="mini-label">ADVANCED SHOP</p>
+            <h3>高級商店</h3>
+            <p>通關【紀錄 10】後即可使用。店內可購買遺物相關道具、魔法晶片－宗師－Grand Master，以及新道具【方舟的白金袋】。</p>
+            <p>【方舟的白金袋】開啟後可獲得 10～100 個白金條。此道具日後將隨居里塔提歐紀錄的擴充一併移至更高級商店，始終僅在最高階商店販售。</p>
+          </div>
+          <figure class="media-frame media-frame--plain">
+            <img src="./assets/advanced-shop.jpg" alt="紀錄高級商店與方舟的白金袋">
+          </figure>
+        </div>
+      </section>
+
+      <section class="content-section" id="mission-reform">
+        <figure class="section-banner">
+          <img src="./assets/mission-banner.jpg" alt="任務改版預定內容說明">
+        </figure>
+        <p class="section-label">UPDATE 03</p>
+        <h2>任務改版預定內容</h2>
+
+        <div class="summary-card">
+          <h3>既有貨幣任務改版</h3>
+          <ul class="check-list">
+            <li><strong>每日任務貨幣移轉：</strong>將分散於各任務的貨幣集中至「賞金獵人公會」任務。</li>
+            <li><strong>擴充難度：</strong>新增困難模式與全新難度，提供符合難度的獎勵。</li>
+            <li><strong>強化保底獎勵：</strong>減少輪盤發放，改為保底掉落，提高家族可獲得的貨幣上限。</li>
+            <li><strong>轉為個人任務：</strong>將既有小隊進場任務改為個人專用任務。</li>
+          </ul>
+        </div>
+
+        <div class="prose">
+          <p>過去，貨幣獎勵分散在眾多每日任務中，每次只能取得少量。因此即使挑戰高難度任務，獎勵與低難度的差距也不大。這次改版將整併分散的貨幣任務，調整獎勵結構，讓各位挑戰越高的難度，就能獲得與之相符、確實有感的報酬。</p>
+        </div>
+
+        <div class="summary-grid">
+          <article class="summary-card">
+            <h3>貨幣獎勵重新分配</h3>
+            <p>36 種任務的既有裝備、材料等獎勵維持不變，貨幣獎勵改為「經驗值卡片」，並整併移轉至更高階任務。</p>
+          </article>
+          <article class="summary-card">
+            <h3>賞金獵人公會－魔性</h3>
+            <p>由「達人」至「宗師」細分為 5 階難度，調高高階獎勵；改為個人任務，失敗後可用較低難度重新挑戰。</p>
+          </article>
+          <article class="summary-card">
+            <h3>賞金獵人公會－地區任務</h3>
+            <p>整併卡斯提亞、阿爾莫尼亞及波爾圖斯的魔性任務，新增困難模式並調整獎勵結構。</p>
+          </article>
+          <article class="summary-card">
+            <h3>其他改版內容</h3>
+            <p>調整扭曲的阿爾莫尼亞／普魯里奧、塔洛斯與天上任務獎勵，並將部分小隊進場任務改為個人專用任務。</p>
+          </article>
+        </div>
+
+        <section class="web-detail" id="mission-details">
+          <div class="detail-heading">
+            <p class="mini-label">DETAILED TABLES · WEB VERSION</p>
+            <h3>任務、難度與獎勵明細</h3>
+            <p>以下內容已轉為可選取、可搜尋並適合手機閱讀的網頁文字與表格。</p>
+          </div>
+
+          <section class="detail-section">
+            <h4>貨幣獎勵改為經驗值卡片的任務－36 種</h4>
+            <p>以下任務的既有裝備、材料等獎勵維持不變；貨幣獎勵改為「經驗值卡片」，並整併移轉至更高階任務的獎勵中。</p>
+            <div class="table-scroll" role="region" aria-label="貨幣獎勵改為經驗值卡片的任務" tabindex="0">
+              <table class="text-table text-table--left">
+                <thead><tr><th>任務類別</th><th>包含任務</th></tr></thead>
+                <tbody>
+                  <tr><td>路西弗羅城任務</td><td>地下實驗室、地下倉庫、祕密之庭園、月光庭園、寧靜的宴會廳、吶喊之迴廊、被遺忘的接見廳、熄燈／不速之客</td></tr>
+                  <tr><td>卡斯提亞任務</td><td>礦山、遺跡、混沌之塔；礦山－首領突襲、遺跡－首領突襲、混沌之塔－首領突襲；礦山：困難、遺跡：困難、混沌之塔：困難</td></tr>
+                  <tr><td>阿爾莫尼亞任務</td><td>憤怒的統治者、狂傲的魔法師、渾沌的騎士、憎恨的執行者、恐怖的祭司</td></tr>
+                  <tr><td>時間的片段任務</td><td>勒德斯、魔獸尤勒肯、蘿茲、阿佛雷蒙、索德雷拉、奈芙蒂斯、德斯列斯</td></tr>
+                  <tr><td>歪曲的時間的片段任務</td><td>勒德斯、魔獸尤勒肯、蘿茲、阿佛雷蒙、索德雷拉、奈芙蒂斯、德斯列斯</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h5>貨幣獎勵變更比例</h5>
+            <div class="table-scroll" role="region" aria-label="貨幣獎勵變更比例" tabindex="0">
+              <table>
+                <thead><tr><th>貨幣</th><th>變更比例</th></tr></thead>
+                <tbody>
+                  <tr><td>純金條</td><td>每 3 個 → 71 級經驗值卡片 1 張</td></tr>
+                  <tr><td>白金條</td><td>每 1 個 → 達人 B 經驗值卡片 1 張</td></tr>
+                  <tr><td>元素寶石</td><td>每 1 個 → 達人 G 經驗值卡片 1 張</td></tr>
+                  <tr><td>魔法晶片－達人－Veteran</td><td>每 9 個 → 71 級經驗值卡片 1 張</td></tr>
+                  <tr><td>魔法晶片－大師－Expert</td><td>每 3 個 → 71 級經驗值卡片 1 張</td></tr>
+                  <tr><td>魔法晶片－名人－Master</td><td>每 9 個 → 71 級經驗值卡片 5 張</td></tr>
+                  <tr><td>貓眼石、月長石、成長石</td><td>移除後，移轉至更高階任務的獎勵中</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="detail-section">
+            <h4>移除貨幣獎勵的任務－23 種</h4>
+            <p>既有魔法晶片、裝備、材料等獎勵維持不變，僅移除可兌換 Vis 的貨幣類道具。</p>
+            <div class="table-scroll" role="region" aria-label="移除貨幣獎勵的任務" tabindex="0">
+              <table class="text-table text-table--left">
+                <thead><tr><th>任務類別</th><th>包含任務</th></tr></thead>
+                <tbody>
+                  <tr><td>拜倫鐘塔地下任務</td><td>地下 1 層、地下 2 層、地下 3 層、地下 4 層、地下 5 層、地下 6 層、地下 7 層、地下 8 層、地下 9 層、地下 10 層</td></tr>
+                  <tr><td>皇家路口訓練控制器任務</td><td>皇家路口攻防戰（進階名人）、奪回軍事區（進階名人）、執政區（進階名人）</td></tr>
+                  <tr><td>塔洛斯任務</td><td>塔洛斯（大師）、塔洛斯（名人）</td></tr>
+                  <tr><td>血腥海軍任務</td><td>血腥海軍</td></tr>
+                  <tr><td>個人副本：時間的片段任務</td><td>勒德斯、魔獸尤勒肯、蘿茲、阿佛雷蒙、索德雷拉、奈芙蒂斯、德斯列斯</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h5>貨幣獲得量減少的任務－3 種</h5>
+            <p>【卡斯提亞任務：困難－首領突襲】除了貨幣獲得量稍微減少以外，其餘維持不變；另預計新增專用傳送門，讓各位能迅速移動至任務進場地點。</p>
+            <ul class="inline-list">
+              <li>礦山：困難－首領突襲</li>
+              <li>遺跡：困難－首領突襲</li>
+              <li>混沌之塔：困難－首領突襲</li>
+            </ul>
+          </section>
+
+          <section class="detail-section">
+            <h4>賞金獵人公會任務改版－魔性</h4>
+            <ul class="check-list detail-checks">
+              <li><strong>細分為 5 階難度：</strong>由「達人」至「宗師」，全面調整為 5 個階段。</li>
+              <li><strong>大幅提升獎勵：</strong>「宗師」難度通關獎勵約為既有「挑戰」模式的 3 倍。</li>
+              <li><strong>變更獎勵取得方式：</strong>移除「寬大之房」，改為通關時依機率掉落獎勵。</li>
+              <li><strong>個人任務及重新挑戰：</strong>改為個人任務，失敗後可用較低難度重新挑戰。</li>
+            </ul>
+
+            <h5>任務變更內容</h5>
+            <div class="table-scroll" role="region" aria-label="魔性任務變更內容" tabindex="0">
+              <table>
+                <thead><tr><th>變更前</th><th>變更後</th></tr></thead>
+                <tbody>
+                  <tr><td>魔性／魔性：挑戰（2 階）</td><td>魔性：達人／大師／名人／進階名人／宗師（5 階）</td></tr>
+                  <tr><td>小隊任務</td><td>個人任務</td></tr>
+                  <tr><td>失敗後當日無法再次進場</td><td>失敗後可用較低難度重新挑戰</td></tr>
+                  <tr><td>清除怪物波次後擊敗首領</td><td>完成由 7 回合組成的任務目標</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h5>回合構成</h5>
+            <div class="table-scroll" role="region" aria-label="魔性任務回合構成" tabindex="0">
+              <table>
+                <thead><tr><th>回合</th><th>內容</th><th>通關條件</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td>首領</td><td>擊敗首領</td></tr>
+                  <tr><td>2</td><td>怪物波次</td><td>清除怪物波次</td></tr>
+                  <tr><td>3</td><td>菁英怪物</td><td>擊敗 3 隻菁英怪物</td></tr>
+                  <tr><td>4</td><td>生存</td><td>存活至限制時間結束</td></tr>
+                  <tr><td>5</td><td>怪物波次</td><td>清除怪物波次</td></tr>
+                  <tr><td>6</td><td>菁英怪物</td><td>擊敗 3 隻菁英怪物</td></tr>
+                  <tr><td>7</td><td>首領</td><td>擊敗首領</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h5>各難度保底獎勵</h5>
+            <div class="table-scroll" role="region" aria-label="各難度保底獎勵" tabindex="0">
+              <table class="text-table text-table--left">
+                <thead><tr><th>難度</th><th>保底貨幣獎勵</th><th>保底魔法晶片獎勵</th></tr></thead>
+                <tbody>
+                  <tr><td>達人</td><td>白金條 3 個、純銀條 10 個</td><td>100 級魔法晶片 20 個；魔法晶片－達人－Veteran 20 個</td></tr>
+                  <tr><td>大師</td><td>白金條 7 個</td><td>魔法晶片－達人－Veteran 20 個；魔法晶片－大師－Expert 10 個</td></tr>
+                  <tr><td>名人</td><td>白金條 14 個</td><td>魔法晶片－達人－Veteran 30 個；魔法晶片－大師－Expert 15 個；魔法晶片－名人－Master 5 個</td></tr>
+                  <tr><td>進階名人</td><td>白金條 24 個、純銀條 10 個</td><td>魔法晶片－達人－Veteran 30 個；魔法晶片－大師－Expert 20 個；魔法晶片－名人－Master 10 個</td></tr>
+                  <tr><td>宗師</td><td>白金條 45 個、純銀條 10 個</td><td>魔法晶片－達人－Veteran 30 個；魔法晶片－大師－Expert 25 個；魔法晶片－名人－Master 15 個；魔法晶片－宗師－Grand Master 5 個</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h5>各難度主要機率獎勵</h5>
+            <div class="table-scroll" role="region" aria-label="各難度主要機率獎勵" tabindex="0">
+              <table class="text-table text-table--left">
+                <thead><tr><th>難度</th><th>主要獎勵</th></tr></thead>
+                <tbody>
+                  <tr><td>達人／大師</td><td>阿爾莫尼亞裝備製作書、阿爾莫尼亞裝備、貓眼石</td></tr>
+                  <tr><td>名人</td><td>法蘭諾裝備製作書、阿爾莫尼亞裝備、月長石</td></tr>
+                  <tr><td>進階名人</td><td>法蘭諾裝備、5 大元素／阿彼思武裝／黛烏斯機神武器製作書、月長石</td></tr>
+                  <tr><td>宗師</td><td>5 大元素／阿彼思武裝／黛烏斯機神武器製作書；5 大元素／阿彼思武裝／黛烏斯機神武器；阿彼思武裝／黛烏斯機神飾品製作書；月長石</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="detail-section">
+            <h4>賞金獵人公會任務改版－地區任務</h4>
+            <ul class="check-list detail-checks">
+              <li><strong>整併地區任務：</strong>卡斯提亞、阿爾莫尼亞、波爾圖斯的魔性各整併為 1 種任務。</li>
+              <li><strong>新增困難模式：</strong>各地區整合任務新增更高難度的「困難模式」。</li>
+              <li><strong>調整獎勵結構：</strong>移除既有覺醒首領，相關獎勵整併移轉至困難模式。</li>
+              <li><strong>轉為個人任務：</strong>將既有小隊進場任務改為個人專用任務。</li>
+            </ul>
+            <p>以往地區魔性任務依首領分開，要完成一個地區便得進場三次。改版後每個地區只要進場一次，就能遇到該地區的 3 種首領。</p>
+
+            <h5>整合任務列表</h5>
+            <div class="table-scroll" role="region" aria-label="地區任務整合列表" tabindex="0">
+              <table class="text-table text-table--left">
+                <thead><tr><th>變更前</th><th>變更後</th></tr></thead>
+                <tbody>
+                  <tr><td>魔性的人面獅身、魔性的人身牛頭怪、魔性的梅杜莎</td><td>魔性的卡斯提亞、魔性的卡斯提亞：困難</td></tr>
+                  <tr><td>魔性的阿彼思的哀傷、魔性的阿彼思的憂鬱、魔性的阿彼思爪牙黛斯克羅塞</td><td>魔性的阿爾莫尼亞、魔性的阿爾莫尼亞：困難</td></tr>
+                  <tr><td>魔性的亡魂、魔性的火星、魔性的奎尼圖拉</td><td>魔性的波爾圖斯、魔性的波爾圖斯：困難</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="detail-section detail-section--last">
+            <h4>其他改版內容</h4>
+            <ul class="check-list detail-checks">
+              <li><strong>扭曲的阿爾莫尼亞／普魯里奧：</strong>調整獎勵，新增更高難度的「困難模式」。</li>
+              <li><strong>塔洛斯任務：</strong>調整「進階名人」獎勵，新增「宗師」難度。</li>
+              <li><strong>天上任務：</strong>新增符合難度水準的天上專屬獎勵。</li>
+              <li><strong>轉為個人任務：</strong>將部分小隊進場任務改為個人專用任務。</li>
+            </ul>
+          </section>
+        </section>
+
+        <div class="closing prose">
+          <p>開發團隊認為，這次任務改版最優先要解決的是高階內容不足，以及任務之間的獎勵落差。因此除了貨幣任務改版，也預計大幅增加過去報酬不符難度的高階任務獎勵。</p>
+          <p>團隊正持續調整細部數值，讓獎勵能合理反映遊玩難度與投入時間。各任務的詳細獎勵，將在相關作業完成後，透過測試伺服器公開。</p>
+          <p>開發團隊正在逐步完善將於 10 月推出的各項新內容。詳細內容確定後，會盡快透過新的開發者筆記與各位見面。</p>
+          <p>謝謝大家。</p>
+        </div>
+      </section>
+
+      <footer class="article-footer">
+        <p><strong>非官方繁體中文翻譯整理</strong></p>
+        <p>內容與數值以韓版官方正式更新為準。遊戲畫面與道具提示保留原始翻譯圖片，說明與表格均已網頁化。</p>
+        <a href="./assets/october-reference-long.png" target="_blank" rel="noopener">查看完整翻譯長圖</a>
+      </footer>
+    </article>
+  </main>
+
+  <dialog class="image-lightbox" aria-label="圖片放大檢視">
+    <button class="image-lightbox__close" type="button" aria-label="關閉放大圖片">×</button>
+    <div class="image-lightbox__stage"><img src="" alt=""></div>
+    <p>點擊圖片、背景或右上角按鈕即可關閉</p>
+  </dialog>
+  <script src="image-lightbox.js"></script>
+</body>
+</html>

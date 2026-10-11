@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Granado Espada 角色提雅開發者筆記非官方繁體中文翻譯草稿。">
+  <title>變身高手，提雅｜開發者筆記繁中翻譯</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="回到頁首">開發者筆記</a>
+      <nav class="desktop-nav" aria-label="快速選單">
+        <a href="#story" data-section-link>角色介紹</a>
+        <a href="#class-skill" data-section-link>職業</a>
+        <a href="#skill-1" data-section-link title="達戈特">1 技能</a>
+        <a href="#skill-2" data-section-link title="伊戈瓦">2 技能</a>
+        <a href="#skill-3" data-section-link title="穆卡迪艾">3 技能</a>
+        <a href="#skill-4" data-section-link title="塔修維">4 技能</a>
+        <a href="#skill-5" data-section-link title="探知克">5 技能</a>
+      </nav>
+      <div class="quick-nav">
+        <button class="quick-nav-toggle" type="button" aria-expanded="false" aria-controls="quick-nav-menu">
+          <span>選單</span><span class="quick-nav-arrow" aria-hidden="true">▾</span>
+        </button>
+        <nav id="quick-nav-menu" class="quick-nav-menu" aria-label="快速選單" hidden>
+          <a href="#story" data-section-link>角色介紹</a>
+          <a href="#class-skill" data-section-link>職業技能</a>
+          <a href="#skill-1" data-section-link><span>01</span> 達戈特</a>
+          <a href="#skill-2" data-section-link><span>02</span> 伊戈瓦</a>
+          <a href="#skill-3" data-section-link><span>03</span> 穆卡迪艾</a>
+          <a href="#skill-4" data-section-link><span>04</span> 塔修維</a>
+          <a href="#skill-5" data-section-link><span>05</span> 探知克</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="page-shell">
+    <article class="article">
+      <header class="article-header">
+        <p class="eyebrow">DEVELOPER'S NOTE · UNOFFICIAL ZH-HANT</p>
+        <h1>變身高手，提雅</h1>
+        <dl class="article-meta">
+          <div><dt>作者</dt><dd>Granado Espada 營運團隊</dd></div>
+          <div><dt>撰寫日期</dt><dd>2026.09.10 11:59</dd></div>
+          <div><dt>原文瀏覽</dt><dd>8,734</dd></div>
+        </dl>
+      </header>
+
+      <section id="story" class="section prose-section">
+        <p>大家好，我是營運人員 L。</p>
+        <p>這次要介紹的角色，是最後一位阿斯塔蒂——「提雅」。</p>
+        <p>一起來看看她擁有什麼樣的權能吧！</p>
+
+        <h2 class="bracket-title">提雅</h2>
+        <p>阿斯塔蒂之中最年幼的一位，卻和德拉肯一樣，走過了艱辛的人生。</p>
+        <p>提雅出生於來自阿伊利斯的母親與來自塔爾加的父親之間。她是兩股不同勢力血脈交融而生的孩子，自出生起便是不完全屬於任何一方的邊界之人。</p>
+        <p>她出生時的阿伊利斯，受卡塔伊影響，飽受海盜無止境的掠奪。提雅在混亂中失去母親，被父親牽著手渡往塔爾加，並在那裡度過幼年。</p>
+        <p>父親是隸屬史特拉塔維斯塔的幹員。然而，史特拉塔維斯塔基於保密，極度忌諱幹員擁有家人等血緣牽絆。為了從企圖除掉自己的幹員手中活下來，提雅自幼便學會隱藏自己、假扮他人，培養出偽裝成別人的能力。</p>
+        <p>然而，就連一直作為她依靠的父親也在任務中離世。提雅被史特拉塔維斯塔收容，自幼便站上潛入與暗殺的最前線。</p>
+        <p>之後，她被投入史特拉塔維斯塔的機密任務——確保「大地之主」的作戰。但作為確保對象的「大地之主」阿特拉斯，卻向提雅提出了意想不到的提議……</p>
+        <blockquote>「我會給妳要交給他們的情報，妳也把他們的情報交給我。」</blockquote>
+        <p>也就是說，原本應該逮捕的目標，竟向她提出了成為雙面間諜的道路。最後，提雅經過思考，接受了這項提議。</p>
+
+        <figure class="portrait">
+          <img src="assets/theia-portrait.jpg" alt="Granado Espada 角色提雅全身立繪">
+          <figcaption>提雅｜Granado Espada</figcaption>
+        </figure>
+      </section>
+
+      <section class="section interview" aria-labelledby="design-title">
+        <h2 id="design-title" class="plain-title">開發者訪談</h2>
+        <div class="dialogue">
+          <p><strong>營運人員 L：</strong>所有阿斯塔蒂終於都登場了！我看過她的技能，想知道她擁有什麼權能。感覺她似乎能「複製」拷貝？</p>
+          <p><strong>開發者德雷因：</strong>哦！很接近。不過，更精確地說，提雅並不是複製或拷貝其他阿斯塔蒂的權能。她從阿特拉斯獲得的是「變換權能」，能暫時借用目標的外貌與力量。</p>
+          <p>想到變色龍，應該就容易理解了。不過，那終究只是一借來的力量，不會真正成為提雅自己的力量。嚴格來說，她比較接近「變身高手」。</p>
+          <p><strong>營運人員 L：</strong>原來如此，所以她在「保護」狀態時，才會由「德拉肯」登場行動！讓她借用既有阿斯塔蒂能力，而非提雅專屬能力的設計契機是什麼呢？</p>
+          <p><strong>開發者德雷因：</strong>提雅能借用外貌的對象並沒有限制，但我們有意讓她主要展現阿斯塔蒂們的外貌。</p>
+          <p>提雅是各位最後見到的阿斯塔蒂，五個位置終於全部補齊了。因此，準備這名角色時，我們最先想到的是：希望能透過提雅，讓大家在同一個地方再次見到先前的四位。若最後介紹的阿斯塔蒂沒有前四位相伴，多少會令人覺得遺憾。</p>
+          <p><strong>營運人員 L：</strong>使用方式和銀河相似，感覺不難……請說明該怎麼運用吧！</p>
+          <p><strong>開發者德雷因：</strong>你看得很準確。提雅會依照職業技能施放期間使用的技能，獲得不同的「變換」增益。若你曾操作銀河的「天次分野」，應該也很快就能上手。</p>
+          <p>提雅的操作很簡單。先施放「達戈特」獲得「現場分析」增益，再以「達戈特」或「塔修維」對敵人留下「捕捉」減益，接著持續攻擊即可。不過，請記得留意，不要讓「捕捉」中斷！</p>
+        </div>
+
+        <div class="table-scroll" role="region" aria-label="增益與減益效果" tabindex="0">
+          <table class="info-table compact">
+            <thead><tr><th>增益／減益名稱</th><th>效果</th></tr></thead>
+            <tbody>
+              <tr><th>現場分析</th><td>持續時間：180 秒<br>攻擊等級 +1<br>對怪物攻擊力 +80%<br>智力 +5<br>念力貫穿力 +15</td></tr>
+              <tr><th>捕捉</th><td>持續時間：30 秒<br>攻擊力 -5%<br>移動速度 -15%<br>免疫度 -5</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <h2 class="bracket-title">基本介紹</h2>
+        <ul class="dash-list">
+          <li>「提雅」是使用「法杖（Rod）」的角色。</li>
+          <li>「提雅」穿著「法袍」。</li>
+        </ul>
+
+        <h2 id="class-skill" class="bracket-title anchor-target">職業技能：阿薩爾</h2>
+        <p>指定並啟動從阿特拉斯獲得的變換權能。</p>
+
+        <div class="table-scroll" role="region" aria-label="阿薩爾共通效果" tabindex="0">
+          <table class="info-table compact">
+            <caption>在「阿薩爾」施放期間使用技能時，套用「變換－強化」</caption>
+            <tbody>
+              <tr><th>共通</th><td>攻擊等級 +1<br>攻擊力 +50%<br>念力貫穿力 +10<br>最大 HP +10,000<br>最大 SP +300<br>免疫度 +10，所有受到的傷害 -5%</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="transform-list" aria-label="四種變換狀態">
+          <article class="media-row">
+            <div class="media-label"><span>變換－保護</span></div>
+            <div class="media-content">
+              <a href="assets/skill-01.gif" target="_blank" rel="noopener noreferrer">
+                <img class="skill-gif" loading="lazy" src="assets/skill-01.gif" alt="提雅施放變換－保護的動畫">
+              </a>
+              <p>HP 自然恢復量 +10,000，SP 自然恢復量 +100</p>
+            </div>
+          </article>
+
+          <article class="media-row">
+            <div class="media-label"><span>變換－成長</span></div>
+            <div class="media-content">
+              <a href="assets/skill-02.gif" target="_blank" rel="noopener noreferrer">
+                <img class="skill-gif" loading="lazy" src="assets/skill-02.gif" alt="提雅施放變換－成長的動畫">
+              </a>
+              <p>解除周圍 10 m 內敵人的隱身，並對其套用「捕捉」</p>
+            </div>
+          </article>
+
+          <article class="media-row">
+            <div class="media-label"><span>變換－開拓</span></div>
+            <div class="media-content">
+              <a href="assets/skill-03.gif" target="_blank" rel="noopener noreferrer">
+                <img class="skill-gif" loading="lazy" src="assets/skill-03.gif" alt="提雅施放變換－開拓的動畫">
+              </a>
+              <p>攻擊速度 +15%、移動速度 +15%、移動速度上限 +1.00</p>
+            </div>
+          </article>
+
+          <article class="media-row">
+            <div class="media-label"><span>變換－強化</span></div>
+            <div class="media-content">
+              <a href="assets/skill-04.gif" target="_blank" rel="noopener noreferrer">
+                <img class="skill-gif" loading="lazy" src="assets/skill-04.gif" alt="提雅施放變換－強化的動畫">
+              </a>
+              <p>強化攻擊性能並取得「阿薩爾」共通增益</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section stance-section">
+        <h2 class="bracket-title">姿勢與技能</h2>
+        <p>「提雅」使用魔法姿勢「伊斯提勒拉」。</p>
+
+        <article id="skill-1" class="skill-block anchor-target">
+          <header><span class="skill-index">01</span><div><p>伊斯提勒拉</p><h3>達戈特</h3></div></header>
+          <ul class="dash-list">
+            <li>對範圍內的敵人施展壓制攻擊。</li>
+            <li>施放時對敵人套用「捕捉」。</li>
+            <li>無視異常狀態抗性。</li>
+            <li>施放時獲得「現場分析」。</li>
+            <li>「變換」狀態時，對怪物的技能傷害為 2 倍。</li>
+            <li>對敵人施放時，「探知克」冷卻時間減少 2 秒。</li>
+            <li>充能時間 15 秒，最多可使用 2 次；使用 1 次後開始重新充能。</li>
+          </ul>
+          <figure class="single-media">
+            <a href="assets/skill-05.gif" target="_blank" rel="noopener noreferrer">
+              <img class="skill-gif" loading="lazy" src="assets/skill-05.gif" alt="提雅技能達戈特動畫">
+            </a>
+          </figure>
+        </article>
+
+        <article id="skill-2" class="skill-block anchor-target">
+          <header><span class="skill-index">02</span><div><p>伊斯提勒拉</p><h3>伊戈瓦</h3></div></header>
+          <ul class="dash-list">
+            <li>運用變換權能借用阿斯塔蒂的外貌，對指定位置發動集中攻擊。</li>
+            <li>非「變換」狀態時，隨機施展技能。</li>
+            <li>命中「捕捉」狀態的敵方玩家時，有 90% 機率套用 2 級「束縛」。</li>
+            <li>「現場分析」狀態時，技能傷害為 2 倍。</li>
+          </ul>
+          <div class="state-grid">
+            <figure class="state-card"><figcaption>變換－保護狀態</figcaption><img class="skill-gif" loading="lazy" src="assets/skill-06.gif" alt="伊戈瓦在變換－保護狀態的動畫"><p>移除範圍內自身角色受到的有害效果</p></figure>
+            <figure class="state-card"><figcaption>變換－成長狀態</figcaption><img class="skill-gif" loading="lazy" src="assets/skill-07.gif" alt="伊戈瓦在變換－成長狀態的動畫"><p>恢復範圍內自身角色 10% HP</p></figure>
+            <figure class="state-card"><figcaption>變換－開拓狀態</figcaption><img class="skill-gif" loading="lazy" src="assets/skill-08.gif" alt="伊戈瓦在變換－開拓狀態的動畫"><p>對範圍內敵方玩家造成 1.25 倍技能傷害</p></figure>
+            <figure class="state-card"><figcaption>變換－強化狀態</figcaption><img class="skill-gif" loading="lazy" src="assets/skill-09.gif" alt="伊戈瓦在變換－強化狀態的動畫"><p>對範圍內敵方怪物造成 2 倍技能傷害</p></figure>
+          </div>
+        </article>
+
+        <article id="skill-3" class="skill-block anchor-target">
+          <header><span class="skill-index">03</span><div><p>伊斯提勒拉</p><h3>穆卡迪艾</h3></div></header>
+          <ul class="dash-list">
+            <li>運用變換權能借用阿斯塔蒂的外貌，展開大範圍攻擊。</li>
+            <li>在「阿薩爾」施放期間使用技能時，套用「變換－保護」。</li>
+          </ul>
+          <div class="state-grid">
+            <figure class="state-card"><figcaption>變換－保護狀態</figcaption><img class="skill-gif" loading="lazy" src="assets/skill-10.gif" alt="穆卡迪艾在變換－保護狀態的動畫"><p>施放期間，範圍內自身角色無法被攻擊</p></figure>
+            <figure class="state-card"><figcaption>變換－成長狀態</figcaption><img class="skill-gif" loading="lazy" src="assets/skill-11.gif" alt="穆卡迪艾在變換－成長狀態的動畫"><p>恢復範圍內自身角色 15% HP</p></figure>
+            <figure class="state-card"><figcaption>變換－開拓狀態</figcaption><img class="skill-gif" loading="lazy" src="assets/skill-12.gif" alt="穆卡迪艾在變換－開拓狀態的動畫"><p>對範圍內敵方玩家造成 1.5 倍技能傷害</p></figure>
+            <figure class="state-card"><figcaption>變換－強化狀態</figcaption><img class="skill-gif" loading="lazy" src="assets/skill-13.gif" alt="穆卡迪艾在變換－強化狀態的動畫"><p>對範圍內敵方怪物造成 3 倍技能傷害</p></figure>
+          </div>
+        </article>
+
+        <article id="skill-4" class="skill-block anchor-target">
+          <header><span class="skill-index">04</span><div><p>伊斯提勒拉</p><h3>塔修維</h3></div></header>
+          <ul class="dash-list">
+            <li>朝前方敵人噴射經過變換的魔力。</li>
+            <li>在「阿薩爾」施放期間使用技能時，套用「變換－成長」。</li>
+            <li>施放時對敵人套用「捕捉」，並無視異常狀態抗性。</li>
+            <li>「現場分析」及「變換」狀態時，技能傷害為 3 倍。</li>
+            <li>對「捕捉」狀態的敵方怪物，無視相當於「額外智力 × 0.25」的免疫度。</li>
+            <li>對敵人施放時，「探知克」冷卻時間減少 2 秒。</li>
+            <li>充能時間 24 秒，最多可使用 2 次；使用 1 次後開始重新充能。</li>
+          </ul>
+          <figure class="single-media"><a href="assets/skill-14.gif" target="_blank" rel="noopener noreferrer"><img class="skill-gif" loading="lazy" src="assets/skill-14.gif" alt="提雅技能塔修維動畫"></a></figure>
+        </article>
+
+        <article id="skill-5" class="skill-block anchor-target">
+          <header><span class="skill-index">05</span><div><p>伊斯提勒拉</p><h3>探知克</h3></div></header>
+          <ul class="dash-list">
+            <li>將經過變換的魔力朝前方敵人爆裂般噴射。</li>
+            <li>在「阿薩爾」施放期間使用技能時，套用「變換－開拓」。</li>
+            <li>命中時有 60% 機率對敵人套用「緩速」。</li>
+            <li>「現場分析」及「變換」狀態時，技能傷害為 3 倍。</li>
+            <li>對「捕捉」狀態的敵方怪物，無視相當於「額外智力 × 0.25」的免疫度。</li>
+          </ul>
+          <figure class="single-media"><a href="assets/skill-15.gif" target="_blank" rel="noopener noreferrer"><img class="skill-gif" loading="lazy" src="assets/skill-15.gif" alt="提雅技能探知克動畫"></a></figure>
+        </article>
+      </section>
+
+      <footer class="article-footer">
+        <p>以上是 9 月角色「提雅」的介紹。敬請多多關注。</p>
+        <p><strong>謝謝大家。</strong></p>
+        <p class="translation-note">本頁為非官方繁體中文翻譯草稿；角色、圖像與動畫素材版權歸原權利人所有。</p>
+        <details>
+          <summary>查看原始繁中翻譯長圖</summary>
+          <img loading="lazy" src="assets/theia-reference-long.png" alt="變身高手提雅繁體中文翻譯長圖">
+        </details>
+      </footer>
+    </article>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
