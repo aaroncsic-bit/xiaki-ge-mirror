@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15130f">
+  <meta name="description" content="Granado Espada SEA 夏希漢化包：下載、安裝教學、移除方式、已知問題與活動更新。">
+  <title>夏希漢化｜Granado Espada SEA</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-progress" aria-hidden="true"><span></span></div>
+
+  <header class="topbar" id="top">
+    <a class="brand" href="#top" aria-label="回到首頁">
+      <span class="brand-mark"><img src="assets/ge-icon.png" alt=""></span>
+      <span><strong class="brand-title">夏希漢化</strong><small>Granado Espada SEA</small></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">選單</button>
+    <nav id="main-nav" aria-label="主要導覽">
+      <a href="#download">下載</a>
+      <a href="#install">安裝</a>
+      <a href="#remove">移除</a>
+      <a href="#issues">已知問題</a>
+      <a href="#updates">活動更新</a>
+      <a href="#kr-news">韓版資訊</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-backdrop"></div>
+      <div class="hero-vignette"></div>
+      <div class="hero-content shell">
+        <div class="hero-copy">
+          <p class="eyebrow">UNOFFICIAL TRADITIONAL CHINESE PATCH</p>
+          <h1 id="hero-title"><span class="title-script">夏希漢化</span><small>Xia-Xi Localization</small></h1>
+          <p class="lead">為 Granado Espada SEA（Steam）整理的繁體中文化包，讓家族冒險更容易閱讀。</p>
+          <div class="hero-actions">
+            <a class="game-button primary" href="#download">取得漢化包</a>
+            <a class="game-button" href="#install">查看安裝教學</a>
+          </div>
+        </div>
+
+        <aside class="status-panel game-panel" aria-label="目前版本資訊">
+          <div class="panel-heading"><span>漢化狀態</span><span class="lamp" aria-hidden="true"></span></div>
+          <dl>
+            <div><dt>官方版本</dt><dd>Ver.42.09.45</dd></div>
+            <div><dt>語言內容</dt><dd>中英合併</dd></div>
+            <div><dt>適用平台</dt><dd>Windows / Steam</dd></div>
+          </dl>
+          <p class="status-ok"><span aria-hidden="true">◆</span> 中秋與周年活動已翻譯</p>
+          <p class="notice">本說明以電腦操作為主，非手機安裝教學。</p>
+        </aside>
+      </div>
+      <a class="scroll-cue" href="#download" aria-label="往下閱讀">SCROLL <span>↓</span></a>
+    </section>
+
+    <section class="section shell" id="download">
+      <div class="section-title">
+        <p class="eyebrow">DOWNLOAD TERMINAL</p>
+        <h2>下載漢化包</h2>
+        <p>目前已合併英文內容，其他項目將逐步更新。</p>
+      </div>
+
+      <div class="download-console game-panel">
+        <div class="download-art" role="img" aria-label="Granado Espada 遊戲角色畫面"></div>
+        <div class="download-info">
+          <span class="version-badge">CURRENT BUILD · 42.09.45</span>
+          <h3>夏希漢化整合包</h3>
+          <p>包含主要漢化檔與支援中、泰、越文顯示的字體檔。</p>
+          <ul class="file-list">
+            <li><code>dictionary.ipf</code><span>主要漢化檔案</span></li>
+            <li><code>font00000.ipf</code><span>中文字體顯示改善</span></li>
+          </ul>
+          <a class="game-button primary large" href="https://drive.google.com/file/d/1pZb_1v9DbHSlE2nfcPr9zEnfOq4whn_k/view?usp=sharing" target="_blank" rel="noopener noreferrer">前往 Google Drive 下載</a>
+          <p class="microcopy">下載後請依照下方步驟安裝。建議先備份原始字體檔。</p>
+        </div>
+      </div>
+
+      <div class="update-strip">
+        <span class="update-label">NEXT UPDATE</span>
+        <p><time datetime="2026-10-05">10 / 05</time> 更新雷歐娜、統領者科特技能組改動翻譯與遺物系統和遺物裝備道具能力翻譯。</p>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="install">
+      <div class="shell">
+        <div class="section-title left">
+          <p class="eyebrow">FIELD MANUAL · 01</p>
+          <h2>如何安裝</h2>
+          <p>三個步驟完成部署。安裝前請先關閉遊戲。</p>
+        </div>
+
+        <ol class="steps">
+          <li class="step-card game-panel">
+            <span class="step-number">01</span>
+            <div class="step-copy">
+              <h3>解壓縮下載檔案</h3>
+              <p>確認資料夾中有 <code>dictionary.ipf</code> 與 <code>font00000.ipf</code>。</p>
+            </div>
+            <div class="file-icons" aria-hidden="true"><span>IPF</span><span>FONT</span></div>
+          </li>
+
+          <li class="step-card game-panel">
+            <span class="step-number">02</span>
+            <div class="step-copy">
+              <h3>前往遊戲資料夾</h3>
+              <p>若沒有修改 Steam 安裝位置，使用下方預設路徑。</p>
+              <div class="path-box"><code id="install-path">C:\Program Files (x86)\Steam\steamapps\common\Granado Espada For SEA\ge</code><button type="button" data-copy-target="install-path">複製</button></div>
+            </div>
+            <button class="image-button" type="button" data-lightbox="assets/install-copy.jpg" aria-label="放大查看複製檔案示意圖">
+              <img src="assets/install-copy.jpg" alt="在下載資料夾中剪下或複製漢化檔案">
+            </button>
+          </li>
+
+          <li class="step-card game-panel">
+            <span class="step-number">03</span>
+            <div class="step-copy">
+              <h3>貼上並選擇取代</h3>
+              <p>將檔案放進 <code>ge</code> 資料夾，遇到同名檔案時選擇「取代目的地中的檔案」。</p>
+              <p class="warning">建議保留原本的 <code>font00000.ipf</code>，以免更換字體後不習慣。</p>
+            </div>
+            <button class="image-button" type="button" data-lightbox="assets/install-replace.png" aria-label="放大查看取代檔案示意圖">
+              <img src="assets/install-replace.png" alt="Windows 顯示取代目的地中檔案的選項">
+            </button>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section shell" id="remove">
+      <div class="section-title">
+        <p class="eyebrow">FIELD MANUAL · 02</p>
+        <h2>如何移除</h2>
+      </div>
+
+      <div class="tabs game-panel" data-tabs>
+        <div class="tab-list" role="tablist" aria-label="移除方法">
+          <button type="button" role="tab" aria-selected="true" aria-controls="tab-patch" id="tab-patch-button">移除漢化</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="tab-font" id="tab-font-button">恢復原廠字體</button>
+        </div>
+        <div class="tab-panel" id="tab-patch" role="tabpanel" aria-labelledby="tab-patch-button">
+          <div>
+            <span class="panel-kicker">QUICK REMOVE</span>
+            <h3>刪除 dictionary.ipf</h3>
+            <p>從遊戲的 <code>ge</code> 資料夾刪除 <code>dictionary.ipf</code>，即可移除漢化內容。</p>
+          </div>
+          <div class="ornament" aria-hidden="true">◇</div>
+        </div>
+        <div class="tab-panel" id="tab-font" role="tabpanel" aria-labelledby="tab-font-button" hidden>
+          <div class="restore-grid">
+            <div><span class="panel-kicker">STEP 1</span><h3>開啟 Steam 遊戲內容</h3><p>在收藏庫對 Granado Espada 按右鍵，選擇「內容」。</p><button class="image-button" type="button" data-lightbox="assets/remove-steam.jpg"><img src="assets/remove-steam.jpg" alt="Steam 收藏庫中開啟 Granado Espada 內容選單"></button></div>
+            <div><span class="panel-kicker">STEP 2</span><h3>驗證遊戲檔案完整性</h3><p>進入「已安裝檔案」，點選驗證，即可恢復原廠字體。</p><button class="image-button" type="button" data-lightbox="assets/verify-files.png"><img src="assets/verify-files.png" alt="Steam 已安裝檔案頁面的驗證完整性按鈕"></button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="issues">
+      <div class="shell">
+        <div class="section-title left">
+          <p class="eyebrow">KNOWN ISSUES</p>
+          <h2>已知問題</h2>
+          <p>以下項目仍需拆包解析，目前暫時無法修正與翻譯。</p>
+        </div>
+
+        <div class="issue-grid">
+          <article class="issue-card game-panel">
+            <button class="image-button" type="button" data-lightbox="assets/issue-lobby.png"><img src="assets/issue-lobby.png" alt="家族大廳對話選項顯示亂碼"></button>
+            <div><span class="issue-id">ISSUE 01</span><h3>家族大廳與市場商店</h3><p>擴充相關文字可能顯示亂碼或空白。</p></div>
+          </article>
+          <article class="issue-card game-panel">
+            <button class="image-button" type="button" data-lightbox="assets/issue-rank.png"><img src="assets/issue-rank.png" alt="Rank 副本怪物名稱仍顯示英文"></button>
+            <div><span class="issue-id">ISSUE 02</span><h3>Rank 副本怪物名稱</h3><p>部分怪物名稱目前無法套用漢化。</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="updates" data-card-archive="sea">
+      <div class="section-title">
+        <p class="eyebrow">SEA CAMPAIGN LOG</p>
+        <h2>活動與更新</h2>
+        <p>點選活動圖片可開啟完整翻譯截圖。</p>
+      </div>
+
+      <div class="event-grid" data-card-grid>
+        <article class="event-card game-panel">
+          <a class="image-button" href="https://i.meee.com.tw/awvThWS.png" target="_blank" rel="noopener noreferrer" aria-label="開啟 20 周年活動完整翻譯截圖"><img src="assets/event-20th.png" alt="Granado Espada 二十周年活動橫幅"></a>
+          <div><time datetime="2026-09-30">2026.09.30</time><h3>20 周年活動延期</h3><p>任務活動結束，目前剩下禮包內容。</p></div>
+        </article>
+        <article class="event-card game-panel">
+          <a class="image-button" href="https://i.meee.com.tw/YOMSLUl.png" target="_blank" rel="noopener noreferrer" aria-label="開啟世界糧食日完整翻譯截圖"><img src="assets/event-food.png" alt="世界糧食日活動橫幅"></a>
+          <div><time datetime="2026-09-23">2026.09.23</time><h3>世界糧食日</h3><p>SEA 官方活動翻譯紀錄。</p></div>
+        </article>
+        <article class="event-card game-panel">
+          <a class="image-button" href="https://i.meee.com.tw/iaY1DDW.png" target="_blank" rel="noopener noreferrer" aria-label="開啟迎秋活動完整翻譯截圖"><img src="assets/event-autumn.png" alt="迎秋活動橫幅"></a>
+          <div><time datetime="2026-09-23">2026.09.23</time><h3>迎秋活動</h3><p>SEA 官方活動翻譯紀錄。</p></div>
+        </article>
+      </div>
+      <div class="archive-controls" data-archive-controls hidden>
+        <button class="archive-toggle" type="button" aria-expanded="false">
+          <span data-archive-label>展開更多</span>
+          <small data-archive-count></small>
+        </button>
+      </div>
+    </section>
+
+    <section class="section shell" id="kr-news" data-card-archive="kr">
+      <div class="section-title">
+        <p class="eyebrow">KOREAN SERVER NEWS</p>
+        <h2>韓版新資訊</h2>
+        <p>以下更新韓版官方新資訊，點選圖片可查看翻譯後的完整內容。</p>
+      </div>
+
+      <div class="event-grid kr-news-grid" data-card-grid>
+        <article class="event-card game-panel">
+          <a class="image-button news-image news-image--october" href="https://october-mission-update-preview.aaroncsic.chatgpt.site" target="_blank" rel="noopener noreferrer" aria-label="開啟十月任務搶先看完整介紹網站"><img src="assets/kr-october.png" alt="十月任務搶先看與副本獎勵變動翻譯"></a>
+          <div><time datetime="2026-09-30">2026.09.30</time><h3>十月任務搶先看</h3><p>副本與獎勵變動。</p></div>
+        </article>
+        <article class="event-card game-panel">
+          <a class="image-button news-image news-image--theia" href="https://theia-character-guide.mintylion2.chatgpt.site" target="_blank" rel="noopener noreferrer" aria-label="開啟變身高手提雅完整介紹網站"><img src="assets/kr-theia-card.png" alt="韓版新角色變身高手提雅"></a>
+          <div><time datetime="2026-09-10">2026.09.10</time><h3>變身高手提雅</h3><p>韓版新角色與技能介紹。</p></div>
+        </article>
+        <article class="event-card game-panel">
+          <a class="image-button news-image news-image--pioneer" href="https://pioneer-map-artifact-update.aaroncsic.chatgpt.site" target="_blank" rel="noopener noreferrer" aria-label="開啟開拓地圖最終更新與神器強化擴充介紹網頁"><img src="assets/kr-pioneer-update.png" alt="開拓地圖最終更新與神器強化擴充"></a>
+          <div><time datetime="2026-08-28">2026.08.28</time><h3>開拓地圖最終更新與神器強化擴充</h3><p>開拓地圖與神器系統更新。</p></div>
+        </article>
+      </div>
+      <div class="archive-controls" data-archive-controls hidden>
+        <button class="archive-toggle" type="button" aria-expanded="false">
+          <span data-archive-label>展開更多</span>
+          <small data-archive-count></small>
+        </button>
+      </div>
+    </section>
+
+    <section class="feedback" id="feedback">
+      <div class="feedback-bg"></div>
+      <div class="shell feedback-content">
+        <span class="panel-kicker">COMMUNICATION</span>
+        <h2>遇到問題了嗎？</h2>
+        <p>若遇到翻譯或安裝問題，或有希望優先更新的內容，歡迎透過問題回報表單與作者聯繫。</p>
+        <div class="feedback-actions">
+          <a class="game-button primary" href="https://docs.google.com/forms/d/15JOSDRWa-nDZZkYS-Ud2Toylbcr7KGO7kV1jt1CsR3Q/viewform" target="_blank" rel="noopener noreferrer">填寫問題回報表單</a>
+          <a class="game-button" href="#issues">先查看已知問題</a>
+        </div>
+        <p class="share-warning">禁止未經允許外傳；如需轉載，請先與作者討論。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <div><strong>夏希漢化</strong><span>Granado Espada SEA Traditional Chinese Patch</span></div>
+      <p>非官方玩家製作內容。遊戲名稱、圖片與相關素材之權利歸原權利人所有。</p>
+      <a href="#top">返回頂端 ↑</a>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" aria-label="圖片預覽">
+    <button class="lightbox-close" type="button" aria-label="關閉圖片預覽">×</button>
+    <img src="" alt="">
+  </dialog>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
