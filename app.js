@@ -172,3 +172,29 @@ document.querySelectorAll('[data-card-archive]').forEach(section => {
   render(false);
   toggle.addEventListener('click', () => render(toggle.getAttribute('aria-expanded') !== 'true'));
 });
+
+document.querySelectorAll('[data-maintenance-panel]').forEach(panel => {
+  const details = panel.querySelector('.maintenance-details');
+  const toggles = [...panel.querySelectorAll('[data-maintenance-toggle]')];
+  const label = panel.querySelector('[data-maintenance-label]');
+  const hint = panel.querySelector('[data-maintenance-hint]');
+  if (!details || !toggles.length) return;
+
+  const render = expanded => {
+    details.hidden = !expanded;
+    toggles.forEach(toggle => toggle.setAttribute('aria-expanded', String(expanded)));
+    if (label) label.textContent = expanded ? '收起更新內容' : '展開完整更新內容';
+    if (hint) hint.textContent = expanded ? '保留維修時間，隱藏下方完整內容' : '現金商城、內容調整、錯誤修正與一般維護';
+  };
+
+  render(false);
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') !== 'true';
+      render(expanded);
+      if (!expanded && toggle.hasAttribute('data-collapse-button')) {
+        document.querySelector('#maintenance')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
