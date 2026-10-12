@@ -277,7 +277,9 @@ footer { padding: 34px 0; color: #8e8578; border-top: 1px solid #3f382e; backgro
 .footer-inner { display: grid; grid-template-columns: auto 1fr auto; gap: 30px; align-items: center; font-size: 12px; }
 .footer-inner strong, .footer-inner span { display: block; }
 .footer-inner strong { color: #c9b997; font-size: 15px; letter-spacing: .12em; }
-.footer-inner p { text-align: center; }
+.footer-inner p { margin: 0; text-align: center; }
+.footer-legal { display: grid; gap: 8px; line-height: 1.65; }
+.footer-risk { color: #a99a85; }
 .footer-inner a { color: #b8a784; text-decoration: none; }
 
 .lightbox { width: min(1180px, 94vw); max-height: 92vh; padding: 6px; border: 1px solid #9d835d; background: #0c0b09; box-shadow: 0 30px 90px #000; }
