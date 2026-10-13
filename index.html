@@ -246,112 +246,94 @@
         </div>
 
         <article class="maintenance-panel game-panel" data-maintenance-panel>
-          <div class="maintenance-times" aria-label="2026年10月7日維修時間">
-            <p><strong>SGT／台灣時間</strong><time datetime="2026-10-07T13:00:00+08:00">2026年10月7日 13:00～16:00</time></p>
-            <p><strong>EST</strong><time datetime="2026-10-07T00:00:00">2026年10月7日 00:00～03:00</time></p>
-            <p><strong>CET</strong><time datetime="2026-10-07T06:00:00">2026年10月7日 06:00～09:00</time></p>
+          <div class="maintenance-times" aria-label="2026年10月14日維修時間">
+            <p><strong>SGT／新加坡時間</strong><time datetime="2026-10-14T13:00:00+08:00">2026年10月14日 13:00～16:00</time></p>
+            <p><strong>EST／美國東部時間</strong><time datetime="2026-10-14T00:00:00">2026年10月14日 00:00～03:00</time></p>
+            <p><strong>CET／歐洲中部時間</strong><time datetime="2026-10-14T06:00:00">2026年10月14日 06:00～09:00</time></p>
           </div>
 
           <div class="maintenance-controls">
             <button class="archive-toggle maintenance-toggle" type="button" aria-expanded="false" aria-controls="maintenance-details" data-maintenance-toggle>
               <span data-maintenance-label>展開完整更新內容</span>
-              <small data-maintenance-hint>現金商城、內容調整、錯誤修正與一般維護</small>
+              <small data-maintenance-hint>地圖改善、操作說明、錯誤修正與一般維護</small>
             </button>
           </div>
 
           <div class="maintenance-details" id="maintenance-details" hidden>
             <div class="maintenance-heading">
-              <p class="panel-kicker">PATCH NOTES · 2026.10.07</p>
-              <h3>更新內容</h3>
+              <p class="panel-kicker">PATCH NOTES · 2026.10.14</p>
+              <h3>更新說明</h3>
             </div>
 
             <section class="maintenance-group">
-              <h4><span>01</span>現金商城</h4>
+              <h4><span>01</span>更新內容</h4>
               <div class="maintenance-change">
-                <h5>「林頓箱子」下架</h5>
-                <ul><li>套用於「雷歐娜、代號L、統領者科特」的［林頓的祝福］效果將移除。</li></ul>
-              </div>
-              <div class="maintenance-change">
-                <h5><a href="https://www.granadoespada.com/event/202610_stella/" target="_blank" rel="noopener noreferrer">斯特拉的神祕禮物箱</a>將開始特別販售（為期2週）</h5>
+                <h5>世界地圖與區域地圖功能改善</h5>
+                <p>世界地圖（Alt+W）與區域地圖（Alt+Z）的功能已改善，使地圖查看更加便利。</p>
+                <figure class="maintenance-figure">
+                  <button class="image-button" type="button" data-lightbox="assets/maintenance-2026-10-14-map-tooltip.webp" aria-label="放大查看世界地圖右鍵提示示意圖"><img src="assets/maintenance-2026-10-14-map-tooltip.webp" alt="世界地圖顯示右鍵查看區域地圖提示"></button>
+                  <figcaption>世界地圖的區域提示與右鍵操作</figcaption>
+                </figure>
                 <ul>
-                  <li>可於現金商城購買單個商品，或10＋1組合包。</li>
-                  <li>活動販售期間，累計開啟次數達到指定門檻時，可獲得特別加碼獎勵。</li>
+                  <li>將滑鼠游標移至某個區域上方時，會顯示「點擊滑鼠右鍵即可查看區域地圖。」提示。</li>
+                  <li>在世界地圖上對某個區域點擊滑鼠右鍵時，將立即顯示該區域的區域地圖。</li>
                 </ul>
-                <p class="maintenance-note">※ 輪次獎勵最多可重複領取3輪。活動結束後將無法再領取輪次獎勵，箱內內容物也會恢復為基本品項。</p>
-              </div>
-              <div class="maintenance-change">
-                <h5>新增3種禮包</h5>
-                <p>新增「斯特拉的神祕禮物箱30個／50個／100個禮包」；這些道具可交易。</p>
-              </div>
-            </section>
-
-            <section class="maintenance-group">
-              <h4><span>02</span>內容變更／新增</h4>
-              <div class="maintenance-change">
-                <h5>新增道具</h5>
+                <figure class="maintenance-figure">
+                  <button class="image-button" type="button" data-lightbox="assets/maintenance-2026-10-14-map-state.webp" aria-label="放大查看世界地圖與區域地圖顯示狀態示意圖"><img src="assets/maintenance-2026-10-14-map-state.webp" alt="開啟區域地圖時世界地圖維持顯示狀態"></button>
+                  <figcaption>連續查看區域地圖與隱藏地點資訊</figcaption>
+                </figure>
+                <ul>
+                  <li>即使開啟區域地圖，世界地圖仍會維持目前的顯示狀態，方便連續查看多個區域。</li>
+                  <li>在區域地圖的「區域」分頁中雙擊區域名稱，即可顯示該區域的區域地圖。</li>
+                  <li>可透過「隱藏地點資訊」按鈕，隱藏世界地圖上的地點資訊。</li>
+                </ul>
+                <p class="maintenance-note">※ 以下操作以透過滑鼠右鍵開啟的區域地圖為準。</p>
                 <div class="maintenance-table-wrap">
-                  <table class="maintenance-table">
-                    <thead><tr><th>活動用5大元素武器＋8箱子召喚石</th></tr></thead>
-                    <tbody><tr><td>可選擇並獲得1件＋8活動用5大元素武器的道具</td></tr></tbody>
+                  <table class="maintenance-table maintenance-table--two-column">
+                    <thead><tr><th>操作</th><th>功能</th></tr></thead>
+                    <tbody>
+                      <tr><td>移動標記與傳送箭頭［左鍵］</td><td>顯示相連區域的區域地圖。</td></tr>
+                      <tr><td>區域地圖［右鍵］</td><td>返回上一個查看的區域地圖。</td></tr>
+                    </tbody>
                   </table>
                 </div>
+                <p class="maintenance-note">※ 若單一移動標記連接多個區域，可在「選擇區域」視窗中選擇想查看的區域。</p>
               </div>
-
               <div class="maintenance-change">
-                <h5>現有道具說明</h5>
-                <div class="maintenance-table-grid">
-                  <div class="maintenance-table-card">
-                    <h6>林頓閃耀19週年角色卡片、姿勢祕笈召喚石</h6>
-                    <div class="maintenance-table-wrap">
-                      <table class="maintenance-table">
-                        <thead><tr><th>道具</th></tr></thead>
-                        <tbody>
-                          <tr><td>［元素鍊金術］姿勢祕笈</td></tr><tr><td>［貪欲］姿勢祕笈</td></tr><tr><td>［雪花術］姿勢祕笈</td></tr><tr><td>［Arquebus］姿勢祕笈</td></tr>
-                          <tr><td>工匠羅勒克卡片</td></tr><tr><td>吉爾蒂內卡片</td></tr><tr><td>羅茜卡片</td></tr><tr><td>貝莉絲卡片</td></tr><tr><td>安姬塔卡片</td></tr><tr><td>小蒼蘭卡片</td></tr><tr><td>麗貝卡卡片</td></tr><tr><td>首席鍊金術師貝羅尼普卡片</td></tr><tr><td>卡門卡片</td></tr><tr><td>吉茲卡片</td></tr><tr><td>席拉恩卡片</td></tr><tr><td>梅爾蒂斯卡片</td></tr><tr><td>卡烏拉卡片</td></tr><tr><td>希薇絲蒂亞卡片</td></tr><tr><td>貝西摩司卡片</td></tr><tr><td>妲奈芙卡片</td></tr><tr><td>利維坦卡片</td></tr><tr><td>代號J卡片</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-
-                  <div class="maintenance-table-stack">
-                    <div class="maintenance-table-card">
-                      <h6>19週年收藏用角色卡片箱子</h6>
-                      <div class="maintenance-table-wrap">
-                        <table class="maintenance-table">
-                          <thead><tr><th>道具</th></tr></thead>
-                          <tbody><tr><td>收藏用瑞秋卡片</td></tr><tr><td>～</td></tr><tr><td>收藏用利維坦卡片</td></tr></tbody>
-                        </table>
-                      </div>
-                      <p class="maintenance-note">※ 可隨機獲得127種卡片中的1張。</p>
-                    </div>
-
-                    <div class="maintenance-table-card">
-                      <h6>林頓19週年角色卡片箱子</h6>
-                      <div class="maintenance-table-wrap">
-                        <table class="maintenance-table">
-                          <thead><tr><th>道具</th></tr></thead>
-                          <tbody>
-                            <tr><td>麗貝卡卡片</td></tr><tr><td>首席鍊金術師貝羅尼普卡片</td></tr><tr><td>卡門卡片</td></tr><tr><td>吉茲卡片</td></tr><tr><td>席拉恩卡片</td></tr><tr><td>梅爾蒂斯卡片</td></tr><tr><td>卡烏拉卡片</td></tr><tr><td>希薇絲蒂亞卡片</td></tr><tr><td>貝西摩司卡片</td></tr><tr><td>妲奈芙卡片</td></tr><tr><td>利維坦卡片</td></tr><tr><td>代號J卡片</td></tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <p class="maintenance-note">※ 可從上述卡片中，以相同機率獲得其中1張。</p>
-                    </div>
-                  </div>
-                </div>
+                <h5>新增「顯示技能範圍地形」功能</h5>
+                <p>「遊戲選項（Alt+O）－基本－技能選項」將新增「顯示技能範圍地形」功能。</p>
+                <ul><li>啟用後，技能的實際攻擊範圍將會依地形顯示。</li></ul>
+                <figure class="maintenance-figure">
+                  <button class="image-button" type="button" data-lightbox="assets/maintenance-2026-10-14-skill-terrain.webp" aria-label="放大查看技能範圍地形顯示示意圖"><img src="assets/maintenance-2026-10-14-skill-terrain.webp" alt="技能實際攻擊範圍依地形顯示"></button>
+                  <figcaption>技能範圍地形顯示示意</figcaption>
+                </figure>
+              </div>
+              <div class="maintenance-change">
+                <h5>家族大廳搜尋結果改善</h5>
+                <p>在家族大廳角色清單視窗中搜尋角色或道具時，搜尋結果將從清單頂端開始顯示，方便快速查看。</p>
+                <figure class="maintenance-figure">
+                  <button class="image-button" type="button" data-lightbox="assets/maintenance-2026-10-14-barrack-search.webp" aria-label="放大查看家族大廳搜尋結果示意圖"><img src="assets/maintenance-2026-10-14-barrack-search.webp" alt="家族大廳角色與道具搜尋結果從清單頂端顯示"></button>
+                  <figcaption>家族大廳搜尋結果顯示位置改善</figcaption>
+                </figure>
+              </div>
+              <div class="maintenance-change">
+                <h5>情報中心書籤上限增加</h5>
+                <p>情報中心「副本」分頁可登錄的「書籤」數量上限將由10個增加至20個。</p>
+                <p class="maintenance-note">※ 此外，也將進行其他錯誤修正及UI／UX改善。</p>
+                <p class="maintenance-note">※ 請注意，本公告中使用的圖片並非實際遊戲畫面，而是為了協助理解內容所製作的AI生成圖片。</p>
               </div>
             </section>
 
             <section class="maintenance-group">
-              <h4><span>03</span>錯誤修正</h4>
+              <h4><span>02</span>錯誤修正</h4>
               <div class="maintenance-change">
-                <h5>任務</h5>
-                <ul><li>已修正進行「統領者科特」支線任務時，未套用增益效果而導致任務無法繼續的問題。</li></ul>
+                <h5>圖像／UI</h5>
+                <ul><li>已修正情報中心「角色」分頁的部分姿勢資訊中，錯誤顯示「技能升級」按鈕的問題。（例如：克莉絲緹娜的［Gemma］姿勢）</li></ul>
               </div>
             </section>
 
             <section class="maintenance-group">
-              <h4><span>04</span>一般維護</h4>
+              <h4><span>03</span>一般維護</h4>
               <div class="maintenance-change">
                 <h5>系統維護</h5>
                 <ul><li>將進行內部伺服器及系統的一般維護作業。</li></ul>
@@ -359,7 +341,7 @@
             </section>
 
             <div class="maintenance-footer">
-              <a class="game-button" href="https://www.granadoespada.com/page/newsview.php?n=853" target="_blank" rel="noopener noreferrer">查看 SEA 官方原始公告</a>
+              <a class="game-button" href="https://www.granadoespada.com/page/newsview.php?n=854" target="_blank" rel="noopener noreferrer">查看 SEA 官方原始公告</a>
               <button class="archive-toggle maintenance-toggle maintenance-collapse" type="button" aria-expanded="true" aria-controls="maintenance-details" data-maintenance-toggle data-collapse-button>
                 <span>收起更新內容</span>
               </button>
