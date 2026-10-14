@@ -23,6 +23,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate notices JSON
+        run: node scripts/generate-notices.mjs
+      - name: Validate notices JSON and lifecycle rules
+        run: |
+          node scripts/generate-notices.mjs --check
+          node scripts/test-notices.mjs
+          node scripts/test-http.mjs
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:

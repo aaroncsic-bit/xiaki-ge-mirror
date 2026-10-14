@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/data/notices.schema.json",
+  "title": "夏希漢化公告 Feed",
+  "type": "object",
+  "required": ["schema_version", "feed_revision", "generated_at", "source", "notices"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "feed_revision": { "type": "integer", "minimum": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source": {
+      "type": "object",
+      "required": ["name", "site_url", "feed_url"],
+      "properties": {
+        "name": { "type": "string" },
+        "site_url": { "type": "string", "format": "uri" },
+        "feed_url": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "notices": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/notice" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "nullableDateTime": {
+      "anyOf": [
+        { "type": "string", "format": "date-time" },
+        { "type": "null" }
+      ]
+    },
+    "nullableUri": {
+      "anyOf": [
+        { "type": "string", "format": "uri" },
+        { "type": "null" }
+      ]
+    },
+    "notice": {
+      "type": "object",
+      "required": [
+        "id", "revision", "status", "category", "category_label",
+        "server_scope", "sea_release_status", "title", "summary",
+        "content_text", "published_at", "published_date",
+        "published_precision", "updated_at", "url", "source_url",
+        "image_url", "important", "expires_at", "withdrawn_at",
+        "content_hash"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "revision": { "type": "integer", "minimum": 1 },
+        "status": { "enum": ["published", "withdrawn"] },
+        "category": {
+          "enum": ["kr_update", "sea_event", "sea_maintenance", "xiaki_general", "xiaki_release"]
+        },
+        "category_label": { "type": "string" },
+        "server_scope": { "enum": ["KR", "SEA", "XIAXI"] },
+        "sea_release_status": { "enum": ["confirmed", "unconfirmed", "not_applicable"] },
+        "title": { "type": "string", "minLength": 1 },
+        "summary": { "type": "string", "minLength": 1 },
+        "content_text": { "type": "string", "minLength": 1 },
+        "published_at": { "$ref": "#/$defs/nullableDateTime" },
+        "published_date": { "type": "string", "format": "date" },
+        "published_precision": { "enum": ["date", "datetime"] },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "url": { "type": "string", "format": "uri" },
+        "source_url": { "$ref": "#/$defs/nullableUri" },
+        "image_url": { "$ref": "#/$defs/nullableUri" },
+        "important": { "type": "boolean" },
+        "expires_at": { "$ref": "#/$defs/nullableDateTime" },
+        "withdrawn_at": { "$ref": "#/$defs/nullableDateTime" },
+        "content_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+      },
+      "additionalProperties": false
+    }
+  }
+}
