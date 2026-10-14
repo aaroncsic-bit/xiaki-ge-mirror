@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aaroncsic-bit.github.io/xiaki-ge-mirror/sitemap.xml
