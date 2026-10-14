@@ -92,6 +92,34 @@ function firstAttribute(source, tagName, attributeName) {
   return parseAttributes(match[1])[attributeName] ?? null;
 }
 
+function extractMaintenanceWindows(source) {
+  const container = source.match(/<div\b[^>]*\bclass=["'][^"']*\bmaintenance-times\b[^"']*["'][^>]*>([\s\S]*?)<\/div>/i);
+  if (!container) return [];
+
+  const windows = [];
+  const rowPattern = /<p\b[^>]*>([\s\S]*?)<\/p>/gi;
+  for (const row of container[1].matchAll(rowPattern)) {
+    const labelText = firstElementText(row[1], 'strong');
+    const displayText = firstElementText(row[1], 'time');
+    const labelMatch = labelText.match(/^([^／]+)／(.+)$/);
+    const timeMatch = displayText.match(/^(\d{4})年(\d{1,2})月(\d{1,2})日\s+(\d{2}:\d{2})～(\d{2}:\d{2})$/);
+    if (!labelMatch || !timeMatch) {
+      throw new Error(`無法解析維修時間：${labelText} ${displayText}`.trim());
+    }
+
+    const [, year, month, day, startTime, endTime] = timeMatch;
+    windows.push({
+      timezone_code: labelMatch[1].trim(),
+      timezone_label: labelMatch[2].trim(),
+      date: `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`,
+      start_time: startTime,
+      end_time: endTime,
+      display_text: displayText
+    });
+  }
+  return windows;
+}
+
 function extractMainText(html) {
   const match = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i);
   return stripHtml(match?.[1] ?? html);
@@ -147,6 +175,7 @@ function extractCurrentNotices(rootDir, indexHtml) {
     const publishedDate = attributes['data-notice-published-date'] || publishedAt?.slice(0, 10) || firstAttribute(body, 'time', 'datetime')?.slice(0, 10) || null;
     const sourceUrl = attributes['data-notice-source-url'] || null;
     const imageSrc = firstAttribute(body, 'img', 'src');
+    const maintenanceWindows = category === 'sea_maintenance' ? extractMaintenanceWindows(body) : null;
 
     if (!id || !title || !summary || !publishedDate) {
       throw new Error(`公告資料不完整：${id || '(缺少 ID)'}`);
@@ -173,6 +202,7 @@ function extractCurrentNotices(rootDir, indexHtml) {
       important: attributes['data-notice-important'] === 'true',
       expires_at: attributes['data-notice-expires-at'] || null,
       withdrawn_at: null,
+      ...(maintenanceWindows ? { maintenance_windows: maintenanceWindows } : {}),
       content_hash: null
     });
   }
@@ -284,6 +314,25 @@ export function validateFeed(feed) {
     }
     if (notice.server_scope === 'SEA' && notice.sea_release_status !== 'confirmed') {
       throw new Error(`SEA 公告 ${notice.id} 必須標記為 confirmed。`);
+    }
+    if (notice.category === 'sea_maintenance') {
+      const expectedCodes = ['SGT', 'EST', 'CET'];
+      if (!Array.isArray(notice.maintenance_windows) || notice.maintenance_windows.length !== expectedCodes.length) {
+        throw new Error(`SEA 維修公告 ${notice.id} 必須包含 SGT、EST、CET 三組維修時間。`);
+      }
+      const actualCodes = notice.maintenance_windows.map(window => window.timezone_code);
+      if (new Set(actualCodes).size !== actualCodes.length || expectedCodes.some(code => !actualCodes.includes(code))) {
+        throw new Error(`SEA 維修公告 ${notice.id} 的時區代碼必須是 SGT、EST、CET 且不得重複。`);
+      }
+      for (const window of notice.maintenance_windows) {
+        if (!window.timezone_label || !window.display_text) throw new Error(`SEA 維修公告 ${notice.id} 的時區說明不完整。`);
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(window.date || '')) throw new Error(`SEA 維修公告 ${notice.id} 的維修日期格式錯誤。`);
+        if (!/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(window.start_time || '') || !/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(window.end_time || '')) {
+          throw new Error(`SEA 維修公告 ${notice.id} 的維修時間格式錯誤。`);
+        }
+      }
+    } else if ('maintenance_windows' in notice) {
+      throw new Error(`非 SEA 維修公告 ${notice.id} 不應包含 maintenance_windows。`);
     }
     if (!/^sha256:[a-f0-9]{64}$/.test(notice.content_hash || '')) throw new Error(`公告 ${notice.id} 的內容雜湊錯誤。`);
   }

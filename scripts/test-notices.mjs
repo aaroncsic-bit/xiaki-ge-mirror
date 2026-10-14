@@ -21,7 +21,47 @@ assert.equal(initialFeed.notices.filter(notice => notice.category === 'sea_maint
 assert.ok(initialFeed.notices.every(notice => notice.revision === 1));
 assert.ok(initialFeed.notices.every(notice => notice.published_at === null));
 assert.ok(initialFeed.notices.filter(notice => notice.server_scope === 'KR').every(notice => notice.sea_release_status === 'unconfirmed'));
+const initialMaintenance = initialFeed.notices.find(notice => notice.category === 'sea_maintenance');
+assert.deepEqual(initialMaintenance.maintenance_windows, [
+  {
+    timezone_code: 'SGT',
+    timezone_label: '新加坡時間',
+    date: '2026-10-14',
+    start_time: '13:00',
+    end_time: '16:00',
+    display_text: '2026年10月14日 13:00～16:00'
+  },
+  {
+    timezone_code: 'EST',
+    timezone_label: '美國東部時間',
+    date: '2026-10-14',
+    start_time: '00:00',
+    end_time: '03:00',
+    display_text: '2026年10月14日 00:00～03:00'
+  },
+  {
+    timezone_code: 'CET',
+    timezone_label: '歐洲中部時間',
+    date: '2026-10-14',
+    start_time: '06:00',
+    end_time: '09:00',
+    display_text: '2026年10月14日 06:00～09:00'
+  }
+]);
+assert.ok(initialFeed.notices.filter(notice => notice.category !== 'sea_maintenance').every(notice => !('maintenance_windows' in notice)));
 validateFeed(initialFeed);
+
+const legacyFeed = structuredClone(initialFeed);
+delete legacyFeed.notices.find(notice => notice.category === 'sea_maintenance').maintenance_windows;
+const migratedFeed = buildFeed({
+  rootDir,
+  indexHtml: originalHtml,
+  previousFeed: legacyFeed,
+  now: '2026-10-14T10:30:00.000Z'
+});
+assert.equal(migratedFeed.feed_revision, 2, '新增結構化維修時間時應增加 feed_revision');
+assert.equal(migratedFeed.notices.find(notice => notice.category === 'sea_maintenance').revision, 2, 'SEA 維修公告應增加修訂版號');
+assert.ok(migratedFeed.notices.filter(notice => notice.category !== 'sea_maintenance').every(notice => notice.revision === 1), '其他公告不得受到影響');
 
 const unchangedFeed = buildFeed({
   rootDir,
@@ -47,6 +87,31 @@ const lfFeed = buildFeed({
 });
 assert.equal(lfFeed.feed_revision, 1, '換行格式不同不得增加 feed_revision');
 assert.ok(lfFeed.notices.every(notice => notice.revision === 1), '換行格式不同不得增加公告修訂版號');
+
+const changedMaintenanceHtml = originalHtml.replace(
+  '2026年10月14日 13:00～16:00',
+  '2026年10月14日 13:30～16:00'
+);
+const changedMaintenanceFeed = buildFeed({
+  rootDir,
+  indexHtml: changedMaintenanceHtml,
+  previousFeed: initialFeed,
+  now: '2026-10-14T11:30:00.000Z'
+});
+const changedMaintenance = changedMaintenanceFeed.notices.find(notice => notice.category === 'sea_maintenance');
+assert.equal(changedMaintenance.revision, 2, '維修時間變更應增加公告修訂版號');
+assert.equal(changedMaintenance.maintenance_windows[0].start_time, '13:30');
+assert.ok(changedMaintenanceFeed.notices.filter(notice => notice.category !== 'sea_maintenance').every(notice => notice.revision === 1));
+
+const missingTimezoneHtml = originalHtml.replace(
+  /\s*<p><strong>CET／歐洲中部時間<\/strong><time[^>]*>2026年10月14日 06:00～09:00<\/time><\/p>/,
+  ''
+);
+assert.throws(
+  () => buildFeed({ rootDir, indexHtml: missingTimezoneHtml, previousFeed: initialFeed, now: '2026-10-14T11:45:00.000Z' }),
+  /必須包含 SGT、EST、CET 三組維修時間/,
+  '缺少任一時區時必須停止產生公告 JSON'
+);
 
 const changedHtml = originalHtml.replace(
   '任務活動結束，目前剩下禮包內容。',
@@ -106,4 +171,4 @@ assert.equal(generalNotice.published_precision, 'datetime');
 assert.equal(generalNotice.published_at, '2026-10-14T21:00:00+08:00');
 validateFeed(allCategoryFeed);
 
-console.log('公告接口測試成功：7 篇轉換、未變更、修改、撤回、五種分類與日期精度規則均通過。');
+console.log('公告接口測試成功：7 篇轉換、三時區維修時間、舊資料遷移、未變更、修改、撤回、五種分類與日期精度規則均通過。');

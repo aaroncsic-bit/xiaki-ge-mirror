@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "feed_revision": 1,
-  "generated_at": "2026-10-14T15:10:00.513Z",
+  "feed_revision": 2,
+  "generated_at": "2026-10-14T22:41:26.153Z",
   "source": {
     "name": "夏希漢化 GitHub 鏡像站",
     "site_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/",
@@ -148,7 +148,7 @@
     },
     {
       "id": "sea-maintenance-2026-10-14",
-      "revision": 1,
+      "revision": 2,
       "status": "published",
       "category": "sea_maintenance",
       "category_label": "SEA 維修",
@@ -160,14 +160,40 @@
       "published_at": null,
       "published_date": "2026-10-14",
       "published_precision": "date",
-      "updated_at": "2026-10-14T15:10:00.513Z",
+      "updated_at": "2026-10-14T22:41:26.153Z",
       "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/#maintenance",
       "source_url": "https://www.granadoespada.com/page/newsview.php?n=854",
       "image_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/assets/maintenance-2026-10-14-map-tooltip.webp",
       "important": false,
       "expires_at": "2026-10-14T16:00:00+08:00",
       "withdrawn_at": null,
-      "content_hash": "sha256:1e52a2140e0ca872304d7074a4bddc45113b36f398e28b9b97ff1edfeb63b62a"
+      "maintenance_windows": [
+        {
+          "timezone_code": "SGT",
+          "timezone_label": "新加坡時間",
+          "date": "2026-10-14",
+          "start_time": "13:00",
+          "end_time": "16:00",
+          "display_text": "2026年10月14日 13:00～16:00"
+        },
+        {
+          "timezone_code": "EST",
+          "timezone_label": "美國東部時間",
+          "date": "2026-10-14",
+          "start_time": "00:00",
+          "end_time": "03:00",
+          "display_text": "2026年10月14日 00:00～03:00"
+        },
+        {
+          "timezone_code": "CET",
+          "timezone_label": "歐洲中部時間",
+          "date": "2026-10-14",
+          "start_time": "06:00",
+          "end_time": "09:00",
+          "display_text": "2026年10月14日 06:00～09:00"
+        }
+      ],
+      "content_hash": "sha256:bddf3ae74413b3a362b40618574c2c045ad7a4c5519db4303d5095b77446669b"
     }
   ]
 }
