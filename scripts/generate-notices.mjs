@@ -302,7 +302,8 @@ function main() {
   const serialized = `${JSON.stringify(feed, null, 2)}\n`;
 
   if (cli.check) {
-    if (!existsSync(outputPath) || readFileSync(outputPath, 'utf8') !== serialized) {
+    const existingFeed = existsSync(outputPath) ? JSON.parse(readFileSync(outputPath, 'utf8')) : null;
+    if (!existingFeed || JSON.stringify(existingFeed) !== JSON.stringify(feed)) {
       throw new Error('data/notices.json 尚未與目前 HTML 同步。');
     }
     console.log(`公告 JSON 驗證成功：${feed.notices.length} 篇，feed revision ${feed.feed_revision}`);
