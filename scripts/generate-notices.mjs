@@ -55,8 +55,21 @@ function parseAttributes(source = '') {
   return attributes;
 }
 
+function normalizeLineEndings(value = '') {
+  return value.replace(/\r\n?/g, '\n');
+}
+
+function normalizePlainText(value = '') {
+  return normalizeLineEndings(value)
+    .replace(/[ \t]+\n/g, '\n')
+    .replace(/\n[ \t]+/g, '\n')
+    .replace(/[ \t]{2,}/g, ' ')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
 function stripHtml(source = '') {
-  return decodeHtml(source
+  return normalizePlainText(decodeHtml(normalizeLineEndings(source)
     .replace(/<!--[\s\S]*?-->/g, ' ')
     .replace(/<(script|style|svg|dialog)\b[\s\S]*?<\/\1>/gi, ' ')
     .replace(/<button\b[\s\S]*?<\/button>/gi, ' ')
@@ -65,12 +78,7 @@ function stripHtml(source = '') {
     .replace(/<\/t[dh]>/gi, '\t')
     .replace(/<\/tr>/gi, '\n')
     .replace(/<\/(?:address|article|aside|blockquote|div|dl|dt|dd|figcaption|figure|footer|h[1-6]|header|main|nav|ol|p|section|table|ul)>/gi, '\n')
-    .replace(/<[^>]+>/g, ' '))
-    .replace(/[ \t]+\n/g, '\n')
-    .replace(/\n[ \t]+/g, '\n')
-    .replace(/[ \t]{2,}/g, ' ')
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
+    .replace(/<[^>]+>/g, ' ')));
 }
 
 function firstElementText(source, tagName) {
@@ -191,7 +199,9 @@ export function buildFeed({ rootDir, indexHtml, previousFeed = null, now = new D
 
     const previous = previousNotices.get(extracted.id);
     const hash = noticeHash(extracted);
-    const previousHash = previous?.content_hash || (previous ? noticeHash(previous) : null);
+    const previousHash = previous
+      ? noticeHash({ ...previous, content_text: normalizePlainText(previous.content_text) })
+      : null;
     const isChanged = !previous || previousHash !== hash;
 
     notices.push({

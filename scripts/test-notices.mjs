@@ -33,6 +33,21 @@ assert.equal(unchangedFeed.feed_revision, 1, '未修改內容不得增加 feed_r
 assert.equal(unchangedFeed.generated_at, initialFeed.generated_at, '未修改內容不得改寫 generated_at');
 assert.ok(unchangedFeed.notices.every(notice => notice.revision === 1));
 
+const crlfFeed = buildFeed({
+  rootDir,
+  indexHtml: originalHtml.replace(/\r?\n/g, '\r\n'),
+  previousFeed: null,
+  now: '2026-10-14T10:00:00.000Z'
+});
+const lfFeed = buildFeed({
+  rootDir,
+  indexHtml: originalHtml.replace(/\r?\n/g, '\n'),
+  previousFeed: crlfFeed,
+  now: '2026-10-14T11:00:00.000Z'
+});
+assert.equal(lfFeed.feed_revision, 1, '換行格式不同不得增加 feed_revision');
+assert.ok(lfFeed.notices.every(notice => notice.revision === 1), '換行格式不同不得增加公告修訂版號');
+
 const changedHtml = originalHtml.replace(
   '任務活動結束，目前剩下禮包內容。',
   '任務活動結束，測試修訂內容。'
