@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "feed_revision": 8,
-  "generated_at": "2026-10-21T08:28:03.059Z",
+  "feed_revision": 9,
+  "generated_at": "2026-10-21T08:47:57.215Z",
   "source": {
     "name": "夏希漢化 GitHub 鏡像站",
     "site_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/",
@@ -240,7 +240,7 @@
     },
     {
       "id": "sea-maintenance-2026-10-21",
-      "revision": 2,
+      "revision": 3,
       "status": "published",
       "category": "sea_maintenance",
       "category_label": "SEA 維修",
@@ -248,14 +248,14 @@
       "sea_release_status": "confirmed",
       "title": "2026年10月21日 SEA 維修公告",
       "summary": "多項問題修正、林頓箱子特別販售、新增吉賽爾、Ambivalence姿勢與［Anomaly］支線任務。",
-      "content_text": "SGT／新加坡時間 2026年10月21日 13:00～16:00\n\nEST／美國東部時間 2026年10月21日 00:00～03:00\n\nCET／歐洲中部時間 2026年10月21日 06:00～09:00\n\nPATCH NOTES · 2026.10.21\n\n更新說明\n\n01 更新內容\n\n副本與戰鬥問題修正\n\n- 已修正艾里斯每日副本「地下攻防戰」中，首領「妮可爾」施放的［Legion's Secret Technique］減益即死效果作用期間，角色無法復活的問題。\n\n- 角色因［Legion's Secret Technique］減益而立即死亡時，現在將會移除該減益。\n\n- 已修正範圍型普通攻擊不會觸發［Joint Penalty］命中效果的問題。\n\n［攻城開始］增益說明修正\n\n［攻城開始］增益的工具提示將修改為符合實際套用效果。\n\n修改前 修改後\n\n［攻城開始］\n確認攻城已開始的殖民地。\nCastle Crusher 與 Hammering Trebuchet 技能傷害大幅降低，但 Valkyrie Crasher 傷害大幅提高。\n［攻城開始］\n受到 Valkyrie Crasher 的傷害增加60%。\n\n角色、道具與介面問題修正\n\n- 將修正角色「梅里爾」的［Chaud］、［Froid］與［Paralyze］增益中，魔法抗性調整效果未依工具提示套用的問題。\n\n- 已修正角色「亞特勒」的技能（暴擊時）不會觸發［Anesthesia］增益「技能強化傷害免疫」效果的問題。\n\n- 已修正強化 Muertuors 武器時，無法使用「卡琳的附魔穩定劑－37等級」的問題。\n\n- 已修正「傭兵契約」的角色詳細資訊中未顯示姿勢武器類型的問題。\n\n- 信箱收件匣介面的最大容量將由100封大幅增加至2,000封。\n\n※ 此外，也將進行其他錯誤修正及UI／UX改善。\n\n02 現金商城\n\n「林頓箱子」開始特別販售\n\n- 「林頓箱子」將於10月21日維護後至11月4日維護前，在遊戲內現金商城販售。\n\n- 箱子內容與購買方式請參閱 官方活動頁面 。（連結於10月21日開放。）\n\n「斯特拉的神祕禮物箱」特別販售結束\n\n- 「斯特拉的神祕禮物箱」將從現金商城下架。\n\n- 箱內內容物將恢復為特別販售前的狀態。\n\n- 特別販售結束後，開箱次數將立即重設，且無法再獲得輪次獎勵。\n\n03 內容變更／新增\n\n新增角色、姿勢與支線任務\n\n新角色「吉賽爾」官方預覽圖\n\n- 新角色：吉賽爾\n\n- 新姿勢：Ambivalence\n\n- 新支線任務：［Anomaly］\n\n賞金獵人票券／代幣商店新增道具\n\n林頓勳章票券商店\n－射擊角色 林頓神器票券商店\n－射擊角色 林頓武器服飾票券商店\n－射擊武器服飾\n\n一段記憶，分裂的心 Jaina's Hairband The Purifier\n\n新增道具\n\n吉賽爾的祕密箱子\n\n道具 數量\n\n收藏用吉賽爾卡片 1\n\n收藏用 Igorni 角色卡片箱子 2\n\n收藏用神聖角色卡片箱子兌換券 1\n\n吉賽爾龐克服飾禮包\n\n吉賽爾龐克服飾 1\n\n吉賽爾龐克髮型 1\n\n吉賽爾武器箱子\n\n可選武器 武器箱子Ⅰ強化等級 武器箱子Ⅱ強化等級\n\n活動用 Deus Machina 加農砲（38等級） ＋1～＋5 ＋5～＋8\n\n活動用 Abyss Arma 加農砲（38等級）\n\n活動用 Stella's Fanaticism（38等級）\n\n活動用 Enex Ethereal 加農砲（39等級）\n\n活動用精英 Muertuors 加農砲（39等級）\n\nAntinomy-Automaton（30天）（期間制勳章）\n\n- 攻擊力＋7%、所有能力值＋3、免疫力＋7\n\n- ［吉賽爾］物理貫穿力＋6、技術＋4\n\n吉賽爾的開拓者日誌\n\n簽到日 道具 數量\n\n1 活動用開拓者高級套裝（30天） 1\n\n2 活動用卡琳附魔穩定劑票券召喚石－36～39等級 10\n\n3 活動用路皮諾的神祕寵物飼料（30天） 1\n\n4 活動用5大元素武器召喚石 2\n\n5 活動用 Deus Machina 飾品召喚石 1\n\n6 高級角色卡片箱子 1\n\n7 Antinomy-Automaton 1\n\n8 精製活動用 Armure Diabolique 召喚石 1\n\n9 活動用 Enex Ethereal 武器召喚石 1\n\n10 活動用精英 Muertuors 武器箱子 1\n\nAutomaton 附魔卷軸箱子\n\n道具 數量\n\n附魔卷軸－Valeron 加農砲 1\n\n附魔卷軸－Stella's Glory 1\n\n附魔卷軸－Enex Ethereal 加農砲 1\n\n※ 使用此道具時，將賦予「技術＋5」，以及「攻擊力、攻擊速度、暴擊、命中率、對人類型敵人額外傷害、貫穿力」各項能力的最大數值。\n\n04 活動\n\n新活動開始\n\n- 莉絲琪的記憶力加強測試 活動開始。（4週）\n\n- 經營咖啡廳真困難 活動開始。（3週）\n\n- 吉賽爾篇章發布活動開始。（2週）\n\n活動結束\n\n- 露西亞的神祕禮物箱活動結束。活動結束後，箱內內容物將恢復為活動前的狀態，開箱次數也會重設，且無法再取得輪次獎勵。\n\n- 所有20週年活動結束。\n\n- 所有2026迎秋活動結束。\n\n2026最高泰坦代幣伺服器排名獎勵\n\n依持有「2026最高泰坦代幣」的數量，各伺服器第1名、第2名與第3名將分別發放以下勳章：\n\n- 第1名：GE Supreme Titan\n\n- 第2名：GE Grand Titan\n\n- 第3名：GE Mighty Titan\n\n「2026最高泰坦代幣」將於下週維護期間刪除。恭喜所有伺服器的優勝家族！\n\n伺服器 家族 名次\n\nFerruccio BlueLeaf 第1名\n\nDitzz 第2名\n\nMarcelino 第3名\n\nEspada Dopkens 第1名\n\nAmberground 第2名\n\no`_Xian 第3名\n\nJilberto Nostar 第1名\n\nStaRoPlaTiNuM 第2名\n\nBrilliant 第3名\n\n05 一般維護\n\n系統維護\n\n- 將進行內部伺服器及系統的一般維護作業。\n\n查看 SEA 官方原始公告",
+      "content_text": "SGT／新加坡時間 2026年10月21日 13:00～16:00\n\nEST／美國東部時間 2026年10月21日 00:00～03:00\n\nCET／歐洲中部時間 2026年10月21日 06:00～09:00\n\nPATCH NOTES · 2026.10.21\n\n更新說明\n\n01 更新內容\n\n副本與戰鬥問題修正\n\n- 已修正艾里斯每日副本「地下攻防戰」中，首領「妮可爾」施放的［Legion's Secret Technique］減益即死效果作用期間，角色無法復活的問題。\n\n- 角色因［Legion's Secret Technique］減益而立即死亡時，現在將會移除該減益。\n\n- 已修正範圍型普通攻擊不會觸發［Joint Penalty］命中效果的問題。\n\n［攻城開始］增益說明修正\n\n［攻城開始］增益的工具提示將修改為符合實際套用效果。\n\n修改前 修改後\n\n［攻城開始］\n確認攻城已開始的殖民地。\nCastle Crusher 與 Hammering Trebuchet 技能傷害大幅降低，但 Valkyrie Crasher 傷害大幅提高。\n［攻城開始］\n受到 Valkyrie Crasher 的傷害增加60%。\n\n角色、道具與介面問題修正\n\n- 將修正角色「梅里爾」的［Chaud］、［Froid］與［Paralyze］增益中，魔法抗性調整效果未依工具提示套用的問題。\n\n- 已修正角色「亞特勒」的技能（暴擊時）不會觸發［Anesthesia］增益「技能強化傷害免疫」效果的問題。\n\n- 已修正強化 Muertuors 武器時，無法使用「卡琳的附魔穩定劑－37等級」的問題。\n\n- 已修正「傭兵契約」的角色詳細資訊中未顯示姿勢武器類型的問題。\n\n- 信箱收件匣介面的最大容量將由100封大幅增加至2,000封。\n\n※ 此外，也將進行其他錯誤修正及UI／UX改善。\n\n02 現金商城\n\n「林頓箱子」開始特別販售\n\n- 「林頓箱子」將於10月21日維護後至11月4日維護前，在遊戲內現金商城販售。\n\n- 箱子內容與購買方式請參閱 官方活動頁面 。（連結於10月21日開放。）\n\n「斯特拉的神祕禮物箱」特別販售結束\n\n- 「斯特拉的神祕禮物箱」將從現金商城下架。\n\n- 箱內內容物將恢復為特別販售前的狀態。\n\n- 特別販售結束後，開箱次數將立即重設，且無法再獲得輪次獎勵。\n\n03 內容變更／新增\n\n新增角色、姿勢與支線任務\n\n新角色「吉賽爾」官方角色預覽\n\n「吉賽爾龐克服飾」官方預覽\n\n- 新角色：吉賽爾\n\n- 新姿勢：Ambivalence\n\n- 新支線任務：［Anomaly］\n\n賞金獵人票券／代幣商店新增道具\n\n林頓勳章票券商店\n－射擊角色 林頓神器票券商店\n－射擊角色 林頓武器服飾票券商店\n－射擊武器服飾\n\n一段記憶，分裂的心 Jaina's Hairband The Purifier\n\n新增道具\n\n吉賽爾的祕密箱子\n\n道具 數量\n\n收藏用吉賽爾卡片 1\n\n收藏用 Igorni 角色卡片箱子 2\n\n收藏用神聖角色卡片箱子兌換券 1\n\n吉賽爾龐克服飾禮包\n\n吉賽爾龐克服飾 1\n\n吉賽爾龐克髮型 1\n\n吉賽爾武器箱子\n\n可選武器 武器箱子Ⅰ強化等級 武器箱子Ⅱ強化等級\n\n活動用 Deus Machina 加農砲（38等級） ＋1～＋5 ＋5～＋8\n\n活動用 Abyss Arma 加農砲（38等級）\n\n活動用 Stella's Fanaticism（38等級）\n\n活動用 Enex Ethereal 加農砲（39等級）\n\n活動用精英 Muertuors 加農砲（39等級）\n\nAntinomy-Automaton（30天）（期間制勳章）\n\n- 攻擊力＋7%、所有能力值＋3、免疫力＋7\n\n- ［吉賽爾］物理貫穿力＋6、技術＋4\n\n吉賽爾的開拓者日誌\n\n簽到日 道具 數量\n\n1 活動用開拓者高級套裝（30天） 1\n\n2 活動用卡琳附魔穩定劑票券召喚石－36～39等級 10\n\n3 活動用路皮諾的神祕寵物飼料（30天） 1\n\n4 活動用5大元素武器召喚石 2\n\n5 活動用 Deus Machina 飾品召喚石 1\n\n6 高級角色卡片箱子 1\n\n7 Antinomy-Automaton 1\n\n8 精製活動用 Armure Diabolique 召喚石 1\n\n9 活動用 Enex Ethereal 武器召喚石 1\n\n10 活動用精英 Muertuors 武器箱子 1\n\nAutomaton 附魔卷軸箱子\n\n道具 數量\n\n附魔卷軸－Valeron 加農砲 1\n\n附魔卷軸－Stella's Glory 1\n\n附魔卷軸－Enex Ethereal 加農砲 1\n\n※ 使用此道具時，將賦予「技術＋5」，以及「攻擊力、攻擊速度、暴擊、命中率、對人類型敵人額外傷害、貫穿力」各項能力的最大數值。\n\n04 活動\n\n新活動開始\n\n- 莉絲琪的記憶力加強測試 活動開始。（4週）\n\n- 經營咖啡廳真困難 活動開始。（3週）\n\n- 吉賽爾篇章發布活動開始。（2週）\n\n活動結束\n\n- 露西亞的神祕禮物箱活動結束。活動結束後，箱內內容物將恢復為活動前的狀態，開箱次數也會重設，且無法再取得輪次獎勵。\n\n- 所有20週年活動結束。\n\n- 所有2026迎秋活動結束。\n\n2026最高泰坦代幣伺服器排名獎勵\n\n依持有「2026最高泰坦代幣」的數量，各伺服器第1名、第2名與第3名將分別發放以下勳章：\n\n- 第1名：GE Supreme Titan\n\n- 第2名：GE Grand Titan\n\n- 第3名：GE Mighty Titan\n\n「2026最高泰坦代幣」將於下週維護期間刪除。恭喜所有伺服器的優勝家族！\n\n伺服器 家族 名次\n\nFerruccio BlueLeaf 第1名\n\nDitzz 第2名\n\nMarcelino 第3名\n\nEspada Dopkens 第1名\n\nAmberground 第2名\n\no`_Xian 第3名\n\nJilberto Nostar 第1名\n\nStaRoPlaTiNuM 第2名\n\nBrilliant 第3名\n\n05 一般維護\n\n系統維護\n\n- 將進行內部伺服器及系統的一般維護作業。\n\n查看 SEA 官方原始公告",
       "published_at": null,
       "published_date": "2026-10-21",
       "published_precision": "date",
-      "updated_at": "2026-10-21T08:28:03.059Z",
+      "updated_at": "2026-10-21T08:47:57.215Z",
       "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/#maintenance",
       "source_url": "https://www.granadoespada.com/page/newsview.php?n=858",
-      "image_url": "https://www.granadoespada.com/event/202610_lyndon/img/oct_char.webp",
+      "image_url": "https://www.granadoespada.com/uploads/news/16e2ea43492830593c48a33c637006dc.webp",
       "important": false,
       "expires_at": "2026-10-21T16:00:00+08:00",
       "withdrawn_at": null,
@@ -285,7 +285,7 @@
           "display_text": "2026年10月21日 06:00～09:00"
         }
       ],
-      "content_hash": "sha256:da8526d50d976e07358fad3fffd77db613e1cf0de6eae9fa8349967b64b4f413"
+      "content_hash": "sha256:b273b4d3dc83b045510d86bfb8fbd921a19751d1c0a1ba5f068498e47d151f79"
     },
     {
       "id": "sea-maintenance-2026-10-14",

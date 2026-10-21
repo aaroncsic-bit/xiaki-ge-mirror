@@ -104,6 +104,24 @@ body.lightbox-open { overflow: hidden; }
 .image-lightbox > p { height: 42px; margin: 0; display: grid; place-items: center; color: #c9bda9; font-size: .85rem; }
 .image-lightbox__close { position: fixed; top: 18px; right: 24px; z-index: 2; width: 44px; height: 44px; color: #fff; border: 1px solid #8d7655; background: rgba(20, 18, 15, .94); cursor: pointer; font-size: 26px; }
 
+@media (min-width: 761px) {
+  body { line-height: 1.68; }
+  .article-heading { padding: 48px clamp(32px, 6vw, 72px) 38px; }
+  .article-heading h1 { font-size: clamp(2.2rem, 4vw, 3.6rem); }
+  .article-heading > p:last-child { font-size: 1.05rem; }
+  .intro, .content-section, .article-footer { padding: 58px clamp(32px, 6vw, 72px); }
+  .intro { padding-bottom: 46px; }
+  .content-section h2 { margin-bottom: 22px; font-size: clamp(1.8rem, 3vw, 2.6rem); }
+  .content-section h3 { font-size: 1.22rem; }
+  .prose { font-size: 1rem; }
+  .period-grid, .guide-grid { margin-top: 28px; }
+  .period-grid > div, .info-card { padding: 20px 22px; }
+  .period-grid strong { font-size: 1.18rem; }
+  .table-scroll { margin: 28px 0; }
+  th, td { padding: 11px 16px; }
+  .closing { margin-top: 38px; padding-top: 28px; }
+}
+
 @media (max-width: 760px) {
   .site-header__inner { width: min(100% - 28px, 1160px); min-height: 72px; }
   .site-name { font-size: 1.25rem; }
