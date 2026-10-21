@@ -389,7 +389,7 @@ footer { padding: 34px 0; color: #8e8578; border-top: 1px solid #3f382e; backgro
   .tab-panel { padding: 26px 20px; }
   .restore-grid, .issue-grid { grid-template-columns: 1fr; }
   .restore-grid > div + div { padding: 24px 0 0; border-left: 0; border-top: 1px solid #4f473c; }
-  .event-card { display: block; }
+  .event-card, .event-card.grid-center-single, .event-card.grid-center-pair-start, .event-card.grid-center-pair-end { display: block; }
   .event-card .image-button { border-right: 0; border-bottom: 1px solid #695a44; }
   .maintenance-details { padding: 30px 18px; }
   .maintenance-controls { padding: 20px 14px; }
