@@ -1,13 +1,36 @@
 {
   "schema_version": 1,
-  "feed_revision": 4,
-  "generated_at": "2026-10-16T12:00:00.000Z",
+  "feed_revision": 5,
+  "generated_at": "2026-10-21T04:17:25.376Z",
   "source": {
     "name": "夏希漢化 GitHub 鏡像站",
     "site_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/",
     "feed_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/data/notices.json"
   },
   "notices": [
+    {
+      "id": "sea-event-2026-10-21-running-a-cafe",
+      "revision": 1,
+      "status": "published",
+      "category": "sea_event",
+      "category_label": "SEA 活動",
+      "server_scope": "SEA",
+      "sea_release_status": "confirmed",
+      "title": "經營咖啡廳真困難",
+      "summary": "完成每日活動任務，取得活動增益與累計獎勵。",
+      "content_text": "SEA EVENT · CAFÉ MISSION\n\n2026經營咖啡廳真困難活動\n\n與麗莎完成每日活動任務，取得海象香甜餅乾與累計獎勵。\n\n各位開拓者，大家好。\n\n2026經營咖啡廳真困難活動 將於2026年10月21日例行維護後開始，為期3週！\n\n開始 2026年10月21日 例行維護後\n\n結束 2026年11月11日 例行維護時\n\nEVENT GUIDE 01\n\n參加資格與方式\n\n參加資格\n\n所有家族皆可參加本活動。\n\n參加方式\n\n進入城鎮時會收到活動任務郵件，與立普圖衛官廳街的NPC「麗莎」對話，即可進行活動任務。\n\nEVENT GUIDE 02\n\n每日任務獎勵\n\n道具 數量\n\n寵物飼料 2\n\n海象香甜餅乾 2\n\n「海象香甜餅乾」將於活動結束時刪除。\n\nEVENT GUIDE 03\n\n「海象香甜餅乾」增益效果\n\n增益名稱 增益效果 持續時間\n\n[活動－經驗值獲得量] 經驗值獲得量＋20% 60分鐘\n\n[活動－對怪獸的攻擊力] 對怪獸的攻擊力＋10%\n\n[活動－防禦力] 防禦力＋12\n\n[活動－道具掉落率] 道具掉落率＋15%\n\n[活動－攻擊／防禦等級] 攻擊等級、防禦等級各＋1\n\n各增益效果不可重複疊加。\n\nEVENT GUIDE 04\n\n累計完成任務次數的額外獎勵\n\n累計完成次數 道具 數量\n\n3 活動用強化能力增幅劑 5\n\n5 活動用靈魂水晶 10\n\n6 活動用家族大廳增加許可證 5\n\n7 活動用瞬移免費使用券（7日） 1\n\n9 5大元素根源箱子 2\n\n10 活動用基礎提升藥劑 3\n\n11 活動用萬聖節髮型箱子 1\n\n12 收藏用瑞高勒尼角色卡片箱子 2\n\n13 活動用萬聖節服飾箱子 1\n\n謝謝大家。\nimcGAMES\n\n非官方繁體中文翻譯整理\n\n活動內容、日期與數值依 SEA 官方公告截圖整理；正文及表格已轉為適合電腦與手機閱讀的網頁內容。\n\n查看完整翻譯長圖",
+      "published_at": null,
+      "published_date": "2026-10-21",
+      "published_precision": "date",
+      "updated_at": "2026-10-21T04:17:25.376Z",
+      "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/cafe-event/",
+      "source_url": null,
+      "image_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/assets/event-cafe-2026.png",
+      "important": false,
+      "expires_at": null,
+      "withdrawn_at": null,
+      "content_hash": "sha256:5e94dd4f8ab25911515d45a8e5ffd8a14c0d0e7fd7043bef9a7a594a5f400f59"
+    },
     {
       "id": "sea-event-2026-09-30-20th-anniversary-extension",
       "revision": 1,
