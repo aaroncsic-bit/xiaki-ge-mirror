@@ -1,13 +1,36 @@
 {
   "schema_version": 1,
-  "feed_revision": 5,
-  "generated_at": "2026-10-21T04:17:25.376Z",
+  "feed_revision": 6,
+  "generated_at": "2026-10-21T04:34:48.523Z",
   "source": {
     "name": "夏希漢化 GitHub 鏡像站",
     "site_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/",
     "feed_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/data/notices.json"
   },
   "notices": [
+    {
+      "id": "sea-event-2026-10-21-risky-memory-test",
+      "revision": 1,
+      "status": "published",
+      "category": "sea_event",
+      "category_label": "SEA 活動",
+      "server_scope": "SEA",
+      "sea_release_status": "confirmed",
+      "title": "莉絲琪的記憶力加強測試",
+      "summary": "完成每日活動任務，取得增益道具與累計獎勵。",
+      "content_text": "SEA EVENT · MEMORY TEST\n\n2026莉絲琪的記憶力加強測試活動\n\n完成每日活動任務，取得營養劑增益與豐富的累計獎勵。\n\n各位開拓者，大家好。\n\n2026莉絲琪的記憶力加強測試活動 將於2026年10月21日例行維護後開始，為期4週！\n\n開始 2026年10月21日 例行維護後\n\n結束 2026年11月18日 例行維護時\n\nEVENT GUIDE 01\n\n參加資格\n\n所有家族\n所有家族皆可參加本活動。\n\nEVENT GUIDE 02\n\n每日活動任務獎勵\n\n完成獎勵\n\n道具 數量\n\n有益腦部健康的營養劑 3\n\n活動用基礎提升增幅藥 1\n\n活動用提升精華箱子（1MCC） 1\n\n特別獎勵\n\n道具 數量\n\n有益腦部健康的營養劑 3\n\n活動用基礎提升增幅藥 2\n\n活動用提升精華箱子（1MCC） 2\n\nEVENT GUIDE 03\n\n「有益腦部健康的營養劑」增益效果\n\n使用時會套用以下其中1種增益效果，且不可疊加。\n\n有益腦部健康的營養劑\n增益名稱 增益效果 持續時間\n\n[活動－經驗值獲得量] 經驗值獲得量＋20% 60分鐘\n\n[活動－對怪獸的攻擊力] 對怪獸的攻擊力＋10%\n\n[活動－防禦力] 防禦力＋12\n\n[活動－道具掉落率] 道具掉落率＋15%\n\n[活動－攻擊／防禦等級] 攻擊等級、防禦等級各＋1\n\n以上增益效果不可疊加。\n\nEVENT GUIDE 04\n\n累計完成任務次數的額外獎勵\n\n累計完成次數 道具 數量\n\n2 活動用強化大量體力恢復劑 10\n\n4 居里塔提歐藥劑 3\n\n6 收藏用瑞高勒尼角色卡片箱子 2\n\n8 活動用靈魂水晶 5\n\n9 活動用家族大廳增加許可證 2\n\n11 活動用強化附魔安定劑 5\n\n13 活動用客製化翅膀100點卡片 2\n\n14 活動用額外獎勵使用券 3\n\n15 忽隱忽現的模糊記憶 能力值：防禦力＋3、免疫力＋3、體力＋2 1\n\n17 收藏用天上的角色卡片箱子選擇券 2\n\n18 褪色的法蘭諾的粉末－38級 5\n\n20 活動用38級武器箱子 2\n\n謝謝大家。\nimcGAMES\n\n非官方繁體中文翻譯整理\n\n活動內容、日期與數值依 SEA 官方公告截圖整理；正文及表格已轉為適合電腦與手機閱讀的網頁內容。\n\n查看完整翻譯長圖",
+      "published_at": null,
+      "published_date": "2026-10-21",
+      "published_precision": "date",
+      "updated_at": "2026-10-21T04:34:48.523Z",
+      "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/risky-memory-test-event/",
+      "source_url": null,
+      "image_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/assets/event-risky-memory-2026.png",
+      "important": false,
+      "expires_at": null,
+      "withdrawn_at": null,
+      "content_hash": "sha256:1f9940bc80bb31a5159c6b02f88490af0aa13f331349f8907d04c750ca85b53b"
+    },
     {
       "id": "sea-event-2026-10-21-running-a-cafe",
       "revision": 1,
