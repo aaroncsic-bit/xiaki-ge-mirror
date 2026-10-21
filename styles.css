@@ -296,6 +296,8 @@ code { font-family: Consolas, "SFMono-Regular", monospace; }
 .maintenance-figure .image-button { width: 100%; cursor: zoom-in; background: #0b0a08; }
 .maintenance-figure .image-button img { width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; }
 .maintenance-figure figcaption { padding: 9px 12px; color: #9f9585; border: 1px solid #665b4a; border-top: 0; background: rgba(13,12,10,.72); font-size: 12px; text-align: center; }
+.maintenance-character-preview .image-button { overflow: hidden; background: radial-gradient(circle at 50% 34%, rgba(117,91,64,.5), rgba(10,9,8,.96) 62%); }
+.maintenance-character-preview .image-button img { width: min(100%, 520px); max-height: 680px; margin: 0 auto; object-position: center top; }
 .maintenance-table-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .maintenance-table-stack { display: grid; align-content: start; gap: 18px; }
 .maintenance-table-wrap { width: 100%; overflow-x: auto; }
@@ -391,6 +393,7 @@ footer { padding: 34px 0; color: #8e8578; border-top: 1px solid #3f382e; backgro
   .maintenance-toggle { width: 100%; min-width: 0; }
   .maintenance-group h4 { align-items: flex-start; font-size: 22px; }
   .maintenance-change { padding: 18px 14px; }
+  .maintenance-character-preview .image-button img { max-height: 520px; }
   .maintenance-footer .game-button { width: 100%; }
   .feedback { min-height: 650px; align-items: end; }
   .feedback-bg { background-position: 75% center; }
