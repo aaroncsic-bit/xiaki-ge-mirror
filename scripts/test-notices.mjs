@@ -22,6 +22,10 @@ assert.ok(initialFeed.notices.every(notice => notice.revision === 1));
 assert.ok(initialFeed.notices.every(notice => notice.published_at === null));
 assert.ok(initialFeed.notices.filter(notice => notice.server_scope === 'KR').every(notice => notice.sea_release_status === 'unconfirmed'));
 const initialMaintenance = initialFeed.notices.find(notice => notice.category === 'sea_maintenance');
+assert.ok(initialMaintenance.content_text.includes('夏希漢化繁中活動頁'));
+assert.ok(initialMaintenance.content_text.includes('SEA 官方原文活動頁'));
+assert.ok(initialMaintenance.content_text.includes('開拓地圖副本－解放村莊'));
+assert.ok(!initialMaintenance.content_text.includes('EVENT GUIDE 01'), '維修公告不得誤用活動頁正文');
 assert.deepEqual(initialMaintenance.maintenance_windows, [
   {
     timezone_code: 'SGT',

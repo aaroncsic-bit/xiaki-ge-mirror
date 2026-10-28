@@ -166,7 +166,7 @@ function extractCurrentNotices(rootDir, indexHtml) {
     if (!categoryConfig) throw new Error(`公告 ${id} 使用未知分類：${category}`);
 
     const href = firstAttribute(body, 'a', 'href');
-    const detailPath = localDetailPath(rootDir, href);
+    const detailPath = category === 'sea_maintenance' ? null : localDetailPath(rootDir, href);
     const detailText = detailPath ? extractMainText(readFileSync(detailPath, 'utf8')) : null;
     const status = attributes['data-notice-status'] || 'published';
     const title = attributes['data-notice-title'] || firstElementText(body, 'h3');

@@ -289,6 +289,7 @@ code { font-family: Consolas, "SFMono-Regular", monospace; }
 .maintenance-change h5 a { color: #efca7d; text-underline-offset: 3px; }
 .maintenance-change h6 { margin: 0; padding: 12px 14px; color: #e7d5b0; border: 1px solid #66563f; border-bottom: 0; background: #211d17; font-size: 15px; text-align: center; }
 .maintenance-change p { margin: 0; color: #c0b6a6; }
+.maintenance-change p a { color: #efca7d; text-underline-offset: 3px; }
 .maintenance-change ul { margin: 8px 0 0; padding-left: 1.35em; color: #c9c0b0; }
 .maintenance-change li + li { margin-top: 6px; }
 .maintenance-note { margin-top: 12px !important; padding: 10px 12px; color: #dfbc82 !important; border-left: 2px solid #bd8c4e; background: rgba(111,74,35,.2); font-size: 13px; }
