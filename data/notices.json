@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "feed_revision": 10,
-  "generated_at": "2026-10-28T02:07:17.469Z",
+  "feed_revision": 11,
+  "generated_at": "2026-10-28T02:18:25.587Z",
   "source": {
     "name": "夏希漢化 GitHub 鏡像站",
     "site_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/",
@@ -10,7 +10,7 @@
   "notices": [
     {
       "id": "sea-event-2026-10-28-world-kindness-day",
-      "revision": 1,
+      "revision": 2,
       "status": "published",
       "category": "sea_event",
       "category_label": "SEA 活動",
@@ -18,18 +18,18 @@
       "sea_release_status": "confirmed",
       "title": "世界友善日活動",
       "summary": "完成每日活動任務，取得每日與累計完成獎勵。",
-      "content_text": "SEA EVENT · WORLD KINDNESS DAY\n\n2026世界友善日活動\n\n友善是為了誰？完成每日活動任務，取得每日獎勵與累計完成獎勵。\n\n各位開拓者，大家好。\n\n2026世界友善日活動－友善是為了誰？ 將於2026年10月28日例行維護後開始，為期3週！\n\n開始 2026年10月28日 例行維護後\n\n結束 2026年11月18日 例行維護時\n\nEVENT GUIDE 01\n\n參加資格與方式\n\n參加資格\n\n所有家族皆可參加本活動。\n\n參加方式\n\n進入城鎮時會收到活動任務郵件，與立普圖衛市民中心的NPC「自稱聯合國祕書長的帝佛龍」對話，即可進行活動任務。\n\nEVENT GUIDE 02\n\n每日完成任務獎勵\n\n道具 數量\n\n活動用靈魂水晶 2\n\n高級A經驗值卡片 10\n\nEVENT GUIDE 03\n\n累計完成任務次數的額外獎勵\n\n累計完成次數 道具 數量\n\n2 天使與惡魔（7天） 1\n\n5 活動用南瓜老爹頭部外觀（30天） 1\n\n7 高級B經驗值卡片 10\n\n10 活動用38級武器箱子 2\n\n13 收藏用天上的角色卡片箱子 1\n\n謝謝大家。\nimcGAMES\n\n非官方繁體中文翻譯整理\n\n活動內容、日期與數值依 SEA 官方公告整理；正文及表格已轉為適合電腦與手機閱讀的網頁內容。\n\n查看 SEA 官方原文公告",
+      "content_text": "SEA EVENT · WORLD KINDNESS DAY\n\n2026世界友善日活動\n\n友善是為了誰？完成每日活動任務，取得每日獎勵與累計完成獎勵。\n\n各位開拓者，大家好。\n\n2026世界友善日活動－友善是為了誰？ 將於2026年10月28日例行維護後開始，為期3週！\n\n開始 2026年10月28日 例行維護後\n\n結束 2026年11月18日 例行維護時\n\nEVENT GUIDE 01\n\n參加資格與方式\n\n參加資格\n\n所有家族皆可參加本活動。\n\n參加方式\n\n進入城鎮時會收到活動任務郵件，與立普圖衛市民中心的NPC「自稱聯合國祕書長的帝佛龍」對話，即可進行活動任務。\n\nEVENT GUIDE 02\n\n每日完成任務獎勵\n\n道具 數量\n\n活動用靈魂水晶 2\n\nSuperior A 經驗值卡片 10\n\nEVENT GUIDE 03\n\n累計完成任務次數的額外獎勵\n\n累計完成次數 道具 數量\n\n2 天使與惡魔（7天） 1\n\n5 活動用南瓜老爹頭部外觀（30天） 1\n\n7 Superior B 經驗值卡片 10\n\n10 活動用38級武器箱子 2\n\n13 收藏用天上的角色卡片箱子 1\n\n謝謝大家。\nimcGAMES\n\n非官方繁體中文翻譯整理\n\n活動內容、日期與數值依 SEA 官方公告整理；正文及表格已轉為適合電腦與手機閱讀的網頁內容。\n\n查看 SEA 官方原文公告",
       "published_at": null,
       "published_date": "2026-10-28",
       "published_precision": "date",
-      "updated_at": "2026-10-28T02:07:17.469Z",
+      "updated_at": "2026-10-28T02:18:25.587Z",
       "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/world-kindness-day-event/",
       "source_url": "https://www.granadoespada.com/page/newsview.php?n=860",
       "image_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/world-kindness-day-event/assets/hero.jpg",
       "important": false,
       "expires_at": "2026-11-18T13:00:00+08:00",
       "withdrawn_at": null,
-      "content_hash": "sha256:0d3127000f2163eec8466ff33bcab1beb6648bb0d63eabc52ba468c9d594b20c"
+      "content_hash": "sha256:b9fe6d8a3b47ac815f7dbf16a8cced9af3741923c04bc95c3a4ecfb6eaffbb8c"
     },
     {
       "id": "sea-event-2026-10-21-risky-memory-test",
