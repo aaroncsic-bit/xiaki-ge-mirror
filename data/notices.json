@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "feed_revision": 13,
-  "generated_at": "2026-10-28T02:42:31.380Z",
+  "feed_revision": 14,
+  "generated_at": "2026-10-28T09:19:49.273Z",
   "source": {
     "name": "夏希漢化 GitHub 鏡像站",
     "site_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/",
@@ -263,7 +263,7 @@
     },
     {
       "id": "sea-maintenance-2026-10-28",
-      "revision": 2,
+      "revision": 3,
       "status": "published",
       "category": "sea_maintenance",
       "category_label": "SEA 維修",
@@ -271,16 +271,16 @@
       "sea_release_status": "confirmed",
       "title": "2026年10月28日 SEA 維修公告",
       "summary": "世界友善日活動開始，並修正開拓地圖副本、禮包道具及部分道具工具提示問題。",
-      "content_text": "SGT／新加坡時間 2026年10月28日 13:00～17:00\n\nEST／美國東部時間 2026年10月28日 00:00～04:00\n\nCET／歐洲中部時間 2026年10月28日 06:00～10:00\n\nPATCH NOTES · 2026.10.28\n\n更新說明\n\n01 活動\n\n世界友善日活動－友善是為了誰？\n\n夏希漢化繁中活動頁 　｜　 SEA 官方原文活動頁\n\n- 「世界友善日活動－友善是為了誰？」開始，活動期間為3週。\n\n02 錯誤修正\n\n任務\n\n- 已修正進行「開拓地圖副本－解放村莊」時，部分NPC未被召喚的問題。\n\n其他\n\n- 已修正部分禮包道具無法使用的問題。\n\n- 已修正部分道具的工具提示錯誤。（雙擊滑鼠右鍵時，一次最多可使用10個。）\n\n03 一般維護\n\n系統維護\n\n- 將進行內部伺服器及系統的一般維護作業。\n\n查看 SEA 官方原始公告",
+      "content_text": "SGT／新加坡時間 2026年10月28日 13:00～18:00 維修延長\n\nEST／美國東部時間 2026年10月28日 00:00～04:00\n\nCET／歐洲中部時間 2026年10月28日 06:00～10:00\n\nPATCH NOTES · 2026.10.28\n\n更新說明\n\n01 活動\n\n世界友善日活動－友善是為了誰？\n\n夏希漢化繁中活動頁 　｜　 SEA 官方原文活動頁\n\n- 「世界友善日活動－友善是為了誰？」開始，活動期間為3週。\n\n02 錯誤修正\n\n任務\n\n- 已修正進行「開拓地圖副本－解放村莊」時，部分NPC未被召喚的問題。\n\n其他\n\n- 已修正部分禮包道具無法使用的問題。\n\n- 已修正部分道具的工具提示錯誤。（雙擊滑鼠右鍵時，一次最多可使用10個。）\n\n03 一般維護\n\n系統維護\n\n- 將進行內部伺服器及系統的一般維護作業。\n\n查看 SEA 官方原始公告",
       "published_at": null,
       "published_date": "2026-10-28",
       "published_precision": "date",
-      "updated_at": "2026-10-28T02:42:31.380Z",
+      "updated_at": "2026-10-28T09:19:49.273Z",
       "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/#maintenance",
       "source_url": "https://www.granadoespada.com/page/newsview.php?n=861",
       "image_url": null,
       "important": false,
-      "expires_at": "2026-10-28T17:00:00+08:00",
+      "expires_at": "2026-10-28T18:00:00+08:00",
       "withdrawn_at": null,
       "maintenance_windows": [
         {
@@ -288,8 +288,8 @@
           "timezone_label": "新加坡時間",
           "date": "2026-10-28",
           "start_time": "13:00",
-          "end_time": "17:00",
-          "display_text": "2026年10月28日 13:00～17:00"
+          "end_time": "18:00",
+          "display_text": "2026年10月28日 13:00～18:00"
         },
         {
           "timezone_code": "EST",
@@ -308,7 +308,7 @@
           "display_text": "2026年10月28日 06:00～10:00"
         }
       ],
-      "content_hash": "sha256:5efbd484f8f4a0cd9660c0a8956448f4c06678fbab632e09330a96e9c44ade5e"
+      "content_hash": "sha256:48769226bbb473b4e07b5938fcae5aae259d5c842da685049d3797513e652187"
     },
     {
       "id": "sea-maintenance-2026-10-21",

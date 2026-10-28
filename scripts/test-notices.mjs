@@ -32,8 +32,8 @@ assert.deepEqual(initialMaintenance.maintenance_windows, [
     timezone_label: '新加坡時間',
     date: '2026-10-28',
     start_time: '13:00',
-    end_time: '17:00',
-    display_text: '2026年10月28日 13:00～17:00'
+    end_time: '18:00',
+    display_text: '2026年10月28日 13:00～18:00'
   },
   {
     timezone_code: 'EST',
@@ -93,8 +93,8 @@ assert.equal(lfFeed.feed_revision, 1, '換行格式不同不得增加 feed_revis
 assert.ok(lfFeed.notices.every(notice => notice.revision === 1), '換行格式不同不得增加公告修訂版號');
 
 const changedMaintenanceHtml = originalHtml.replace(
-  '2026年10月28日 13:00～17:00',
-  '2026年10月28日 13:30～17:00'
+  '2026年10月28日 13:00～18:00',
+  '2026年10月28日 13:30～18:00'
 );
 const changedMaintenanceFeed = buildFeed({
   rootDir,

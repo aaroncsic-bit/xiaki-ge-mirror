@@ -172,6 +172,8 @@ code { font-family: Consolas, "SFMono-Regular", monospace; }
 .status-panel dd { margin: 0; text-align: right; color: #efe4cd; }
 .status-ok, .notice { margin: 0 16px 16px; padding: 10px 12px; font-size: 14px; }
 .status-ok { color: #bce79b; background: rgba(69,104,47,.22); border-left: 2px solid var(--green); }
+.status-ok strong { color: #d0f7af; }
+.status-ok-detail { display: inline-block; margin-top: 4px; line-height: 1.7; }
 .notice { color: #e2b0aa; background: rgba(129,57,50,.18); border-left: 2px solid var(--red); }
 .scroll-cue { position: absolute; z-index: 3; bottom: 28px; left: 50%; transform: translateX(-50%); color: #b6aa96; font: 10px Georgia, serif; letter-spacing: .2em; text-decoration: none; }
 .scroll-cue span { display: block; text-align: center; font-size: 18px; animation: float 1.8s infinite; }
@@ -275,6 +277,8 @@ code { font-family: Consolas, "SFMono-Regular", monospace; }
 .maintenance-times strong, .maintenance-times time { display: block; }
 .maintenance-times strong { margin-bottom: 6px; color: #cda96d; font: 700 12px/1.4 Georgia, "Noto Serif TC", serif; letter-spacing: .12em; }
 .maintenance-times time { color: #eee4d0; font-size: 18px; }
+.maintenance-times time.maintenance-extended { color: #ff8174; font-weight: 700; text-shadow: 0 0 12px rgba(255,75,62,.28); }
+.maintenance-extension-note { display: inline-block; margin-top: 9px; padding: 2px 9px; color: #ff9a8f; border: 1px solid rgba(255,129,116,.5); background: rgba(126,32,27,.2); font-size: 11px; font-weight: 700; letter-spacing: .12em; }
 .maintenance-controls { position: relative; z-index: 2; display: flex; justify-content: center; padding: 24px; border-top: 1px solid #5c4f3d; background: rgba(8,8,7,.34); }
 .maintenance-details { position: relative; z-index: 2; padding: 46px; border-top: 1px solid #806b4d; background: rgba(10,9,8,.42); }
 .maintenance-details[hidden] { display: none; }
