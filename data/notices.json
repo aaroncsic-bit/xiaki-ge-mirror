@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "feed_revision": 11,
-  "generated_at": "2026-10-28T02:18:25.587Z",
+  "feed_revision": 12,
+  "generated_at": "2026-10-28T02:38:21.649Z",
   "source": {
     "name": "夏希漢化 GitHub 鏡像站",
     "site_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/",
@@ -262,9 +262,58 @@
       "content_hash": "sha256:ee857143acefab9d2f20d4dabe08b4df6f96c959a27b6a93ff4c6e30e26b884a"
     },
     {
-      "id": "sea-maintenance-2026-10-21",
-      "revision": 3,
+      "id": "sea-maintenance-2026-10-28",
+      "revision": 1,
       "status": "published",
+      "category": "sea_maintenance",
+      "category_label": "SEA 維修",
+      "server_scope": "SEA",
+      "sea_release_status": "confirmed",
+      "title": "2026年10月28日 SEA 維修公告",
+      "summary": "世界友善日活動開始，並修正開拓地圖副本、禮包道具及部分道具工具提示問題。",
+      "content_text": "SEA EVENT · WORLD KINDNESS DAY\n\n2026世界友善日活動\n\n友善是為了誰？完成每日活動任務，取得每日獎勵與累計完成獎勵。\n\n各位開拓者，大家好。\n\n2026世界友善日活動－友善是為了誰？ 將於2026年10月28日例行維護後開始，為期3週！\n\n開始 2026年10月28日 例行維護後\n\n結束 2026年11月18日 例行維護時\n\nEVENT GUIDE 01\n\n參加資格與方式\n\n參加資格\n\n所有家族皆可參加本活動。\n\n參加方式\n\n進入城鎮時會收到活動任務郵件，與立普圖衛市民中心的NPC「自稱聯合國祕書長的帝佛龍」對話，即可進行活動任務。\n\nEVENT GUIDE 02\n\n每日完成任務獎勵\n\n道具 數量\n\n活動用靈魂水晶 2\n\nSuperior A 經驗值卡片 10\n\nEVENT GUIDE 03\n\n累計完成任務次數的額外獎勵\n\n累計完成次數 道具 數量\n\n2 天使與惡魔（7天） 1\n\n5 活動用南瓜老爹頭部外觀（30天） 1\n\n7 Superior B 經驗值卡片 10\n\n10 活動用38級武器箱子 2\n\n13 收藏用天上的角色卡片箱子 1\n\n謝謝大家。\nimcGAMES\n\n非官方繁體中文翻譯整理\n\n活動內容、日期與數值依 SEA 官方公告整理；正文及表格已轉為適合電腦與手機閱讀的網頁內容。\n\n查看 SEA 官方原文公告",
+      "published_at": null,
+      "published_date": "2026-10-28",
+      "published_precision": "date",
+      "updated_at": "2026-10-28T02:38:21.649Z",
+      "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/#maintenance",
+      "source_url": "https://www.granadoespada.com/page/newsview.php?n=861",
+      "image_url": null,
+      "important": false,
+      "expires_at": "2026-10-28T17:00:00+08:00",
+      "withdrawn_at": null,
+      "maintenance_windows": [
+        {
+          "timezone_code": "SGT",
+          "timezone_label": "新加坡時間",
+          "date": "2026-10-28",
+          "start_time": "13:00",
+          "end_time": "17:00",
+          "display_text": "2026年10月28日 13:00～17:00"
+        },
+        {
+          "timezone_code": "EST",
+          "timezone_label": "美國東部時間",
+          "date": "2026-10-28",
+          "start_time": "00:00",
+          "end_time": "04:00",
+          "display_text": "2026年10月28日 00:00～04:00"
+        },
+        {
+          "timezone_code": "CET",
+          "timezone_label": "歐洲中部時間",
+          "date": "2026-10-28",
+          "start_time": "06:00",
+          "end_time": "10:00",
+          "display_text": "2026年10月28日 06:00～10:00"
+        }
+      ],
+      "content_hash": "sha256:b59eda4942e9948091c69c464c2f6a6b8c2f63489b22818b5c4e77dedb660e03"
+    },
+    {
+      "id": "sea-maintenance-2026-10-21",
+      "revision": 4,
+      "status": "withdrawn",
       "category": "sea_maintenance",
       "category_label": "SEA 維修",
       "server_scope": "SEA",
@@ -275,13 +324,13 @@
       "published_at": null,
       "published_date": "2026-10-21",
       "published_precision": "date",
-      "updated_at": "2026-10-21T08:47:57.215Z",
+      "updated_at": "2026-10-28T02:38:21.649Z",
       "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/#maintenance",
       "source_url": "https://www.granadoespada.com/page/newsview.php?n=858",
       "image_url": "https://www.granadoespada.com/uploads/news/16e2ea43492830593c48a33c637006dc.webp",
       "important": false,
       "expires_at": "2026-10-21T16:00:00+08:00",
-      "withdrawn_at": null,
+      "withdrawn_at": "2026-10-28T02:38:21.649Z",
       "maintenance_windows": [
         {
           "timezone_code": "SGT",
@@ -308,7 +357,7 @@
           "display_text": "2026年10月21日 06:00～09:00"
         }
       ],
-      "content_hash": "sha256:b273b4d3dc83b045510d86bfb8fbd921a19751d1c0a1ba5f068498e47d151f79"
+      "content_hash": "sha256:69ff2f399d76a2c6d13e0a2591c12b85b6ef0ab70c2c58e9d1d66b1fe7d449ec"
     },
     {
       "id": "sea-maintenance-2026-10-14",
