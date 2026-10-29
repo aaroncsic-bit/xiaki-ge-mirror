@@ -30,7 +30,7 @@ const notice = feed.notices.find(row => row.id === 'kr-2026-10-30-blackout');
 assert.equal(notice.category, 'kr_update');
 assert.equal(notice.server_scope, 'KR');
 assert.equal(notice.sea_release_status, 'unconfirmed');
-assert.equal(notice.revision, 1);
+assert.equal(notice.revision, 2);
 assert.equal(notice.published_at, null);
 for (const text of ['琳恩', '大衣', '伊奈克斯模組', '確保機械化人偶', '塞爾維托爾']) assert.ok(notice.content_text.includes(text));
 assert.ok(!notice.content_text.includes('ALL RIGHTS RESERVED'), '公告正文不得混入頁尾');

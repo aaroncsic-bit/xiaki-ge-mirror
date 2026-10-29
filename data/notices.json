@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "feed_revision": 15,
-  "generated_at": "2026-10-29T16:58:34.201Z",
+  "feed_revision": 16,
+  "generated_at": "2026-10-29T23:15:56.576Z",
   "source": {
     "name": "夏希漢化 GitHub 鏡像站",
     "site_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/",
@@ -148,7 +148,7 @@
     },
     {
       "id": "kr-2026-10-30-blackout",
-      "revision": 1,
+      "revision": 2,
       "status": "published",
       "category": "kr_update",
       "category_label": "韓版更新與活動",
@@ -160,14 +160,14 @@
       "published_at": null,
       "published_date": "2026-10-30",
       "published_precision": "date",
-      "updated_at": "2026-10-29T16:58:34.201Z",
+      "updated_at": "2026-10-29T23:15:56.576Z",
       "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/blackout/",
       "source_url": "https://ge.hanbiton.com/event2/teaser/blackout/index.html",
-      "image_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/assets/kr-blackout-card.png",
+      "image_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/assets/kr-blackout-card.png?v=20261030-fill",
       "important": false,
       "expires_at": null,
       "withdrawn_at": null,
-      "content_hash": "sha256:2f5d0248bc90158371ff6ecf42eb43a7abefc9a2448ba37d0a5e7654b75f1de8"
+      "content_hash": "sha256:c950a6c84dfba42f7b0c635f913ecf9d8bed07dae2a0dfd58b3a06407d49677d"
     },
     {
       "id": "kr-2026-10-16-daily-mission-reward-revision",
