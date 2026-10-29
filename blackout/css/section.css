@@ -1,0 +1,473 @@
+@charset "UTF-8";
+/* ----------------------------------------------
+ * HanbitSoft Infra Development Team
+ * 아일리스 3차 업데이트 티저 Stylesheet - 섹션 공통 (섹션·영상, 패널, 탭, 공통 점등 키프레임)
+ * Author - sgp8116@hanbitsoft.co.kr 261029
+------------------------------------------------- */
+/* Section (공통)
+-------------------------------------------------------------- */
+.section {
+    /* 경계 그러데이션 (두께는 body 의 --section-fade-top/-bottom). 검정에서 두께의 40% 지점까지 빠르게 옅어지고 나머지는 천천히 투명해진다 (직선 그러데이션은 시작점이 티가 난다).
+       body 가 아니라 여기서 정의해야 섹션(.section-xxx)이 두께 변수를 덮어쓴 값으로 다시 계산된다 (var() 는 선언된 요소에서 풀려 상속된다) */
+    --section-fade: linear-gradient(
+        to bottom,
+        #000 0,
+        rgba(0, 0, 0, 0.55) calc(var(--section-fade-top) * 0.4),
+        transparent var(--section-fade-top),
+        transparent calc(100% - var(--section-fade-bottom)),
+        rgba(0, 0, 0, 0.55) calc(100% - var(--section-fade-bottom) * 0.4),
+        #000 100%
+    );
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    max-width: 2000px;
+    height: 100vh;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.section-content {
+    position: relative;
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+/* 섹션 영상 (hero·story·field·character 공통, js/video.js Section Video): 래퍼가 섹션을 가득 채우고 영상은 cover 로 채운다.
+   1회 영상(.video-once)을 순서대로 튼 뒤 루프 영상(.video-loop) 두 복사본을 번갈아 디졸브한다.
+   디졸브 길이와 배속은 --loop-fade·--loop-rate(body 의 공통값, 래퍼에서 덮어쓸 수 있다)로,
+   마지막 1회 영상에서 루프 영상으로 넘어가는 크로스 디졸브 길이는 래퍼의 --once-fade 로 정한다.
+   영상이 그려지기 전과 느린 회선에서 영상이 못 오는 동안은 마크업 data-poster 의 정지 배경(그 영상의 첫 프레임 그림)이 포스터로 그 자리에 보이고
+   (hero 는 없음), 데이터 절약·움직임 줄이기 환경에서는 영상 대신 그것만 보인다. 영상이 안 오면 --video-timeout(body) 뒤 그 위에서 연출이 진행된다. */
+.section-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0; /* 래퍼를 스태킹 컨텍스트로 묶어, 안쪽 z-index가 .section-content(로고·패널) 위로 올라오지 않게 한다. */
+    overflow: hidden;
+}
+.section-video video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+/* 쌓임 순서: 1회 영상 위로 디졸브돼 들어오는 루프 복사본(is-entering) > 재생 중인 1회 영상(is-playing) > 대기 중인 1회 영상
+   > 디졸브로 올라오는 다음 루프 복사본(is-next) > 재생 중인 루프 복사본(is-active) > 대기 중인 복사본.
+   1회 영상은 다음 영상이 그려지기 시작하면(is-done) 바로 꺼진다. */
+.section-video .video-once {
+    z-index: 3;
+}
+.section-video .video-once.is-playing {
+    z-index: 4;
+}
+.section-video .video-once.is-done {
+    display: none;
+}
+.section-video .video-loop.is-active {
+    z-index: 1;
+}
+.section-video .video-loop.is-next {
+    z-index: 2;
+    opacity: 0;
+}
+.section-video .video-loop.is-next.is-fading {
+    opacity: 1;
+    transition: opacity var(--loop-fade) linear;
+}
+.section-video .video-loop.is-entering {
+    z-index: 5;
+    opacity: 0;
+}
+.section-video .video-loop.is-entering.is-shown {
+    opacity: 1;
+    transition: opacity var(--once-fade) linear;
+}
+/* 탭 영상 묶음 (field·character 공통, js/video.js createTabVideos): 래퍼 안에 탭마다 묶음(.video-tab[data-panel])이 있고,
+   선택된 탭의 묶음(is-active)이 맨 위에서 나타나고 이전 묶음은 그 아래에서 디졸브가 끝날 때까지 보이다 숨는다
+   (0s 트랜지션을 --tab-fade 만큼 늦춰 그때 한 번에 숨긴다). is-active 는 영상의 첫 프레임이 그려진 뒤에 붙는다.
+   --tab-fade 는 body 의 공통값 (캐릭터 층도 같이 쓴다) */
+.section-video .video-tab {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0s linear var(--tab-fade);
+}
+.section-video .video-tab.is-active {
+    z-index: 1;
+    opacity: 1;
+    transition: opacity var(--tab-fade) linear;
+}
+/* 섹션 경계 그러데이션 (body 의 --section-fade-* 참고): 영상 래퍼(hero·story·field·character)와 미션 배경 래퍼의 맨 위에 검정 → 투명 덮개를 얹는다.
+   래퍼가 스태킹 컨텍스트라 안의 영상 복사본(최대 z-index 5)·미션 그림(1) 위에만 오고, 캐릭터 층·패널(.section-content)은 덮지 않는다.
+   정전 때는 래퍼와 함께 꺼진다 (어차피 검정). item·raid 는 영상 래퍼가 없어 배경 ::before 에 층으로 겹친다 */
+.section-video::after,
+.section-mission .mission-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    pointer-events: none;
+    background: var(--section-fade);
+}
+
+/* 섹션 패널 (story·field 등 공통): 글이 들어가는 금테 카드. 래퍼(.content-wrapper)는 자리만 잡고
+   바깥 금테(::before)·몸체(::after)·제목(.headline)이 그리고, 안의 글(인용·본문·대사·캡션)도 여기서 꾸민다.
+   섹션마다 다른 것은 제목 이미지·몸체 질감·색·탭 색뿐이라 변수로 뺐다.
+   기본값은 story 의 금색·질감(색 --panel-light·--panel-dark·--panel-edge·--panel-glow 는 base.css body 의 '패널 금색').
+   다른 섹션은 .section-xxx .section-content .content-wrapper 에서 변수만 덮어쓴다. */
+.section-content .content-wrapper {
+    --headline-image: none; /* 제목 이미지 (.headline 배경). 섹션마다 지정한다 */
+    --panel-rim-end: #ba8f64; /* 몸체 1px 금테 그러데이션 색. 양 끝 → 가운데 순 */
+    --panel-rim-dark: #a5754e;
+    --panel-rim-light: #f1d4a4;
+    --panel-rim-center: #fbeac3;
+    /* 몸체 1px 테두리 그러데이션. 색·각도가 다른 섹션은 이 변수를 통째로 덮어쓴다 (field: 하늘색, 50deg) */
+    --panel-rim: linear-gradient(
+        90deg,
+        var(--panel-rim-end) 0%,
+        var(--panel-rim-dark) 10%,
+        var(--panel-rim-light) 39%,
+        var(--panel-rim-center) 50%,
+        var(--panel-rim-light) 60%,
+        var(--panel-rim-dark) 82%,
+        var(--panel-rim-end) 100%
+    );
+    --panel-frame-image: url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/story/content-frame.webp"); /* 몸체 배경 질감 (너비 552px, 세로 반복) */
+    /* 탭(.tab-list, 아래 '탭' 규칙): 글자색과 선택된 탭 배경. 기본은 금색 패널의 탭이고 character·raid 가 그대로 쓴다. field 만 하늘색으로 덮어쓴다. 탭 너비는 섹션마다 정한다 */
+    --tab-color: #c4b89f; /* 선택되지 않은 탭 글자 */
+    --tab-active-color: #150700; /* 선택된 탭 글자 */
+    --tab-bg: url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/bg-tab.webp"); /* 선택된 탭 배경: 금색 질감 그림(167×33, 탭 크기에 맞춰 늘어난다). 그러데이션이면 linear-gradient(...) */
+    border: 1px solid transparent; /* 자리만 잡는다. 실제 1px 테두리와 배경 질감은 ::after(몸체)가 그린다 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 552px;
+    height: 664px;
+    padding-top: 58px;
+    box-sizing: border-box;
+    position: relative;
+    isolation: isolate; /* ::after 를 z-index -1 로 글 아래에 깔기 위한 스태킹 컨텍스트 */
+}
+/* 몸체: 1px 금테 + 배경 질감. 글 아래, 영상 위에 깔린다.
+   점등 때 금테·몸체·글을 따로 움직이려고 래퍼에서 떼어 두었다. */
+.section-content .content-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: -1px; /* 1px 테두리 포함한 박스와 같은 크기 */
+    z-index: -1;
+    border: 1px solid transparent;
+    border-image: var(--panel-rim) 1;
+    /* 1: 점등 때 지나가는 빛줄기(평소엔 오른쪽 밖으로 나가 있어 안 보인다), 2: 배경 질감 (--panel-frame-image, 섹션마다 지정) */
+    background-image:
+        linear-gradient(
+            115deg,
+            transparent 38%,
+            color-mix(in srgb, var(--panel-glow) 45%, transparent) 50%,
+            transparent 62%
+        ),
+        var(--panel-frame-image);
+    background-position:
+        -100% 0,
+        50% 0;
+    background-size:
+        250% 100%,
+        auto;
+    background-repeat: no-repeat, repeat-y;
+    pointer-events: none;
+}
+/* 하위 브라우저(color-mix 를 모름: Chrome·Edge 110, Firefox 112, Safari 16.1 이하. Windows 7/8.1 의 Chrome·Edge 109 포함):
+   위 background-image 는 var() 안의 color-mix 때문에 통째로 무효가 되어 질감·빛줄기가 빠진다. 그 자리에 검은 딤드(--panel-fallback-bg)만 깐다.
+   새 브라우저에는 적용되지 않는다 (질감 그림이 반투명이라 아래에 색을 깔면 지금보다 어두워진다) */
+@supports not (color: color-mix(in srgb, red 50%, transparent)) {
+    .section-content .content-wrapper::after {
+        background-color: var(--panel-fallback-bg);
+    }
+}
+/* 바깥 금테(3px, 오른쪽 위로 11px): 네 변을 3px 띠(배경 네 층)로 따로 그려 점등 때 선이 시계 방향으로 그려지게 한다.
+   위·아래 변은 가로 그러데이션, 왼쪽·오른쪽 변은 그 그러데이션의 0%·100% 지점 색(--panel-edge). */
+.section-content .content-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: -1px; /* 1px 테두리 포함한 박스와 같은 크기 */
+    transform: translate(11px, -11px); /* 오른쪽 위로 11px 이동 */
+    --frame-line: linear-gradient(
+        90deg,
+        var(--panel-light) -25%,
+        var(--panel-dark) 12.5%,
+        var(--panel-light) 50%,
+        var(--panel-dark) 87.5%,
+        var(--panel-light) 125%
+    );
+    --frame-edge: linear-gradient(var(--panel-edge), var(--panel-edge));
+    background-image:
+        var(--frame-line), var(--frame-edge), var(--frame-line),
+        var(--frame-edge);
+    background-position:
+        0 0,
+        100% 0,
+        100% 100%,
+        0 100%; /* 위(왼→오), 오른쪽(위→아래), 아래(오→왼), 왼쪽(아래→위) */
+    background-size:
+        100% 3px,
+        3px 100%,
+        100% 3px,
+        3px 100%; /* 3px = 테두리 두께. 점등 키프레임(story-frame-draw)도 같은 값을 쓴다 */
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+.section-content .content-wrapper .headline {
+    background: var(--headline-image) no-repeat 50% 0;
+    width: 193px;
+    height: 47px;
+    padding-bottom: 35px;
+}
+/* 패널 글: 인용(.content-quote)·직함(.content-role, 인용 위 한 줄)·본문(.content-text, 마지막 줄은 .content-text-lead)·대사(.content-dialogue)·캡션(.content-caption).
+   모든 섹션의 패널이 같은 클래스를 쓴다. 색은 위 변수를 따른다.
+   인용·직함·캡션은 가로 그러데이션을 글자 모양으로 오려 쓴다 (포토샵 비율 150% + 레이어에 맞춤). */
+.section-content .content-wrapper .content-quote,
+.section-content .content-wrapper .content-role,
+.section-content .content-wrapper .content-caption {
+    background-size: 150% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    letter-spacing: -0.25px;
+    text-align: center;
+}
+.section-content .content-wrapper .content-quote,
+.section-content .content-wrapper .content-role {
+    background-image: linear-gradient(
+        90deg,
+        var(--panel-light) 0%,
+        var(--panel-glow) 26%,
+        var(--panel-light) 50%,
+        var(--panel-glow) 75%,
+        var(--panel-light) 100%
+    );
+}
+.section-content .content-wrapper .content-quote {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 700;
+    padding-bottom: 24px;
+}
+/* 직함 줄 (character): 인용 위에 작은 크림색 글. 인용과 같은 그러데이션 */
+.section-content .content-wrapper .content-role {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    padding-bottom: 6px;
+}
+.section-content .content-wrapper .content-text,
+.section-content .content-wrapper .content-dialogue {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.25px;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding-bottom: 20px;
+}
+.section-content .content-wrapper .content-text-lead {
+    padding-bottom: 40px;
+}
+.section-content .content-wrapper .content-caption {
+    background-image: linear-gradient(
+        90deg,
+        var(--panel-light) 0%,
+        var(--panel-dark) 25%,
+        var(--panel-light) 50%,
+        var(--panel-dark) 75%,
+        var(--panel-light) 100%
+    );
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+/* 탭 (field·character·raid 공통, js/tab.js Tab): 패널 안의 가로 탭 목록(.tab-list)과, 탭이 aria-controls 로 가리키는 패널(.tab-panel).
+   1px 테두리는 패널 몸체의 1px 금테(--panel-rim), 탭 사이 세로선은 --panel-dark 를 따르고,
+   글자색·선택된 탭 배경은 래퍼의 --tab-color·--tab-active-color·--tab-bg 를 따른다.
+   너비·아래 여백·js 가 없을 때의 탭 수(--tab-count)는 섹션마다 정한다 (field 473px, character 337px, raid 170px).
+   기본 모양은 금색 탭(래퍼의 공통 변수, character·raid)이고 field 는 제 래퍼에서 변수만 하늘색으로 덮어쓴다.
+-------------------------------------------------------------- */
+.section-content .content-wrapper .tab-list {
+    display: flex;
+    margin: 0 auto 40px;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    border-image: var(--panel-rim) 1; /* 래퍼의 1px 테두리와 같은 그러데이션 */
+    position: relative;
+    isolation: isolate; /* ::before 선택 표시를 z-index -1 로 글 아래에 깔기 위한 스태킹 컨텍스트 */
+}
+/* 선택 표시: 탭 하나 너비의 배경(--tab-bg)이 선택된 탭 자리로 미끄러진다. --tab-index·--tab-count 는 js/tab.js Tab 이 적는다 */
+.section-content .content-wrapper .tab-list::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(100% / var(--tab-count, 1) * var(--tab-index, 0));
+    width: calc(100% / var(--tab-count, 1));
+    z-index: -1;
+    background: var(--tab-bg) no-repeat 50% 0 / 100% 100%;
+    transition: left var(--tab-slide) ease;
+}
+.section-content .content-wrapper .tab-list .tab-item {
+    flex: 1 1 0;
+    border-left: 1px solid var(--panel-dark); /* 탭 사이 세로선. 1px 테두리 그러데이션의 끝 색 */
+}
+.section-content .content-wrapper .tab-list .tab-item:first-child {
+    border-left: 0;
+}
+.section-content .content-wrapper .tab-list .tab-item .tab {
+    width: 100%;
+    height: 33px;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--tab-color);
+    text-align: center;
+}
+.section-content .content-wrapper .tab-list .tab-item .tab.is-active {
+    font-weight: 700;
+    /* 배경은 .tab-list::before 가 미끄러져 와서 깔린다 */
+    color: var(--tab-active-color);
+}
+/* 탭 패널: 선택된 탭이 aria-controls 로 가리키는 패널(.is-active)만 보인다 (js/tab.js Tab).
+   패널 너비는 가장 긴 줄에 맞춰지므로, 그보다 짧은 inline-block 글(직함·인용)이 가운데에 오도록 text-align 을 둔다 */
+.section-content .content-wrapper .tab-panel {
+    display: none;
+    text-align: center;
+}
+.section-content .content-wrapper .tab-panel.is-active {
+    display: block;
+}
+
+/* 공통 점등 키프레임: 여러 섹션의 점등 규칙이 같이 쓴다. 이름은 처음 만든 섹션을 따른다
+   - story-frame-draw: 바깥 금테 그리기. 구간이 552×664 패널 비율이라 story·field 가 쓰고,
+     비율이 다른 패널은 제 섹션 파일에 따로 있다 (item·mission·character·raid-frame-draw)
+   - story-panel-on, story-panel-glint: 몸체 점등(섬광·후광·깜빡임)과 빛줄기 (모든 섹션)
+   - story-line-in: 줄 떠오름 (모든 섹션, mission 의 미션 넘기기)
+   - item-bg-on: 배경 그림 깜빡 점등 (item·mission·raid)
+-------------------------------------------------------------- */
+/* 금테 그리기: 네 변의 길이를 차례로 늘린다. 구간은 변 길이(가로 554 : 세로 666)에 비례해 선 속도를 같게 맞췄다. */
+@keyframes story-frame-draw {
+    0% {
+        opacity: 1;
+        background-size:
+            0 3px,
+            3px 0,
+            0 3px,
+            3px 0;
+    }
+    22.7% {
+        background-size:
+            100% 3px,
+            3px 0,
+            0 3px,
+            3px 0; /* 위 */
+    }
+    50% {
+        background-size:
+            100% 3px,
+            3px 100%,
+            0 3px,
+            3px 0; /* 오른쪽 */
+    }
+    72.7% {
+        background-size:
+            100% 3px,
+            3px 100%,
+            100% 3px,
+            3px 0; /* 아래 */
+    }
+    100% {
+        opacity: 1;
+        background-size:
+            100% 3px,
+            3px 100%,
+            100% 3px,
+            3px 100%; /* 왼쪽 */
+    }
+}
+/* 몸체 점등: 안쪽 그림자(inset)가 섬광(--panel-glow), 바깥 그림자가 금테 후광(--panel-light) */
+@keyframes story-panel-on {
+    0% {
+        opacity: 0;
+        box-shadow:
+            inset 0 0 0 9999px transparent,
+            0 0 0 transparent;
+    }
+    8% {
+        opacity: 1;
+        box-shadow:
+            inset 0 0 0 9999px
+                color-mix(in srgb, var(--panel-glow) 55%, transparent),
+            0 0 90px color-mix(in srgb, var(--panel-light) 60%, transparent); /* 켜지는 순간 */
+    }
+    16% {
+        opacity: 0.35; /* 형광등처럼 한 번 깜빡 */
+    }
+    24% {
+        opacity: 1;
+        box-shadow:
+            inset 0 0 0 9999px
+                color-mix(in srgb, var(--panel-glow) 15%, transparent),
+            0 0 70px color-mix(in srgb, var(--panel-light) 45%, transparent);
+    }
+    100% {
+        opacity: 1;
+        box-shadow:
+            inset 0 0 0 9999px transparent,
+            0 0 0 transparent;
+    }
+}
+/* 빛줄기: 몸체 배경의 첫 번째 층을 왼쪽 밖에서 오른쪽 밖으로 지나가게 한다 */
+@keyframes story-panel-glint {
+    from {
+        background-position:
+            200% 0,
+            50% 0;
+    }
+    to {
+        background-position:
+            -100% 0,
+            50% 0;
+    }
+}
+@keyframes story-line-in {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* 배경 점등: 실루엣 → 섬광 → 한 번 깜빡 → 제 색. field 캐릭터 점등(field-character-on)과 같은 리듬 */
+@keyframes item-bg-on {
+    0% {
+        filter: var(--off-filter);
+    }
+    30% {
+        filter: grayscale(0) brightness(1.6);
+    }
+    45% {
+        filter: grayscale(0) brightness(0.5);
+    }
+    60% {
+        filter: grayscale(0) brightness(1.3);
+    }
+    100% {
+        filter: grayscale(0) brightness(1);
+    }
+}

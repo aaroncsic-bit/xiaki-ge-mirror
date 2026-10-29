@@ -1,0 +1,392 @@
+@charset "UTF-8";
+/* ----------------------------------------------
+ * HanbitSoft Infra Development Team
+ * 아일리스 3차 업데이트 티저 Stylesheet - mission (미션, 원형 화살표, 크게 보기)
+ * Author - sgp8116@hanbitsoft.co.kr 261029
+------------------------------------------------- */
+/* Mission: 미션 캐러셀 안에 스크린샷 캐러셀, 배경 점등 → 패널 점등, 보이는 비율에 따른 정전 (js/sections.js Mission, js/mission.js Mission·Screenshot Slider)
+   양옆 화살표로 미션을 넘기면 배경과 패널 내용(제목·본문·스크린샷)이 함께 바뀐다. 스크린샷은 틀 아래 ‹ › 로 한 장씩 넘기고,
+   돋보기를 누르면 크게 보기(.lightbox)로 연다. 미션·스크린샷 모두 li 를 더 넣으면 늘어난다.
+   영상이 없는 섹션. 섹션이 --start-ratio 만큼 보이면 배경 그림이 실루엣에서 깜빡이며 켜지고, 이어서 패널이 story 와 같은 순서로 켜진다.
+-------------------------------------------------------------- */
+.section-mission {
+    /* 보이는 비율은 body 의 공통값 */
+    --slide-fade: 0.6s; /* 미션을 넘길 때 새 배경이 디졸브돼 들어오고 패널 내용이 떠오르는 시간 */
+    --shot-slide: 0.4s; /* 스크린샷이 한 장 옆으로 미끄러지는 시간 */
+}
+/* 미션 배경: 섹션을 가득 채운다. 미션마다 그림 하나(.mission-bg-item), 미션 목록과 같은 순서로 짝이 된다.
+   선택된 그림(is-active)이 맨 위에서 나타나고, 이전 그림은 그 아래에서 디졸브가 끝날 때까지 보이다 숨는다 (field 탭 영상과 같은 방식) */
+.section-mission .mission-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+.section-mission .mission-bg .mission-bg-item {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0s linear var(--slide-fade);
+}
+.section-mission .mission-bg .mission-bg-item.is-active {
+    z-index: 1;
+    opacity: 1;
+    transition: opacity var(--slide-fade) linear;
+}
+.section-mission .mission-bg .mission-bg-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+.section-mission .section-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.section-mission .section-content .content-wrapper {
+    --headline-image: url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/mission/headline.webp");
+    --panel-frame-image: url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/mission/content-frame.webp");
+    /* 색은 공통 기본값(금색) 그대로 */
+    width: 962px;
+    height: 645px; /* content-frame.webp 크기 */
+    padding-top: 43px;
+}
+.section-mission .section-content .content-wrapper .headline {
+    padding-bottom: 29px;
+}
+/* 미션 목록: 선택된 미션(is-active)만 보이고, 바뀔 때 줄 떠오름(story-line-in)으로 나타난다 */
+.section-mission .section-content .content-wrapper .mission-slider {
+    width: 100%;
+}
+.section-mission .section-content .content-wrapper .mission-item {
+    display: none;
+    text-align: center;
+}
+.section-mission .section-content .content-wrapper .mission-item.is-active {
+    display: block;
+    animation: story-line-in var(--slide-fade) ease-out both;
+}
+.section-mission .section-content .content-wrapper .content-quote {
+    padding-bottom: 14px;
+}
+/* 미션 화살표: 패널 세로 가운데, 양 끝에서 58px 안쪽(원 가운데가 끝에서 83px).
+   .mission-slider 에 position 을 두지 않아 패널(.content-wrapper) 기준으로 놓인다. 모양은 아래 '원형 화살표' 공통 규칙 */
+.section-mission .section-content .content-wrapper .mission-prev {
+    left: 58px;
+}
+.section-mission .section-content .content-wrapper .mission-next {
+    right: 58px;
+}
+/* 스크린샷 캐러셀: 검은 틀(552px, 안쪽 9px) 안에 534×300 장들을 옆으로 늘어놓고(.screenshot-list) 창(.screenshot-viewport)만큼만 보인다.
+   목록을 장 너비(100%)씩 옮기는 것은 js/mission.js Screenshot Slider 가 transform 으로 한다. 틀 아래 37px 줄에 ‹ 쪽수 › */
+.section-mission .screenshot-slider {
+    width: 552px;
+    margin: 16px auto 0;
+    padding: 9px 9px 0;
+    box-sizing: border-box;
+    background: #000;
+}
+.section-mission .screenshot-slider .screenshot-viewport {
+    overflow: hidden;
+}
+.section-mission .screenshot-slider .screenshot-list {
+    display: flex;
+    transition: transform var(--shot-slide) ease;
+}
+.section-mission .screenshot-slider .screenshot-item {
+    flex: 0 0 100%;
+    position: relative;
+}
+.section-mission .screenshot-slider .screenshot-item > img {
+    display: block;
+    width: 534px;
+    height: 300px;
+    object-fit: cover;
+}
+/* 돋보기: 그림 오른쪽 아래 40px 검은 네모 가운데에 32px 그림(button-enlarge). 보이는 장(is-active)에만 있고,
+   넘어가는 장의 것은 다 옮겨진 뒤 숨긴다 (키보드 초점이 안 보이는 장으로 가지 않게) */
+.section-mission .screenshot-slider .screenshot-zoom {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #000;
+    visibility: hidden;
+    transition:
+        visibility 0s linear var(--shot-slide),
+        opacity 0.25s ease;
+}
+.section-mission
+    .screenshot-slider
+    .screenshot-item.is-active
+    .screenshot-zoom {
+    visibility: visible;
+    transition: opacity 0.25s ease;
+}
+.section-mission .screenshot-slider .screenshot-zoom:hover,
+.section-mission .screenshot-slider .screenshot-zoom:focus-visible {
+    opacity: 0.7;
+}
+.section-mission .screenshot-slider .screenshot-zoom img {
+    display: block;
+    width: 32px;
+    height: 32px;
+}
+.section-mission .screenshot-slider .screenshot-pager {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 37px;
+    font-size: 20px;
+    color: #e3e3e3;
+}
+.section-mission .screenshot-slider .screenshot-count {
+    margin: 0 8px;
+}
+/* ‹ ›: 9×17 꺾쇠 그림(carousel-arrow-small). 다음은 같은 그림을 좌우로 뒤집는다. 마우스를 올리거나 초점이 오면 밝아진다 */
+.section-mission .screenshot-slider .screenshot-prev,
+.section-mission .screenshot-slider .screenshot-next {
+    width: 30px;
+    height: 100%;
+    background: url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/mission/carousel-arrow-small.webp") no-repeat 50%
+        50%;
+    transition: filter 0.25s ease;
+}
+.section-mission .screenshot-slider .screenshot-next {
+    scale: -1 1; /* 좌우 뒤집기. 아래 원형 화살표와 같은 이유로 transform 대신 scale 속성 */
+}
+.section-mission .screenshot-slider .screenshot-prev:hover,
+.section-mission .screenshot-slider .screenshot-next:hover,
+.section-mission .screenshot-slider .screenshot-prev:focus-visible,
+.section-mission .screenshot-slider .screenshot-next:focus-visible {
+    filter: brightness(1.4);
+}
+
+/* mission 점등 (html[data-mission-stage]: wait → on → ready, js/sections.js Mission)
+   - wait:  섹션이 --start-ratio 만큼 보이기 전. 배경은 실루엣, 패널(금테·몸체·제목·미션 내용·화살표) 숨김
+   - on:    배경이 실루엣에서 섬광·깜빡임과 함께 켜지고(item-bg-on), --mission-panel-delay 뒤 패널이 story 와 같은 순서로 켜진다:
+            금테 → 몸체 섬광·깜빡임·빛줄기 → 제목·미션 제목·본문·스크린샷·화살표가 한 줄씩 떠오름
+   - ready: 점등이 끝난 뒤. 미션 내용은 줄마다 따로 움직이지 않고, 미션을 넘길 때 .mission-item 이 통째로 떠오른다 (위 .mission-item.is-active) */
+html[data-mission-stage] .section-mission .mission-bg {
+    filter: var(--off-filter);
+}
+html[data-mission-stage="on"] .section-mission .mission-bg,
+html[data-mission-stage="ready"] .section-mission .mission-bg {
+    animation: item-bg-on var(--mission-bg-on) ease-out both; /* item 과 같은 리듬 */
+}
+html[data-mission-stage] .section-mission .content-wrapper::before,
+html[data-mission-stage] .section-mission .content-wrapper::after,
+html[data-mission-stage] .section-mission .content-wrapper > .headline,
+html[data-mission-stage] .section-mission .mission-item > *,
+html[data-mission-stage] .section-mission .mission-prev,
+html[data-mission-stage] .section-mission .mission-next {
+    opacity: 0;
+}
+html[data-mission-stage="on"] .section-mission .content-wrapper::before,
+html[data-mission-stage="ready"] .section-mission .content-wrapper::before {
+    animation: mission-frame-draw var(--mission-frame-draw) linear both;
+    animation-delay: var(--mission-panel-delay);
+}
+html[data-mission-stage="on"] .section-mission .content-wrapper::after,
+html[data-mission-stage="ready"] .section-mission .content-wrapper::after {
+    animation:
+        story-panel-on var(--story-panel-on) ease-out both,
+        story-panel-glint var(--story-panel-glint) ease-out both;
+    animation-delay:
+        calc(var(--mission-panel-delay) + var(--mission-body-delay)),
+        calc(var(--mission-panel-delay) + var(--mission-body-delay) + 0.1s);
+}
+/* 줄 떠오름: 제목 0, 미션 제목 1, 본문 2, 스크린샷 3, 화살표 4 */
+html[data-mission-stage="on"] .section-mission .content-wrapper > .headline,
+html[data-mission-stage="ready"] .section-mission .content-wrapper > .headline,
+html[data-mission-stage="on"] .section-mission .mission-item > *,
+html[data-mission-stage="on"] .section-mission .mission-prev,
+html[data-mission-stage="ready"] .section-mission .mission-prev,
+html[data-mission-stage="on"] .section-mission .mission-next,
+html[data-mission-stage="ready"] .section-mission .mission-next {
+    animation: story-line-in var(--story-line-in) ease-out both;
+    animation-delay: calc(
+        var(--mission-panel-delay) + var(--mission-line-start) +
+            var(--story-line-step) * var(--n, 0)
+    );
+}
+html[data-mission-stage] .section-mission .content-wrapper > .headline {
+    --n: 0;
+}
+html[data-mission-stage] .section-mission .mission-item > :nth-child(1) {
+    --n: 1;
+}
+html[data-mission-stage] .section-mission .mission-item > :nth-child(2) {
+    --n: 2;
+}
+html[data-mission-stage] .section-mission .mission-item > :nth-child(3) {
+    --n: 3;
+}
+html[data-mission-stage] .section-mission .mission-prev,
+html[data-mission-stage] .section-mission .mission-next {
+    --n: 4;
+}
+html[data-mission-stage="ready"] .section-mission .mission-item > * {
+    opacity: 1;
+}
+/* 금테 그리기: story-frame-draw 와 같은 방식. 구간은 mission 패널의 변 길이(가로 964 : 세로 647)에 비례해 선 속도를 같게 맞췄다 */
+@keyframes mission-frame-draw {
+    0% {
+        opacity: 1;
+        background-size:
+            0 3px,
+            3px 0,
+            0 3px,
+            3px 0;
+    }
+    29.9% {
+        background-size:
+            100% 3px,
+            3px 0,
+            0 3px,
+            3px 0; /* 위 */
+    }
+    50% {
+        background-size:
+            100% 3px,
+            3px 100%,
+            0 3px,
+            3px 0; /* 오른쪽 */
+    }
+    79.9% {
+        background-size:
+            100% 3px,
+            3px 100%,
+            100% 3px,
+            3px 0; /* 아래 */
+    }
+    100% {
+        opacity: 1;
+        background-size:
+            100% 3px,
+            3px 100%,
+            100% 3px,
+            3px 100%; /* 왼쪽 */
+    }
+}
+
+/* mission 정전 (html[data-mission-power="off"]): 섹션이 --power-ratio 보다 덜 보이면 배경이 한 번에 꺼지고 패널은 실루엣으로 남는다.
+   다시 그만큼 보이면 바로 켜진다. item 과 같은 규칙. (js/sections.js Mission) */
+html[data-mission-power="off"] .section-mission .mission-bg {
+    opacity: 0; /* 트랜지션을 두지 않아 정전처럼 한 번에 꺼지고 켜진다 */
+}
+html[data-mission-power="off"] .section-mission .content-wrapper {
+    filter: var(--off-filter);
+}
+
+/* 원형 화살표 (미션 넘기기·크게 보기 넘기기 공통): 50px 그림(carousel-arrow-large, 왼쪽 화살표). 다음은 같은 그림을 좌우로 뒤집는다.
+   세로는 부모의 가운데, 가로는 쓰는 곳에서. 마우스를 올리거나 초점이 오면 밝아진다 */
+.section-mission .mission-prev,
+.section-mission .mission-next,
+.lightbox .lightbox-prev,
+.lightbox .lightbox-next {
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: -25px;
+    background: url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/mission/carousel-arrow-large.webp") no-repeat 50%
+        50%;
+    transition: filter 0.25s ease;
+}
+.section-mission .mission-next,
+.lightbox .lightbox-next {
+    /* 좌우 뒤집기. transform 으로 뒤집으면 점등 때 줄 떠오름(story-line-in)이 transform 을 끝 값(translateY(0))으로 남겨 뒤집기가 풀리므로,
+       transform 과 별개로 곱해지는 scale 속성을 쓴다 */
+    scale: -1 1;
+}
+.section-mission .mission-prev:hover,
+.section-mission .mission-next:hover,
+.lightbox .lightbox-prev:hover,
+.lightbox .lightbox-next:hover,
+.section-mission .mission-prev:focus-visible,
+.section-mission .mission-next:focus-visible,
+.lightbox .lightbox-prev:focus-visible,
+.lightbox .lightbox-next:focus-visible {
+    filter: brightness(1.4);
+}
+
+/* Lightbox: 스크린샷 크게 보기 (js/mission.js Screenshot Slider). 돋보기를 누르면 열리고(hidden 해제) 닫기·Esc·그림 바깥을 누르면 닫힌다.
+   화면을 덮는 검은 막 위에 큰 그림(화면에 맞춰 줄임)과 쪽수, 양옆에 원형 화살표, 오른쪽 위에 닫기
+-------------------------------------------------------------- */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 20; /* globalnav(10) 위 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lightbox[hidden] {
+    display: none;
+}
+.lightbox .lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+}
+.lightbox .lightbox-figure {
+    position: relative;
+    max-width: calc(100% - 220px); /* 양옆 화살표 자리 */
+    text-align: center;
+}
+.lightbox .lightbox-image {
+    max-width: 100%;
+    max-height: calc(100vh - 160px); /* 위아래 여백과 쪽수 자리 */
+    border: 1px solid var(--panel-edge); /* 패널 바깥 금테의 변 색 */
+    background: #000;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+.lightbox .lightbox-caption {
+    padding-top: 14px;
+    font-size: 20px;
+    color: #e3e3e3;
+}
+.lightbox .lightbox-prev {
+    left: 40px;
+}
+.lightbox .lightbox-next {
+    right: 40px;
+}
+/* 닫기: 28px 막대 둘을 ±45° 돌린 X */
+.lightbox .lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+}
+.lightbox .lightbox-close::before,
+.lightbox .lightbox-close::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 28px;
+    height: 2px;
+    background: #e3e3e3;
+    transition: background-color 0.25s ease;
+}
+.lightbox .lightbox-close::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.lightbox .lightbox-close::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.lightbox .lightbox-close:hover::before,
+.lightbox .lightbox-close:hover::after,
+.lightbox .lightbox-close:focus-visible::before,
+.lightbox .lightbox-close:focus-visible::after {
+    background: var(--panel-light);
+}

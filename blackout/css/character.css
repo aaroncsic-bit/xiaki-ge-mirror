@@ -1,0 +1,196 @@
+@charset "UTF-8";
+/* ----------------------------------------------
+ * HanbitSoft Infra Development Team
+ * 아일리스 3차 업데이트 티저 Stylesheet - character
+ * Author - sgp8116@hanbitsoft.co.kr 261029
+------------------------------------------------- */
+/* Character: 탭마다 배경 영상·캐릭터, 탭 전환, 보이는 비율에 따른 전원 (js/sections.js Character, js/tab.js Tab)
+   섹션이 --start-ratio 만큼 보이면 선택된 탭의 영상이 켜지고, 탭을 바꾸면 새 영상이 위로 디졸브돼 들어오고 캐릭터도 같이 바뀐다 (field 와 같은 방식).
+   패널은 story 와 같은 552px 너비의 금색이지만 높이는 글에 맞춰 늘어난다(탭마다 다르다).
+   처음 영상이 다 들어오면 패널이 field 와 같은 순서로 점등되고, 섹션이 --power-ratio 보다 덜 보이면 정전된다.
+-------------------------------------------------------------- */
+/* 보이는 비율·루프 디졸브·배속·탭 전환 길이는 body 의 공통값 (.character-video 나 .section-character 에서 덮어쓸 수 있다) */
+/* 캐릭터 층: 영상 위(.character-video 다음), 패널(.section-content) 아래. 탭마다 캐릭터 하나(.character-figure).
+   선택된 탭의 캐릭터(is-active)가 영상과 같은 길이로 나타나고 사라진다.
+   시안에서는 두 캐릭터 모두 패널 왼쪽에 붙어 서므로 오른쪽 끝을 패널 왼쪽 끝(가운데 − 276px)에 맞추고,
+   아래가 잘린 그림이라 바닥을 섹션 바닥에 붙인다 */
+.section-character .character-figures {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.section-character .character-figures .character-figure {
+    position: absolute;
+    right: calc(50% + 276px);
+    bottom: 0;
+    opacity: 0;
+    transition: opacity var(--tab-fade) linear;
+}
+.section-character .character-figures .character-figure.is-active {
+    opacity: 1;
+}
+.section-character .character-figures .character-figure img {
+    display: block;
+}
+.section-character .section-content {
+    display: flex;
+    align-items: flex-start; /* 세로 가운데가 아니라 위를 고정한다. 자리는 아래 .content-wrapper 의 margin-top */
+    justify-content: flex-end;
+}
+/* 패널: 시안 기준. 제목 위 여백이 story(58px)보다 좁고(44px), 탭 둘 밑에 직함 → 인용(두 줄까지) → 본문 순.
+   높이는 고정하지 않고 글에 맞춰 늘어나며(몸체 질감은 세로 반복), 아래 여백 35px 은 시안(카미엘)의 마지막 줄과 바깥 금테 사이(49px)에 맞춘 값.
+   위는 가장 긴 탭(카미엘)의 패널이 세로 가운데에 오는 자리에 고정해, 짧은 탭으로 바꿔도 제목·탭이 움직이지 않고 아래만 짧아진다.
+   몸체 질감은 공통 규칙대로 세로 반복(늘리지 않는다, 사용자 확정). 반복 경계가 보이지 않도록 그림을 상하 반전으로 이어 붙여 두었다 (아래 --panel-frame-image) */
+.section-character .section-content .content-wrapper {
+    --headline-image: url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/character/headline.webp");
+    /* 몸체 질감: 디자이너 그림(552×664, 위 밝고 아래 어두움) 아래에 같은 그림을 상하 반전해 한 장 더 이어 붙인 552×1328.
+       패널이 그림보다 길어도(카미엘 697px) 세로 반복 경계에서 어두운 아래끼리 만나 이음새가 안 보인다. 그림이 새로 오면 다시 이어 붙인다 */
+    --panel-frame-image: url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/character/content-frame.webp");
+    --panel-tallest: 697px; /* 가장 긴 탭(카미엘) 패널 높이(1px 테두리 포함). 글이 바뀌면 다시 잰다 */
+    /* 색·너비(552px)·탭 모양은 공통 기본값 그대로 */
+    height: auto;
+    margin-top: max(
+        0px,
+        calc(50vh - var(--panel-tallest) / 2)
+    ); /* 섹션은 100vh. 화면이 낮아도 위로 잘리지 않게 0 이하로는 안 간다 */
+    padding-top: 44px;
+    padding-bottom: 35px;
+}
+.section-character .section-content .content-wrapper .headline {
+    padding-bottom: 36px;
+}
+.section-character .section-content .content-wrapper .tab-list {
+    --tab-count: 2; /* js 가 없을 때 선택 표시 너비 */
+    width: 337px; /* 1px 테두리를 포함한 너비. 탭 167px × 2 + 세로선 1px */
+    margin-bottom: 22px;
+}
+.section-character .section-content .content-wrapper .content-quote {
+    font-size: 20px;
+    line-height: 24px;
+    padding-bottom: 18px;
+}
+
+/* character 점등 (html[data-character-stage]: wait → on → ready, js/sections.js Character)
+   - wait:  처음 영상이 다 들어오기 전. 패널 숨김 (영상·캐릭터는 탭 규칙대로)
+   - on:    영상이 다 들어온 뒤 --character-panel-delay 부터 패널이 story 와 같은 순서로 켜진다: 금테 → 몸체 섬광·깜빡임·빛줄기 → 제목·탭·직함·인용·본문이 한 줄씩 떠오름
+   - ready: 점등이 끝난 뒤. 탭을 바꾸면 새 패널의 직함·인용·본문이 기다리지 않고 짧은 간격으로 떠오른다 (패널이 display 로 바뀌어 애니메이션이 다시 돈다) */
+html[data-character-stage] .section-character .content-wrapper::before,
+html[data-character-stage] .section-character .content-wrapper::after,
+html[data-character-stage] .section-character .content-wrapper > .headline,
+html[data-character-stage] .section-character .content-wrapper > .tab-list,
+html[data-character-stage] .section-character .tab-panel > * {
+    opacity: 0;
+}
+html[data-character-stage="on"] .section-character .content-wrapper::before,
+html[data-character-stage="ready"] .section-character .content-wrapper::before {
+    animation: character-frame-draw var(--character-frame-draw) linear both;
+    animation-delay: var(--character-panel-delay);
+}
+html[data-character-stage="on"] .section-character .content-wrapper::after,
+html[data-character-stage="ready"] .section-character .content-wrapper::after {
+    animation:
+        story-panel-on var(--story-panel-on) ease-out both,
+        story-panel-glint var(--story-panel-glint) ease-out both;
+    animation-delay:
+        calc(var(--character-panel-delay) + var(--character-body-delay)),
+        calc(var(--character-panel-delay) + var(--character-body-delay) + 0.1s);
+}
+/* 줄 떠오름: 제목 0, 탭 1, 탭 패널 안은 직함 2, 인용 3, 본문 4부터 */
+html[data-character-stage="on"] .section-character .content-wrapper > .headline,
+html[data-character-stage="ready"]
+    .section-character
+    .content-wrapper
+    > .headline,
+html[data-character-stage="on"] .section-character .content-wrapper > .tab-list,
+html[data-character-stage="ready"]
+    .section-character
+    .content-wrapper
+    > .tab-list,
+html[data-character-stage="on"] .section-character .tab-panel > *,
+html[data-character-stage="ready"] .section-character .tab-panel > * {
+    animation: story-line-in var(--story-line-in) ease-out both;
+    animation-delay: calc(
+        var(--character-panel-delay) + var(--character-line-start) +
+            var(--story-line-step) * var(--n, 0)
+    );
+}
+html[data-character-stage] .section-character .content-wrapper > .headline {
+    --n: 0;
+}
+html[data-character-stage] .section-character .content-wrapper > .tab-list {
+    --n: 1;
+}
+html[data-character-stage] .section-character .tab-panel > :nth-child(1) {
+    --n: 2;
+}
+html[data-character-stage] .section-character .tab-panel > :nth-child(2) {
+    --n: 3;
+}
+html[data-character-stage] .section-character .tab-panel > :nth-child(3) {
+    --n: 4;
+}
+html[data-character-stage] .section-character .tab-panel > :nth-child(4) {
+    --n: 5;
+}
+html[data-character-stage] .section-character .tab-panel > :nth-child(5) {
+    --n: 6;
+}
+html[data-character-stage] .section-character .tab-panel > :nth-child(6) {
+    --n: 7;
+}
+/* 점등이 끝난 뒤 탭을 바꾸면 새 패널의 줄은 제목·탭을 기다리지 않고 직함부터 짧은 간격으로 떠오른다 */
+html[data-character-stage="ready"] .section-character .tab-panel > * {
+    animation-delay: calc(var(--story-line-step) * (var(--n) - 2));
+}
+/* 금테 그리기: story-frame-draw 와 같은 방식. 구간은 처음 보이는 탭 패널의 변 길이(가로 554 : 세로 553)에 비례해 선 속도를 같게 맞췄다.
+   긴 탭(카미엘, 패널 697px 이라 같은 셈으로 세로 699)에서 점등되면 세로 변이 조금 빨리 그려지지만 눈에 띄지 않는다 */
+@keyframes character-frame-draw {
+    0% {
+        opacity: 1;
+        background-size:
+            0 3px,
+            3px 0,
+            0 3px,
+            3px 0;
+    }
+    24.9% {
+        background-size:
+            100% 3px,
+            3px 0,
+            0 3px,
+            3px 0; /* 위 */
+    }
+    50% {
+        background-size:
+            100% 3px,
+            3px 100%,
+            0 3px,
+            3px 0; /* 오른쪽 */
+    }
+    74.9% {
+        background-size:
+            100% 3px,
+            3px 100%,
+            100% 3px,
+            3px 0; /* 아래 */
+    }
+    100% {
+        opacity: 1;
+        background-size:
+            100% 3px,
+            3px 100%,
+            100% 3px,
+            3px 100%; /* 왼쪽 */
+    }
+}
+
+/* character 정전 (html[data-character-power="off"]): 섹션이 --power-ratio 보다 덜 보이면 영상이 트랜지션 없이 꺼지고 멈추며
+   캐릭터와 패널은 실루엣으로 남는다. 다시 그만큼 보이면 바로 켜진다. field 와 같은 규칙. (js/sections.js Character) */
+html[data-character-power="off"] .section-character .character-video {
+    opacity: 0;
+    transition: none; /* 정전처럼 한 번에 꺼진다. 래퍼에 다른 트랜지션이 없어 켜질 때도 바로 켜진다 */
+}
+html[data-character-power="off"] .section-character .character-figure,
+html[data-character-power="off"] .section-character .content-wrapper {
+    filter: var(--off-filter);
+}

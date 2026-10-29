@@ -1,0 +1,80 @@
+@charset "UTF-8";
+/* ----------------------------------------------
+ * HanbitSoft Infra Development Team
+ * 아일리스 3차 업데이트 티저 Stylesheet - story
+ * Author - sgp8116@hanbitsoft.co.kr 261029
+------------------------------------------------- */
+/* Story: 섹션 진입 → intro → loop → 패널 점등, 보이는 비율에 따른 정전 (js/sections.js Story)
+-------------------------------------------------------------- */
+.section-story .story-video {
+    /* 보이는 비율(--start-ratio·--power-ratio)과 배속(--loop-rate)은 body 의 공통값 */
+    --once-fade: 1s; /* intro 가 끝나기 전에 loop 로 크로스 디졸브되는 길이 (hero 에는 없어 정전 연출로 잇는다) */
+    --loop-fade: 0.2s; /* 공통값(1s) 대신. 핑퐁 루프(정재생→역재생)라 끝 프레임과 첫 프레임이 같아 되감기 때 멈춤만 가린다. 한 방향 본(source/videos/story/parts/story-loop.oneway.mp4)을 쓰면 공통값대로 1s */
+}
+.section-story .section-content {
+    display: flex;
+    align-items: center;
+}
+.section-story .section-content .content-wrapper {
+    --headline-image: url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/story/headline.webp");
+    /* 색은 공통 기본값(금색) 그대로 */
+}
+
+/* story 연출 (html[data-story-stage]: wait → intro → loop)
+   - wait:  섹션이 --start-ratio 만큼 보이기 전. 패널 숨김, 영상은 첫 프레임에 멈춰 있다
+   - intro: 1회 영상 재생. 패널 숨김
+   - loop:  1회 영상이 루프 영상으로 디졸브돼 온전히 보인 뒤. 패널이 점등된다 */
+html[data-story-stage] .section-story .content-wrapper::before,
+html[data-story-stage] .section-story .content-wrapper::after,
+html[data-story-stage] .section-story .content-wrapper > * {
+    opacity: 0;
+}
+/* 점등 순서: ① 바깥 금테가 왼쪽 위 모서리에서 시계 방향으로 한 바퀴 그려진다 ② 거의 다 그려질 때 몸체가 조명 켜지듯
+   섬광·금테 후광과 함께 켜지며 한 번 깜빡이고, 그 위로 빛줄기가 한 번 지나간다 ③ 제목·인용·본문·대사·캡션이 위로 떠오르며 차례로 나타난다. */
+html[data-story-stage="loop"] .section-story .content-wrapper::before {
+    animation: story-frame-draw var(--story-frame-draw) linear both;
+}
+html[data-story-stage="loop"] .section-story .content-wrapper::after {
+    animation:
+        story-panel-on var(--story-panel-on) ease-out both,
+        story-panel-glint var(--story-panel-glint) ease-out both;
+    animation-delay:
+        var(--story-panel-delay), calc(var(--story-panel-delay) + 0.1s);
+}
+html[data-story-stage="loop"] .section-story .content-wrapper > * {
+    animation: story-line-in var(--story-line-in) ease-out both;
+    animation-delay: calc(
+        var(--story-line-start) + var(--story-line-step) * var(--n, 0)
+    );
+}
+html[data-story-stage] .section-story .content-wrapper > :nth-child(1) {
+    --n: 0;
+}
+html[data-story-stage] .section-story .content-wrapper > :nth-child(2) {
+    --n: 1;
+}
+html[data-story-stage] .section-story .content-wrapper > :nth-child(3) {
+    --n: 2;
+}
+html[data-story-stage] .section-story .content-wrapper > :nth-child(4) {
+    --n: 3;
+}
+html[data-story-stage] .section-story .content-wrapper > :nth-child(5) {
+    --n: 4;
+}
+html[data-story-stage] .section-story .content-wrapper > :nth-child(6) {
+    --n: 5;
+}
+html[data-story-stage] .section-story .content-wrapper > :nth-child(7) {
+    --n: 6;
+}
+
+/* story 정전 (html[data-story-power="off"]): 위나 아래로 스크롤해 섹션이 --power-ratio 보다 덜 보이면
+   영상이 트랜지션 없이 꺼지고 멈추며 패널은 실루엣으로 남는다. 다시 그만큼 보이면 바로 켜진다. (js/sections.js Story) */
+html[data-story-power="off"] .section-story .story-video {
+    opacity: 0;
+    transition: none; /* 정전처럼 한 번에 꺼진다. 래퍼에 다른 트랜지션이 없어 켜질 때도 바로 켜진다 */
+}
+html[data-story-power="off"] .section-story .content-wrapper {
+    filter: var(--off-filter);
+}

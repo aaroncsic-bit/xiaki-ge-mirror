@@ -1,0 +1,315 @@
+@charset "UTF-8";
+/* ----------------------------------------------
+ * HanbitSoft Infra Development Team
+ * 아일리스 3차 업데이트 티저 Stylesheet - 공통 (globalnav, globalfooter, 로딩 표시)
+ * Author - sgp8116@hanbitsoft.co.kr 261029
+------------------------------------------------- */
+/* Globalnav: 화면 맨 위에 붙어 따라오는 메뉴.
+   배포 서버(testge)가 body 맨 앞에 한빛온 GNB(#divGnb, 40px, z-index 9999)를 끼워 넣으므로 fixed 로 top: 0 에 두면 윗부분이 GNB 에 덮인다.
+   대신 sticky 로 흐름에 두어 처음엔 GNB 바로 아래에 있다가 GNB 가 스크롤돼 올라가면 맨 위에 붙고,
+   제 높이만큼 음수 margin 으로 hero 가 밑으로 올라와 fixed 일 때와 같이 hero 위에 겹친다. GNB 가 없는 로컬에서는 처음부터 맨 위에 있다.
+-------------------------------------------------------------- */
+.globalnav {
+    --nav-height: 80px; /* 메뉴 줄(.globalnav-list) 높이. 음수 margin 도 이 값을 쓴다 */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    max-width: 2000px;
+    height: var(--nav-height);
+    margin: 0 auto calc(-1 * var(--nav-height)); /* 가운데 정렬은 .section 과 같다 (2000px 보다 넓은 창) */
+    z-index: 10;
+}
+.globalnav .globalnav-content {
+    width: 1200px;
+    margin: 0 auto;
+}
+.globalnav .globalnav-content .globalnav-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--nav-height);
+}
+.globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-item-blackout
+    .globalnav-link {
+    display: block;
+    width: 200px;
+}
+.globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-menu
+    .globalnav-menu-list {
+    display: flex;
+}
+.globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-menu
+    .globalnav-menu-list
+    .globalnav-menu-item
+    .globalnav-menu-link {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e3e3e3;
+    text-transform: uppercase;
+    padding: 0 20px;
+    position: relative;
+    transition:
+        color 0.25s ease,
+        text-shadow 0.25s ease;
+}
+.globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-menu
+    .globalnav-menu-list
+    .globalnav-menu-item
+    .globalnav-menu-link:hover,
+.globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-menu
+    .globalnav-menu-list
+    .globalnav-menu-item
+    .globalnav-menu-link:focus-visible {
+    color: #f0c97a;
+    text-shadow: 0 0 8px rgba(255, 150, 70, 0.6);
+}
+/* 메뉴 활성: 섹션에 도착해 켜지면(html[data-xxx-power="on"]. 섹션이 --power-ratio 이상 보일 때 js/section.js watchSection 이 켜고, 덜 보이면 끈다)
+   그 섹션의 메뉴를 hover 와 같은 금색으로 켠다. 섹션이 꺼지면 같이 꺼진다. 한 번에 한 섹션만 --power-ratio 이상 보이므로 메뉴도 하나만 켜진다
+   (--power-ratio 가 0.5 아래면 경계에서 둘이 같이 켜질 수 있다). history 섹션이 생기면 같은 꼴로 한 줄 더한다. */
+html[data-story-power="on"]
+    .globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-menu
+    .globalnav-menu-list
+    .globalnav-menu-item
+    .globalnav-menu-link-story,
+html[data-field-power="on"]
+    .globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-menu
+    .globalnav-menu-list
+    .globalnav-menu-item
+    .globalnav-menu-link-field,
+html[data-item-power="on"]
+    .globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-menu
+    .globalnav-menu-list
+    .globalnav-menu-item
+    .globalnav-menu-link-item,
+html[data-mission-power="on"]
+    .globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-menu
+    .globalnav-menu-list
+    .globalnav-menu-item
+    .globalnav-menu-link-mission,
+html[data-character-power="on"]
+    .globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-menu
+    .globalnav-menu-list
+    .globalnav-menu-item
+    .globalnav-menu-link-character,
+html[data-raid-power="on"]
+    .globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-menu
+    .globalnav-menu-list
+    .globalnav-menu-item
+    .globalnav-menu-link-raid {
+    color: #f0c97a;
+    text-shadow: 0 0 8px rgba(255, 150, 70, 0.6);
+}
+.globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-menu
+    .globalnav-menu-list
+    .globalnav-menu-item
+    .globalnav-menu-link::after {
+    content: "";
+    background: #e3e3e3;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 0;
+    width: 1px;
+    height: 13px;
+}
+.globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-menu
+    .globalnav-menu-list
+    .globalnav-menu-item:last-child
+    .globalnav-menu-link::after {
+    display: none;
+}
+.globalnav .globalnav-content .globalnav-list .globalnav-item.globalnav-action {
+    display: flex;
+}
+.globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-action
+    .hide-today {
+    padding-right: 15px;
+}
+.globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-action
+    .hide-today
+    .button-hide-today {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.75px;
+    color: #b2b2b2;
+}
+.globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-action
+    .home-shortcut
+    .link-home {
+    position: relative;
+    padding-right: 12px;
+}
+.globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-action
+    .home-shortcut
+    .link-home::after {
+    content: "";
+    background: #b2b2b2;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 1px;
+    height: 12px;
+}
+.globalnav
+    .globalnav-content
+    .globalnav-list
+    .globalnav-item.globalnav-action
+    .bgm-controller
+    .bgm-toggle {
+    padding-left: 12px;
+}
+
+/* Globalfooter: 마지막 섹션 바닥 위에 겹쳐 놓인 94px 띠. 띠에는 시안대로 검은 그러데이션(위 투명 → 바닥 90% 검정)이 깔린다. 섹션이 100vh 라 섹션 뒤에 그냥 두면 스크롤 끝에 따로 남으므로,
+   시안대로 음수 margin 으로 끌어올려 마지막 화면(raid) 위에 얹는다. 섹션이 뒤에 더 생겨도 늘 마지막 섹션 위에 온다.
+   가운데에 한빛소프트 로고 · 저작권 글 · imc GAMES 로고가 한 줄 (세로 가운데가 바닥에서 47px). 로고는 3배수 png 를 1/3 로 보인다.
+-------------------------------------------------------------- */
+.globalfooter {
+    position: relative;
+    z-index: 1; /* 겹친 섹션(배경·패널) 위 */
+    width: 100%;
+    max-width: 2000px;
+    height: 94px;
+    margin: -94px auto 0;
+    /* 시안의 검은 그러데이션: 윗줄은 투명, 68px 에서 90% 검정, 바닥까지 90% (배경이 10% 비친다). 시안과 배경 원본을 행마다 비교해 잰 값 */
+    background: linear-gradient(
+        to bottom,
+        transparent 0,
+        rgba(0, 0, 0, 0.9) 68px,
+        rgba(0, 0, 0, 0.9) 100%
+    );
+}
+.globalfooter .globalfooter-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+.globalfooter .globalfooter-content .globalfooter-logo {
+    display: block;
+    flex: none;
+}
+.globalfooter .globalfooter-content .globalfooter-logo-hanbitsoft {
+    width: 78px; /* 234×32 의 1/3 */
+}
+.globalfooter .globalfooter-content .globalfooter-logo-imc-games {
+    width: 65px; /* 195×41 의 1/3 */
+    margin-top: -4px; /* 시안은 imc 로고 가운데가 글보다 2px 높다 (가운데 정렬은 margin 을 포함한 박스 기준이라 두 배) */
+}
+/* 저작권 글: 시안은 10px 굵은 장체 대문자(회색). Roboto Condensed 는 index.html 의 Google Fonts 링크로 받는다 (없으면 Arial) */
+.globalfooter .globalfooter-content .globalfooter-copyright {
+    margin: 0 18px 0 22px; /* 시안의 로고와 글 사이: 한빛소프트 쪽 22px, imc 쪽 18px */
+    font-family: "Roboto Condensed", Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 0.1px;
+    color: #8a8a8a;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Loading: 영상을 다 받기를 기다리는 동안(js/video.js 받은 뒤 재생) 기다림이 --loading-delay(body)를 넘으면 화면 아래 가운데에 보이는 작은 금색 진행선.
+   진행(--progress 0~1, js 가 적는다)은 기다리는 영상의 버퍼 비율. 글자는 저작권 글과 같은 장체 대문자, 색은 body 의 패널 금색(--panel-light·--panel-dark).
+   라이트박스(20) 아래, globalnav(10) 위.
+-------------------------------------------------------------- */
+.loading {
+    position: fixed;
+    left: 50%;
+    bottom: 28px;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.3s ease-out,
+        visibility 0s 0.3s;
+}
+.loading.is-shown {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-out;
+}
+.loading .loading-label {
+    font-family: "Roboto Condensed", Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 2px;
+    color: var(--panel-light);
+    text-transform: uppercase;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.loading .loading-bar {
+    display: block;
+    width: 120px;
+    height: 2px;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--panel-light) 25%, transparent);
+}
+.loading .loading-fill {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--panel-dark), var(--panel-light));
+    transform: scaleX(var(--progress, 0));
+    transform-origin: 0 50%;
+    transition: transform 0.2s linear;
+}

@@ -1,0 +1,224 @@
+@charset "UTF-8";
+/* ----------------------------------------------
+ * HanbitSoft Infra Development Team
+ * 아일리스 3차 업데이트 티저 Stylesheet - field
+ * Author - sgp8116@hanbitsoft.co.kr 261029
+------------------------------------------------- */
+/* Field: 탭마다 배경 영상·캐릭터, 패널 점등·정전, 탭 전환 (js/sections.js Field)
+   섹션이 --start-ratio 만큼 보이면 선택된 탭의 영상이 켜지고, 다 들어오면 캐릭터가 점등되고 이어서 패널이 story 와 같은 순서로 켜진다.
+   탭을 바꾸면 새 영상이 위로 디졸브돼 들어오고 캐릭터도 같이 바뀐다.
+-------------------------------------------------------------- */
+/* 보이는 비율·루프 디졸브·배속·탭 전환 길이는 body 의 공통값 (.field-video 나 .section-field 에서 덮어쓸 수 있다) */
+/* 캐릭터 층: 영상 위(.field-video 다음), 패널(.section-content) 아래. 탭마다 캐릭터 하나(소재가 있는 탭만).
+   선택된 탭의 캐릭터(is-active)가 영상과 같은 길이로 나타나고 사라진다. 1200px 콘텐츠 영역의 왼쪽 끝에 맞추고(50% - 600px),
+   아래가 잘린 그림이라 바닥을 섹션 바닥에 붙인다. 점등 전엔 실루엣(--off-filter). */
+.section-field .field-characters {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.section-field .field-characters .field-character {
+    --halo: #c2f0f9; /* 후광 색. 패널의 --panel-light 와 같다 */
+    position: absolute;
+    left: calc(50% - 600px);
+    bottom: 0;
+    isolation: isolate; /* ::before 후광을 z-index -1 로 그림 뒤에 깔기 위한 스태킹 컨텍스트 */
+    opacity: 0;
+    transition: opacity var(--tab-fade) linear;
+}
+.section-field .field-characters .field-character.is-active {
+    opacity: 1;
+}
+.section-field .field-characters .field-character img {
+    display: block;
+    filter: var(--off-filter);
+}
+/* 후광: 몸통 뒤에서 새어 나오는 하늘색 타원. 그림보다 좌우로 넓다. 점등 때 나타난 뒤 밝기만 오르내린다(크기 변화 없음) */
+.section-field .field-characters .field-character::before {
+    content: "";
+    position: absolute;
+    inset: 8% -25% -5% -25%;
+    z-index: -1;
+    background: radial-gradient(
+        ellipse 50% 45% at 50% 40%,
+        color-mix(in srgb, var(--halo) 60%, transparent),
+        transparent
+    );
+    opacity: 0;
+    pointer-events: none;
+}
+/* 캐릭터 점등(is-lit, 영상이 다 들어온 뒤 js 가 붙인다): 실루엣 → 섬광 → 한 번 깜빡 → 제 색. 후광은 같은 시간에 나타난 뒤 숨쉰다. */
+.section-field .field-characters .field-character.is-lit img {
+    animation: field-character-on var(--field-character-on) ease-out both;
+}
+.section-field .field-characters .field-character.is-lit::before {
+    animation:
+        field-halo-on var(--field-character-on) ease-out both,
+        field-halo-breathe var(--field-halo-breathe) ease-in-out
+            var(--field-character-on) infinite;
+}
+/* 움직임 줄이기(prefers-reduced-motion)를 켠 환경: 후광은 나타난 뒤 숨쉬지 않는다 (영상도 정지 배경만 보인다, js/video.js 정지 모드) */
+@media (prefers-reduced-motion: reduce) {
+    .section-field .field-characters .field-character.is-lit::before {
+        animation: field-halo-on var(--field-character-on) ease-out both;
+    }
+}
+@keyframes field-character-on {
+    0% {
+        filter: var(--off-filter); /* 실루엣에서 시작 */
+    }
+    30% {
+        filter: grayscale(0) brightness(1.7); /* 켜지는 순간 과하게 밝다 */
+    }
+    45% {
+        filter: grayscale(0) brightness(0.6); /* 한 번 깜빡 */
+    }
+    60% {
+        filter: grayscale(0) brightness(1.35);
+    }
+    100% {
+        filter: grayscale(0) brightness(1);
+    }
+}
+@keyframes field-halo-on {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes field-halo-breathe {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.55;
+    }
+}
+.section-field .section-content {
+    display: flex;
+    align-items: center;
+}
+.section-field .section-content .content-wrapper {
+    --headline-image: url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/field/headline.webp");
+    --panel-frame-image: url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/field/content-frame.webp");
+    /* 바깥 3px 테두리도 하늘색 계열: 아래 1px 테두리의 가장 밝은 색과 가장 어두운 색을 쓴다.
+       (이 변수들은 인용·캡션 글자색에도 쓰이지만 field 패널엔 흰색 본문만 있다) */
+    --panel-light: #c2f0f9;
+    --panel-dark: #83c4d0;
+    --panel-edge: #83c4d0;
+    /* 1px 테두리: 하늘색. 탭 목록(.tab-list)도 이 변수를 쓴다.
+       포토샵 획(안쪽 1px, 선형 40°, 레이어에 정렬)을 옮긴 것. 포토샵 각도 40° 는 css 로 50deg (90 - 각도).
+       양 끝 → 가운데 순으로 밝아진다 */
+    --panel-rim: linear-gradient(
+        50deg,
+        #83c4d0 0%,
+        #dbf0f4 25%,
+        #c2f0f9 50%,
+        #dbf0f4 75%,
+        #83c4d0 100%
+    );
+    /* 탭(.tab-list): 기본(금색 탭)을 덮어쓰는 하늘색 변형. 하늘색 글자, 선택된 탭은 어두운 글자에 field 의 bg-tab 그림 */
+    --tab-color: #8ed6ef;
+    --tab-active-color: #0e2430;
+    --tab-bg: url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/field/bg-tab.jpg");
+    height: 445px; /* content-frame.webp 높이 */
+}
+.section-field .section-content .content-wrapper .tab-list {
+    --tab-count: 4; /* js 가 없을 때 선택 표시 너비 */
+    width: 473px; /* 1px 테두리를 포함한 너비 (포토샵 획 위치 '안쪽') */
+}
+/* 탭마다 패널 자리 (section 의 data-field-tab = 선택된 탭 이름. 마크업 초기값, 탭을 고르면 js/sections.js Field 가 갱신):
+   기본은 왼쪽(탄탈로스·엑시온). 캐릭터가 왼쪽에 서는 티티유스와 시지포스는 오른쪽. */
+.section-field[data-field-tab="machinatityus"] .section-content,
+.section-field[data-field-tab="machinaseigeforce"] .section-content {
+    justify-content: flex-end;
+}
+/* 패널이 반대편으로 갈 때: 전원이 옮겨 가듯 잠깐 꺼졌다가(is-off, --field-move-hold) 새 자리에서 깜빡이며 켜진다(is-relit).
+   is-relit 은 애니메이션이 끝나면 js 가 떼어, 정전 때 실루엣 필터가 먹게 한다. */
+.section-field .section-content .content-wrapper.is-off {
+    filter: var(--off-filter);
+}
+.section-field .section-content .content-wrapper.is-relit {
+    animation: field-panel-relight var(--field-panel-relight) ease-out both;
+}
+@keyframes field-panel-relight {
+    0% {
+        filter: var(--off-filter); /* 실루엣에서 시작 */
+    }
+    30% {
+        filter: grayscale(0) brightness(1.5);
+    }
+    45% {
+        filter: grayscale(0) brightness(0.5);
+    }
+    60% {
+        filter: grayscale(0) brightness(1.25);
+    }
+    100% {
+        filter: grayscale(0) brightness(1);
+    }
+}
+
+/* field 점등 (html[data-field-stage]: wait → on → ready, js/sections.js Field)
+   - wait:  처음 영상이 다 들어오기 전. 패널 숨김 (영상·캐릭터는 탭 규칙대로)
+   - on:    캐릭터가 켜진 뒤 --field-panel-delay 부터 패널이 story 와 같은 순서로 켜진다: 금테 → 몸체 섬광·깜빡임·빛줄기 → 제목·탭·본문 순으로 떠오름
+   - ready: 점등이 끝난 뒤. 탭을 바꾸면 새 패널의 본문이 바로 떠오른다 (패널이 display 로 바뀌어 애니메이션이 다시 돈다) */
+html[data-field-stage] .section-field .content-wrapper::before,
+html[data-field-stage] .section-field .content-wrapper::after,
+html[data-field-stage] .section-field .content-wrapper > .headline,
+html[data-field-stage] .section-field .content-wrapper > .tab-list,
+html[data-field-stage] .section-field .tab-panel .content-text {
+    opacity: 0;
+}
+html[data-field-stage="on"] .section-field .content-wrapper::before,
+html[data-field-stage="ready"] .section-field .content-wrapper::before {
+    animation: story-frame-draw var(--story-frame-draw) linear both;
+    animation-delay: var(--field-panel-delay);
+}
+html[data-field-stage="on"] .section-field .content-wrapper::after,
+html[data-field-stage="ready"] .section-field .content-wrapper::after {
+    animation:
+        story-panel-on var(--story-panel-on) ease-out both,
+        story-panel-glint var(--story-panel-glint) ease-out both;
+    animation-delay:
+        calc(var(--field-panel-delay) + var(--story-panel-delay)),
+        calc(var(--field-panel-delay) + var(--story-panel-delay) + 0.1s);
+}
+html[data-field-stage="on"] .section-field .content-wrapper > .headline,
+html[data-field-stage="ready"] .section-field .content-wrapper > .headline,
+html[data-field-stage="on"] .section-field .content-wrapper > .tab-list,
+html[data-field-stage="ready"] .section-field .content-wrapper > .tab-list,
+html[data-field-stage="on"] .section-field .tab-panel .content-text,
+html[data-field-stage="ready"] .section-field .tab-panel .content-text {
+    animation: story-line-in var(--story-line-in) ease-out both;
+    animation-delay: calc(
+        var(--field-panel-delay) + var(--story-line-start) +
+            var(--story-line-step) * var(--n, 0)
+    );
+}
+html[data-field-stage] .section-field .content-wrapper > .headline {
+    --n: 0;
+}
+html[data-field-stage] .section-field .content-wrapper > .tab-list {
+    --n: 1;
+}
+html[data-field-stage] .section-field .tab-panel .content-text {
+    --n: 2;
+}
+html[data-field-stage="ready"] .section-field .tab-panel .content-text {
+    animation-delay: 0s;
+}
+
+/* field 정전 (html[data-field-power="off"]): 섹션이 --power-ratio 보다 덜 보이면 영상이 트랜지션 없이 꺼지고 멈추며
+   캐릭터와 패널은 실루엣으로 남는다. 다시 그만큼 보이면 바로 켜진다. story 와 같은 규칙. (js/sections.js Field) */
+html[data-field-power="off"] .section-field .field-video {
+    opacity: 0;
+    transition: none; /* 정전처럼 한 번에 꺼진다. 래퍼에 다른 트랜지션이 없어 켜질 때도 바로 켜진다 */
+}
+html[data-field-power="off"] .section-field .field-character,
+html[data-field-power="off"] .section-field .content-wrapper {
+    filter: var(--off-filter);
+}

@@ -1,0 +1,67 @@
+@charset "UTF-8";
+/* ----------------------------------------------
+ * HanbitSoft Infra Development Team
+ * 아일리스 3차 업데이트 티저 Stylesheet - hero
+ * Author - sgp8116@hanbitsoft.co.kr 261029
+------------------------------------------------- */
+/* Hero: 1회 영상 → 정전 → 로고 → 루프 영상·globalnav, 그 뒤 스크롤 정전 (js/sections.js Hero)
+-------------------------------------------------------------- */
+.section-hero {
+    --section-fade-top: 0px; /* 위는 페이지 맨 위라 이을 섹션이 없다 (0 이 아니라 0px: calc 안에서 단위 없는 0 은 안 된다) */
+}
+.section-hero .section-content .logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 834px;
+}
+
+/* hero 정전 연출 (html[data-hero-stage]: intro → blackout → logo → loop → ready)
+   - intro:    로고·globalnav 숨김, 1회 영상 재생
+   - blackout: 영상 즉시 꺼짐(트랜지션 없음) - 정전
+   - logo:     로고가 서서히 나타남
+   - loop:     루프 영상이 서서히 나타나며 검은 화면이 걷히기 시작하고, 그와 함께 globalnav 가 서서히 나타남
+   - ready:    루프 영상이 다 보임. 스크롤 정전 감시 시작 (js) */
+html[data-hero-stage] .globalnav {
+    opacity: 0;
+    visibility: hidden;
+}
+html[data-hero-stage="loop"] .globalnav,
+html[data-hero-stage="ready"] .globalnav {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity var(--hero-nav-fade) ease-out;
+}
+html[data-hero-stage] .section-hero .section-content .logo {
+    opacity: 0;
+}
+html[data-hero-stage="logo"] .section-hero .section-content .logo,
+html[data-hero-stage="loop"] .section-hero .section-content .logo,
+html[data-hero-stage="ready"] .section-hero .section-content .logo {
+    opacity: 1;
+    transition: opacity var(--hero-logo-fade) ease-out;
+}
+html[data-hero-stage="blackout"] .section-hero .hero-video,
+html[data-hero-stage="logo"] .section-hero .hero-video {
+    opacity: 0;
+    transition: none; /* 정전처럼 한 번에 꺼진다 */
+}
+html[data-hero-stage="loop"] .section-hero .hero-video,
+html[data-hero-stage="ready"] .section-hero .hero-video {
+    opacity: 1;
+    transition: opacity var(--hero-loop-fade-in) ease-in-out; /* 숨을 들이쉬듯 천천히 시작해 천천히 끝난다 */
+}
+
+/* 스크롤 정전 (html[data-hero-power="off"]): 루프 영상까지 다 뜬 뒤 hero 섹션의 위 끝이 화면 위로 벗어나면
+   영상이 트랜지션 없이 꺼지고 로고만 실루엣으로 남는다. 맨 위로 돌아오면 바로 켜진다 (배포 서버의 한빛온 GNB 높이만큼은 스크롤해도 켜져 있다). */
+html[data-hero-power="off"] .section-hero .hero-video {
+    opacity: 0;
+    transition: none;
+}
+html[data-hero-power="on"] .section-hero .hero-video {
+    transition: none; /* 전원이 돌아올 때도 페이드 없이 바로 켜진다 */
+}
+html[data-hero-power="off"] .section-hero .section-content .logo img {
+    filter: var(--off-filter);
+}

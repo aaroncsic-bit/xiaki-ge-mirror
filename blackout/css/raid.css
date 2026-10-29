@@ -1,0 +1,159 @@
+@charset "UTF-8";
+/* ----------------------------------------------
+ * HanbitSoft Infra Development Team
+ * 아일리스 3차 업데이트 티저 Stylesheet - raid
+ * Author - sgp8116@hanbitsoft.co.kr 261029
+------------------------------------------------- */
+/* Raid: 배경 점등 → 패널 점등, 보이는 비율에 따른 정전 (js/sections.js Raid)
+   item·mission 처럼 영상 없이 배경 그림만 있는 섹션. 섹션이 --start-ratio 만큼 보이면 배경 그림이 실루엣에서 깜빡이며 켜지고,
+   이어서 패널이 story 와 같은 순서로 켜진다. 패널은 story 와 같은 552px 금색이지만 높이가 짧고(504px), 제목 아래 탭 하나(세르비토르) 뒤에
+   본문 → 대사 → 캡션. 시안대로 1200px 영역의 오른쪽 끝에 붙는다 (왼쪽은 배경 그림의 세르비토르 자리).
+-------------------------------------------------------------- */
+/* 보이는 비율은 body 의 공통값 (.section-raid 에서 덮어쓸 수 있다) */
+.section-raid {
+    --section-fade-bottom: 0px; /* 바닥은 globalfooter 가 시안의 검은 그러데이션을 얹으므로 섹션 쪽은 두지 않는다 (0px: calc 안에서 단위 없는 0 은 안 된다) */
+}
+/* 배경 그림: item 과 같이 정전 때 꺼지고(opacity) 점등 때 깜빡이며 켜지도록(filter) 섹션 배경에서 떼어 ::before 로 깐다. 패널(.section-content) 아래 */
+.section-raid::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    /* 그림 위에 경계 그러데이션(.section 의 --section-fade)을 겹친다 (아래쪽 두께는 위 .section-raid 에서 0) */
+    background:
+        var(--section-fade),
+        url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/raid/bg.webp") no-repeat 50% 0 / cover;
+}
+.section-raid .section-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+/* 패널: 시안에서는 몸체가 아니라 바깥 금테(몸체에서 오른쪽 위로 11px)가 1200px 영역의 오른쪽 끝과 화면 세로 가운데에 맞춰져 있다.
+   그래서 몸체를 오른쪽 끝에서 11px 떼고, 세로는 margin 을 포함한 박스가 가운데에 오므로 위 여백을 11px 의 두 배로 둔다 */
+.section-raid .section-content .content-wrapper {
+    --headline-image: url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/raid/headline.webp");
+    --panel-frame-image: url("https://rs-kr.hanbiton.com/ge/event/teaser/blackout/images/raid/content-frame.webp");
+    /* 색·너비(552px)·탭 모양(금색 bg-tab, 사용자 확인)은 공통 기본값 그대로 */
+    height: 504px; /* content-frame.webp 높이 */
+    margin: 22px 11px 0 0;
+    padding-left: 11px; /* 시안은 제목·탭·글이 몸체가 아니라 바깥 금테의 가로 가운데(몸체보다 5.5px 오른쪽)에 맞춰져 있다. 안쪽 왼쪽 여백으로 그만큼 옮긴다 */
+    padding-top: 63px;
+}
+.section-raid .section-content .content-wrapper .headline {
+    padding-bottom: 36px;
+}
+.section-raid .section-content .content-wrapper .tab-list {
+    --tab-count: 1; /* 탭이 하나라 role 없이 두었다(js/tab.js Tab 이 다루지 않는다). 선택 표시가 목록을 다 채운다 */
+    width: 170px; /* 1px 테두리를 포함한 너비 */
+    margin-bottom: 44px;
+}
+/* 탭이 하나라 누를 일이 없어 버튼이 아닌 글(span)로 두었다. 버튼처럼 블록으로 세우고 글을 탭 높이(33px)의 세로 가운데에 놓는다 */
+.section-raid .section-content .content-wrapper .tab-list .tab {
+    display: block;
+    line-height: 33px;
+}
+
+/* raid 점등 (html[data-raid-stage]: wait → on, js/sections.js Raid)
+   - wait: 섹션이 --start-ratio 만큼 보이기 전. 배경은 실루엣, 패널 숨김
+   - on:   배경이 실루엣에서 섬광·깜빡임과 함께 켜지고(item-bg-on), --raid-panel-delay 뒤 패널이 story 와 같은 순서로 켜진다:
+           금테 → 몸체 섬광·깜빡임·빛줄기 → 제목·탭·본문·대사·캡션이 한 줄씩 떠오름 */
+html[data-raid-stage] .section-raid::before {
+    filter: var(--off-filter);
+}
+html[data-raid-stage="on"] .section-raid::before {
+    animation: item-bg-on var(--raid-bg-on) ease-out both; /* item 과 같은 리듬 */
+}
+html[data-raid-stage] .section-raid .content-wrapper::before,
+html[data-raid-stage] .section-raid .content-wrapper::after,
+html[data-raid-stage] .section-raid .content-wrapper > .headline,
+html[data-raid-stage] .section-raid .content-wrapper > .tab-list,
+html[data-raid-stage] .section-raid .tab-panel > * {
+    opacity: 0;
+}
+html[data-raid-stage="on"] .section-raid .content-wrapper::before {
+    animation: raid-frame-draw var(--raid-frame-draw) linear both;
+    animation-delay: var(--raid-panel-delay);
+}
+html[data-raid-stage="on"] .section-raid .content-wrapper::after {
+    animation:
+        story-panel-on var(--story-panel-on) ease-out both,
+        story-panel-glint var(--story-panel-glint) ease-out both;
+    animation-delay:
+        calc(var(--raid-panel-delay) + var(--raid-body-delay)),
+        calc(var(--raid-panel-delay) + var(--raid-body-delay) + 0.1s);
+}
+/* 줄 떠오름: 제목 0, 탭 1, 탭 패널 안은 본문 2, 대사 3, 캡션 4 */
+html[data-raid-stage="on"] .section-raid .content-wrapper > .headline,
+html[data-raid-stage="on"] .section-raid .content-wrapper > .tab-list,
+html[data-raid-stage="on"] .section-raid .tab-panel > * {
+    animation: story-line-in var(--story-line-in) ease-out both;
+    animation-delay: calc(
+        var(--raid-panel-delay) + var(--raid-line-start) +
+            var(--story-line-step) * var(--n, 0)
+    );
+}
+html[data-raid-stage] .section-raid .content-wrapper > .headline {
+    --n: 0;
+}
+html[data-raid-stage] .section-raid .content-wrapper > .tab-list {
+    --n: 1;
+}
+html[data-raid-stage] .section-raid .tab-panel > :nth-child(1) {
+    --n: 2;
+}
+html[data-raid-stage] .section-raid .tab-panel > :nth-child(2) {
+    --n: 3;
+}
+html[data-raid-stage] .section-raid .tab-panel > :nth-child(3) {
+    --n: 4;
+}
+/* 금테 그리기: story-frame-draw 와 같은 방식. 구간은 raid 패널의 변 길이(가로 554 : 세로 506)에 비례해 선 속도를 같게 맞췄다 */
+@keyframes raid-frame-draw {
+    0% {
+        opacity: 1;
+        background-size:
+            0 3px,
+            3px 0,
+            0 3px,
+            3px 0;
+    }
+    26.1% {
+        background-size:
+            100% 3px,
+            3px 0,
+            0 3px,
+            3px 0; /* 위 */
+    }
+    50% {
+        background-size:
+            100% 3px,
+            3px 100%,
+            0 3px,
+            3px 0; /* 오른쪽 */
+    }
+    76.1% {
+        background-size:
+            100% 3px,
+            3px 100%,
+            100% 3px,
+            3px 0; /* 아래 */
+    }
+    100% {
+        opacity: 1;
+        background-size:
+            100% 3px,
+            3px 100%,
+            100% 3px,
+            3px 100%; /* 왼쪽 */
+    }
+}
+
+/* raid 정전 (html[data-raid-power="off"]): 섹션이 --power-ratio 보다 덜 보이면 배경이 한 번에 꺼지고 패널은 실루엣으로 남는다.
+   다시 그만큼 보이면 바로 켜진다. item 과 같은 규칙. (js/sections.js Raid) */
+html[data-raid-power="off"] .section-raid::before {
+    opacity: 0; /* 트랜지션을 두지 않아 정전처럼 한 번에 꺼지고 켜진다 */
+}
+html[data-raid-power="off"] .section-raid .content-wrapper {
+    filter: var(--off-filter);
+}

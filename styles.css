@@ -256,6 +256,7 @@ code { font-family: Consolas, "SFMono-Regular", monospace; }
 .event-card .news-image--october img { object-position: center bottom; }
 .event-card .news-image--theia img { object-position: center top; }
 .event-card .news-image--pioneer img { object-position: center bottom; }
+.event-card .news-image--blackout img { object-fit: contain; object-position: center; }
 .event-card > div { position: relative; z-index: 2; padding: 22px; }
 .event-card time { color: #c79761; font: 700 12px Georgia, serif; letter-spacing: .1em; }
 .event-card h3 { margin: 5px 0; }

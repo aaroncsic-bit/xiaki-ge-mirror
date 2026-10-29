@@ -1,0 +1,5 @@
+/* Traditional Chinese text, retaining the official desktop geometry. */
+body { font-family: "Noto Serif TC", "PMingLiU", serif; }
+.section .content-wrapper { word-break: normal; overflow-wrap: break-word; }
+.globalnav .globalnav-content { min-width: 1200px; }
+.localization-credit { color: #b9a98b; font-family: "Noto Serif TC", serif; }
