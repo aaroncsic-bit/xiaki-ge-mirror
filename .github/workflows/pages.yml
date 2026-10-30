@@ -35,6 +35,7 @@ jobs:
           node scripts/test-notices.mjs
           node scripts/test-http.mjs
           node scripts/test-blackout.mjs
+          node scripts/test-blackout-mobile.mjs
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:

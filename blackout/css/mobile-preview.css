@@ -1,0 +1,47 @@
+/* Loaded only by the phone gate. Official desktop styles stay untouched. */
+html.blackout-mobile { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+.blackout-mobile body {
+    margin: 0; padding-top: var(--bo-toolbar-height, 84px);
+    padding-bottom: max(0px, calc(100vh - var(--bo-toolbar-height, 84px) - 1094px * var(--bo-preview-scale)));
+    --start-ratio: .3; --power-ratio: .3;
+}
+.blackout-mobile .globalnav { display: none; }
+.blackout-mobile main { width: 1600px; zoom: var(--bo-preview-scale); }
+.blackout-mobile .section { width: 1600px; height: 1000px; }
+.blackout-mobile .section-character .section-content .content-wrapper { margin-top: calc(500px - var(--panel-tallest) / 2); }
+.blackout-mobile .globalfooter { width: 1600px; zoom: var(--bo-preview-scale); }
+.blackout-mobile .bo-mobile-toolbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 15; padding: 5px max(8px, env(safe-area-inset-right)) 3px max(8px, env(safe-area-inset-left));
+    color: #e9d5af; background: rgba(14, 13, 12, .97); border-bottom: 1px solid #695034;
+    font: 14px/1.4 system-ui, sans-serif;
+}
+.blackout-mobile .bo-mobile-row, .blackout-mobile .bo-mobile-choices { display: flex; gap: 5px; align-items: center; }
+.blackout-mobile .bo-mobile-choices { margin-top: 4px; }
+.blackout-mobile .bo-mobile-choices[hidden], .blackout-mobile .bo-mobile-picture[hidden] { display: none; }
+.blackout-mobile .bo-mobile-toolbar select, .blackout-mobile .bo-mobile-toolbar button, .blackout-mobile .bo-mobile-home {
+    min-height: 44px; border: 1px solid #655238; border-radius: 3px; background: #221e18; color: #f0dfbd; padding: 5px 8px; font: inherit;
+}
+.blackout-mobile .bo-mobile-toolbar select { flex: 1; min-width: 0; font-size: 16px; }
+.blackout-mobile .bo-mobile-toolbar button, .blackout-mobile .bo-mobile-home { flex-shrink: 0; white-space: nowrap; }
+.blackout-mobile .bo-mobile-home { display: grid; place-items: center; text-decoration: none; font-size: 11px; }
+.blackout-mobile .bo-mobile-toolbar button:disabled { opacity: .4; }
+.blackout-mobile .bo-mobile-hint { margin: 3px 0 0; text-align: center; font-size: 12px; color: #b3a38b; }
+.blackout-mobile .bo-mobile-reader {
+    position: fixed; inset: 0; margin: auto; width: calc(100% - 24px); max-width: 720px; max-height: 85vh; max-height: 85dvh;
+    padding: 0; border: 1px solid #94754e; background: #191714; color: #f0e4ce; box-sizing: border-box; overflow: hidden;
+    font: 17px/1.85 "Noto Serif TC", serif;
+}
+.blackout-mobile .bo-mobile-reader::backdrop { background: rgba(0, 0, 0, .85); }
+.blackout-mobile .bo-mobile-reader[open] { display: flex; flex-direction: column; }
+.blackout-mobile .bo-mobile-reader header { display: flex; flex-shrink: 0; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid #655238; }
+.blackout-mobile .bo-mobile-reader h2 { flex: 1; margin: 0; font: 600 16px/1.5 system-ui, sans-serif; color: #dec08b; }
+.blackout-mobile .bo-mobile-reader button { min-width: 48px; min-height: 44px; color: #f0dfbd; border: 1px solid #94754e; padding: 8px; }
+.blackout-mobile .bo-mobile-copy { padding: 4px 18px 20px; overflow-y: auto; min-height: 0; overscroll-behavior: contain; }
+.blackout-mobile .bo-mobile-copy p { margin: 1em 0; white-space: pre-line; }
+.blackout-mobile .bo-mobile-copy h3 { font-size: 19px; color: #dec08b; margin: 1em 0 .6em; }
+.blackout-mobile .lightbox .lightbox-figure { max-width: calc(100% - 20px); }
+.blackout-mobile .lightbox .lightbox-image { max-height: calc(100vh - 150px); }
+.blackout-mobile .lightbox .lightbox-prev, .blackout-mobile .lightbox .lightbox-next { top: auto; bottom: 12px; width: 48px; height: 48px; margin: 0; }
+.blackout-mobile .lightbox .lightbox-prev { left: 20px; }
+.blackout-mobile .lightbox .lightbox-next { right: 20px; }
+.blackout-mobile .lightbox .lightbox-close { top: 10px; right: 10px; width: 48px; height: 48px; }
