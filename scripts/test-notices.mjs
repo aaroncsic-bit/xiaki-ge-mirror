@@ -14,8 +14,8 @@ const initialFeed = buildFeed({
   now: '2026-10-28T10:00:00.000Z'
 });
 
-assert.equal(initialFeed.notices.length, 14, '應轉換 14 篇目前公告');
-assert.equal(initialFeed.notices.filter(notice => notice.category === 'sea_event').length, 6);
+assert.equal(initialFeed.notices.length, 15, '應轉換 15 篇目前公告');
+assert.equal(initialFeed.notices.filter(notice => notice.category === 'sea_event').length, 7);
 assert.equal(initialFeed.notices.filter(notice => notice.category === 'kr_update').length, 7);
 assert.equal(initialFeed.notices.filter(notice => notice.category === 'sea_maintenance').length, 1);
 assert.ok(initialFeed.notices.every(notice => notice.revision === 1));
@@ -24,32 +24,37 @@ assert.ok(initialFeed.notices.filter(notice => notice.server_scope === 'KR').eve
 const initialMaintenance = initialFeed.notices.find(notice => notice.category === 'sea_maintenance');
 assert.ok(initialMaintenance.content_text.includes('夏希漢化繁中活動頁'));
 assert.ok(initialMaintenance.content_text.includes('SEA 官方原文活動頁'));
-assert.ok(initialMaintenance.content_text.includes('開拓地圖副本－解放村莊'));
+assert.ok(initialMaintenance.content_text.includes('召喚石道具'));
+assert.ok(initialMaintenance.content_text.includes('工匠羅勒克的打工'));
+const lorchEvent = initialFeed.notices.find(notice => notice.id === 'sea-event-2026-11-10-meister-lorch-demanding-customers');
+assert.equal(lorchEvent.category, 'sea_event');
+assert.ok(lorchEvent.content_text.includes('Superior B 經驗值卡片'));
+assert.ok(lorchEvent.content_text.includes('活動用法蘭諾武器召喚石'));
 assert.ok(!initialMaintenance.content_text.includes('EVENT GUIDE 01'), '維修公告不得誤用活動頁正文');
 assert.deepEqual(initialMaintenance.maintenance_windows, [
   {
     timezone_code: 'SGT',
     timezone_label: '新加坡時間',
-    date: '2026-10-28',
+    date: '2026-11-11',
     start_time: '13:00',
-    end_time: '18:00',
-    display_text: '2026年10月28日 13:00～18:00'
+    end_time: '16:00',
+    display_text: '2026年11月11日 13:00～16:00'
   },
   {
     timezone_code: 'EST',
     timezone_label: '美國東部時間',
-    date: '2026-10-28',
+    date: '2026-11-11',
     start_time: '00:00',
-    end_time: '04:00',
-    display_text: '2026年10月28日 00:00～04:00'
+    end_time: '03:00',
+    display_text: '2026年11月11日 00:00～03:00'
   },
   {
     timezone_code: 'CET',
     timezone_label: '歐洲中部時間',
-    date: '2026-10-28',
+    date: '2026-11-11',
     start_time: '06:00',
-    end_time: '10:00',
-    display_text: '2026年10月28日 06:00～10:00'
+    end_time: '09:00',
+    display_text: '2026年11月11日 06:00～09:00'
   }
 ]);
 assert.ok(initialFeed.notices.filter(notice => notice.category !== 'sea_maintenance').every(notice => !('maintenance_windows' in notice)));
@@ -93,8 +98,8 @@ assert.equal(lfFeed.feed_revision, 1, '換行格式不同不得增加 feed_revis
 assert.ok(lfFeed.notices.every(notice => notice.revision === 1), '換行格式不同不得增加公告修訂版號');
 
 const changedMaintenanceHtml = originalHtml.replace(
-  '2026年10月28日 13:00～18:00',
-  '2026年10月28日 13:30～18:00'
+  '2026年11月11日 13:00～16:00',
+  '2026年11月11日 13:30～16:00'
 );
 const changedMaintenanceFeed = buildFeed({
   rootDir,
@@ -108,7 +113,7 @@ assert.equal(changedMaintenance.maintenance_windows[0].start_time, '13:30');
 assert.ok(changedMaintenanceFeed.notices.filter(notice => notice.category !== 'sea_maintenance').every(notice => notice.revision === 1));
 
 const missingTimezoneHtml = originalHtml.replace(
-  /\s*<p><strong>CET／歐洲中部時間<\/strong><time[^>]*>2026年10月28日 06:00～10:00<\/time><\/p>/,
+  /\s*<p><strong>CET／歐洲中部時間<\/strong><time[^>]*>2026年11月11日 06:00～09:00<\/time><\/p>/,
   ''
 );
 assert.throws(
@@ -146,7 +151,7 @@ const withdrawnFeed = buildFeed({
   now: '2026-10-14T13:00:00.000Z'
 });
 const withdrawnNotice = withdrawnFeed.notices.find(notice => notice.id === escapedId);
-assert.equal(withdrawnFeed.notices.length, 14, '撤回公告應保留墓碑紀錄');
+assert.equal(withdrawnFeed.notices.length, 15, '撤回公告應保留墓碑紀錄');
 assert.equal(withdrawnNotice.revision, 3, '撤回時應再次增加修訂版號');
 assert.equal(withdrawnNotice.status, 'withdrawn');
 assert.equal(withdrawnNotice.withdrawn_at, '2026-10-14T13:00:00.000Z');
@@ -175,4 +180,4 @@ assert.equal(generalNotice.published_precision, 'datetime');
 assert.equal(generalNotice.published_at, '2026-10-14T21:00:00+08:00');
 validateFeed(allCategoryFeed);
 
-console.log('公告接口測試成功：14 篇轉換、三時區維修時間、舊資料遷移、未變更、修改、撤回、五種分類與日期精度規則均通過。');
+console.log('公告接口測試成功：15 篇轉換、三時區維修時間、舊資料遷移、未變更、修改、撤回、五種分類與日期精度規則均通過。');

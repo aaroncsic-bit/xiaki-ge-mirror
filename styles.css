@@ -286,6 +286,7 @@ code { font-family: Consolas, "SFMono-Regular", monospace; }
 .maintenance-details[hidden] { display: none; }
 .maintenance-heading { margin-bottom: 34px; text-align: center; }
 .maintenance-heading h3 { margin: 6px 0 0; font-size: 36px; font-weight: 500; letter-spacing: .08em; }
+.maintenance-banner { display: block; width: min(100%, 1040px); height: auto; margin: 22px auto 0; border: 1px solid #574c3c; }
 .maintenance-group + .maintenance-group { margin-top: 42px; padding-top: 42px; border-top: 1px solid #574c3c; }
 .maintenance-group h4 { display: flex; align-items: center; gap: 14px; margin: 0 0 20px; color: #f0e4ca; font-size: 26px; }
 .maintenance-group h4 span { display: grid; width: 44px; height: 44px; place-items: center; flex: 0 0 auto; color: #d6b574; border: 1px solid #746044; background: #201b15; font: 700 12px/1 Georgia, serif; }

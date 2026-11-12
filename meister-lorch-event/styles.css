@@ -1,0 +1,8 @@
+.guest-note, .section-intro { margin: 28px 0 0; color: #d4c9b9; }
+.section-intro { margin-top: 0; }
+th[scope="rowgroup"] { min-width: 7.5rem; vertical-align: middle; }
+td[rowspan] { vertical-align: middle; }
+@media (max-width: 760px) {
+  .table-scroll table { min-width: 610px; }
+  .guest-note { margin-top: 24px; }
+}
