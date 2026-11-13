@@ -8,6 +8,16 @@ const expectedPaths = [
   '/',
   '/data/notices.json',
   '/data/notices.schema.json',
+  '/winter-2026-character-preview/',
+  '/winter-2026-character-preview/styles.css',
+  '/winter-2026-character-preview/assets/hero.png',
+  '/winter-2026-character-preview/assets/card.png',
+  '/winter-2026-character-preview/assets/camiel-banner.png',
+  '/winter-2026-character-preview/assets/camiel-portrait.png',
+  '/winter-2026-character-preview/assets/melita-banner.png',
+  '/winter-2026-character-preview/assets/melita-portrait.png',
+  '/winter-2026-character-preview/assets/duo-banner.png',
+  '/winter-2026-character-preview/assets/duo-portrait.png',
   '/meister-lorch-event/',
   '/meister-lorch-event/assets/hero.jpg',
   '/assets/sea-maintenance-2026-11-11.jpg',
@@ -75,14 +85,14 @@ try {
     throw new Error('notices.json 的 Content-Type 不是 application/json。');
   }
   const feed = await feedResponse.json();
-  if (feed.schema_version !== 1 || feed.notices.length !== 18) {
+  if (feed.schema_version !== 1 || feed.notices.length !== 19) {
     throw new Error('HTTP 取得的公告 JSON 結構或數量錯誤。');
   }
 
   const schema = await (await fetch(`${baseUrl}/data/notices.schema.json`)).json();
   if (schema.title !== '夏希漢化公告 Feed') throw new Error('公告 schema 無法正確讀取。');
 
-  console.log('本機 HTTP 測試成功：首頁、4 個 SEA 活動頁、7 個韓版子頁、BLACKOUT 圖卡與繁中圖片、18 篇公告 JSON 與 schema 均可正常讀取。');
+  console.log('本機 HTTP 測試成功：首頁、4 個 SEA 活動頁、8 個韓版子頁、冬季角色7張繁中配圖、BLACKOUT素材、19篇公告 JSON 與 schema 均可正常讀取。');
 } finally {
   await new Promise(resolve => server.close(resolve));
 }

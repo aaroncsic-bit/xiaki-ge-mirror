@@ -14,9 +14,9 @@ const initialFeed = buildFeed({
   now: '2026-10-28T10:00:00.000Z'
 });
 
-assert.equal(initialFeed.notices.length, 15, '應轉換 15 篇目前公告');
+assert.equal(initialFeed.notices.length, 16, '應轉換 16 篇目前公告');
 assert.equal(initialFeed.notices.filter(notice => notice.category === 'sea_event').length, 7);
-assert.equal(initialFeed.notices.filter(notice => notice.category === 'kr_update').length, 7);
+assert.equal(initialFeed.notices.filter(notice => notice.category === 'kr_update').length, 8);
 assert.equal(initialFeed.notices.filter(notice => notice.category === 'sea_maintenance').length, 1);
 assert.ok(initialFeed.notices.every(notice => notice.revision === 1));
 assert.ok(initialFeed.notices.every(notice => notice.published_at === null));
@@ -151,7 +151,7 @@ const withdrawnFeed = buildFeed({
   now: '2026-10-14T13:00:00.000Z'
 });
 const withdrawnNotice = withdrawnFeed.notices.find(notice => notice.id === escapedId);
-assert.equal(withdrawnFeed.notices.length, 15, '撤回公告應保留墓碑紀錄');
+assert.equal(withdrawnFeed.notices.length, 16, '撤回公告應保留墓碑紀錄');
 assert.equal(withdrawnNotice.revision, 3, '撤回時應再次增加修訂版號');
 assert.equal(withdrawnNotice.status, 'withdrawn');
 assert.equal(withdrawnNotice.withdrawn_at, '2026-10-14T13:00:00.000Z');
@@ -180,4 +180,4 @@ assert.equal(generalNotice.published_precision, 'datetime');
 assert.equal(generalNotice.published_at, '2026-10-14T21:00:00+08:00');
 validateFeed(allCategoryFeed);
 
-console.log('公告接口測試成功：15 篇轉換、三時區維修時間、舊資料遷移、未變更、修改、撤回、五種分類與日期精度規則均通過。');
+console.log('公告接口測試成功：16 篇轉換、三時區維修時間、舊資料遷移、未變更、修改、撤回、五種分類與日期精度規則均通過。');
