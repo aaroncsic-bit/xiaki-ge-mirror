@@ -318,6 +318,9 @@ code { font-family: Consolas, "SFMono-Regular", monospace; }
 .maintenance-table th { color: #f2dfb5; background: linear-gradient(180deg, #514330, #2d271e); }
 .maintenance-table tbody tr:nth-child(even) { background: rgba(120,96,61,.09); }
 .maintenance-table--two-column th:first-child, .maintenance-table--two-column td:first-child { width: 48%; }
+.maintenance-table--balance { min-width: 620px; table-layout: fixed; }
+.maintenance-table--balance th:first-child { width: 23%; overflow-wrap: anywhere; }
+.maintenance-table--balance td { text-align: left; vertical-align: top; }
 .maintenance-footer { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 38px; padding-top: 30px; border-top: 1px solid #574c3c; }
 .maintenance-collapse { min-width: 220px; }
 

@@ -1,0 +1,7 @@
+.table-scroll table { min-width: 0; }
+.table-scroll th:last-child, .table-scroll td:last-child { white-space: nowrap; }
+
+@media (max-width: 560px) {
+  .table-scroll th, .table-scroll td { padding: 9px 7px; font-size: .9rem; }
+  .table-scroll th { letter-spacing: normal; }
+}
