@@ -1,6 +1,20 @@
 .table-scroll table { min-width: 0; }
 .table-scroll th:last-child, .table-scroll td:last-child { white-space: nowrap; }
 
+.stage-rewards .stage-column { width: 21%; }
+.stage-rewards .quantity-column { width: 15%; }
+.stage-rewards tbody { background: #151310; }
+.stage-rewards tbody:nth-of-type(even) { background: #221c16; }
+.stage-rewards tbody tr > :is(th, td) {
+  border-bottom: 1px solid #4a4033;
+  background: inherit;
+}
+.stage-rewards th[scope="rowgroup"] {
+  vertical-align: middle;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
 @media (max-width: 560px) {
   .table-scroll th, .table-scroll td { padding: 9px 7px; font-size: .9rem; }
   .table-scroll th { letter-spacing: normal; }
