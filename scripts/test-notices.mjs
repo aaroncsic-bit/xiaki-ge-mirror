@@ -34,7 +34,7 @@ assert.ok(!initialMaintenance.content_text.includes('EVENT GUIDE 01'), '維修�
 assert.deepEqual(initialMaintenance.maintenance_windows, [
   {
     timezone_code: 'SGT',
-    timezone_label: '新加坡時間',
+    timezone_label: '台灣時間',
     date: '2026-11-18',
     start_time: '13:00',
     end_time: '16:00',
