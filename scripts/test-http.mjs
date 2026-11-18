@@ -92,14 +92,14 @@ try {
     throw new Error('notices.json 的 Content-Type 不是 application/json。');
   }
   const feed = await feedResponse.json();
-  if (feed.schema_version !== 1 || feed.notices.length !== 23) {
+  if (feed.schema_version !== 1 || feed.notices.length !== 24) {
     throw new Error('HTTP 取得的公告 JSON 結構或數量錯誤。');
   }
 
   const schema = await (await fetch(`${baseUrl}/data/notices.schema.json`)).json();
   if (schema.title !== '夏希漢化公告 Feed') throw new Error('公告 schema 無法正確讀取。');
 
-  console.log('本機 HTTP 測試成功：首頁、7 個 SEA 活動頁、8 個韓版子頁、冬季角色7張繁中配圖、BLACKOUT素材、23 篇公告 JSON 與 schema 均可正常讀取。');
+  console.log('本機 HTTP 測試成功：首頁、7 個 SEA 活動頁、8 個韓版子頁、冬季角色7張繁中配圖、BLACKOUT素材、24 篇公告 JSON 與 schema 均可正常讀取。');
 } finally {
   await new Promise(resolve => server.close(resolve));
 }

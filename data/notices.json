@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "feed_revision": 23,
-  "generated_at": "2026-11-18T07:31:12.185Z",
+  "feed_revision": 24,
+  "generated_at": "2026-11-18T09:17:11.773Z",
   "source": {
     "name": "夏希漢化 GitHub 鏡像站",
     "site_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/",
@@ -470,6 +470,55 @@
         }
       ],
       "content_hash": "sha256:213df2863c8f7751fe76d66aa4dccd7dde4a575f49d96301bcef6a1fab604c36"
+    },
+    {
+      "id": "sea-maintenance-2026-11-18-emergency",
+      "revision": 1,
+      "status": "published",
+      "category": "sea_maintenance",
+      "category_label": "SEA 維修",
+      "server_scope": "SEA",
+      "sea_release_status": "confirmed",
+      "title": "2026年11月18日 SEA 緊急維修公告",
+      "summary": "Ferruccio 伺服器因商城未顯示林頓箱子商品，於台灣時間 17:10～17:20 進行緊急維修。",
+      "content_text": "Ferruccio 伺服器\nSEA 緊急維修公告\n\nSGT／台灣時間 2026年11月18日 17:10～17:20\n\nEST／美國東部時間（換算） 2026年11月18日 04:10～04:20\n\nCET／歐洲中部時間（換算） 2026年11月18日 10:10～10:20\n\n維修原因\n\nFerruccio 伺服器的遊戲內商城未顯示林頓箱子商品，因此官方安排短暫維修。\n\nFerruccio 伺服器補償\n\n- 黃金時段增益（Golden Time Buff）持續 6 小時。\n\n- 所有使用中的道具延長 10 小時。\n\n查看 SEA 官方緊急維修公告",
+      "published_at": null,
+      "published_date": "2026-11-18",
+      "published_precision": "date",
+      "updated_at": "2026-11-18T09:17:11.773Z",
+      "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/#maintenance",
+      "source_url": "https://www.granadoespada.com/page/newsview.php?n=870",
+      "image_url": null,
+      "important": true,
+      "expires_at": "2026-11-18T17:20:00+08:00",
+      "withdrawn_at": null,
+      "maintenance_windows": [
+        {
+          "timezone_code": "SGT",
+          "timezone_label": "台灣時間",
+          "date": "2026-11-18",
+          "start_time": "17:10",
+          "end_time": "17:20",
+          "display_text": "2026年11月18日 17:10～17:20"
+        },
+        {
+          "timezone_code": "EST",
+          "timezone_label": "美國東部時間（換算）",
+          "date": "2026-11-18",
+          "start_time": "04:10",
+          "end_time": "04:20",
+          "display_text": "2026年11月18日 04:10～04:20"
+        },
+        {
+          "timezone_code": "CET",
+          "timezone_label": "歐洲中部時間（換算）",
+          "date": "2026-11-18",
+          "start_time": "10:10",
+          "end_time": "10:20",
+          "display_text": "2026年11月18日 10:10～10:20"
+        }
+      ],
+      "content_hash": "sha256:ab1198be9189ddda2d7321259a764a313d320866aca0a843b14f882954191164"
     },
     {
       "id": "sea-maintenance-2026-11-11",

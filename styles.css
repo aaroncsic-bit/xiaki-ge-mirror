@@ -274,6 +274,9 @@ code { font-family: Consolas, "SFMono-Regular", monospace; }
 
 .maintenance-section { border-top: 1px solid #554733; background: radial-gradient(circle at 50% 0%, rgba(130,91,44,.12), transparent 34rem), linear-gradient(180deg, #100f0c, #090907); }
 .maintenance-panel { max-width: 980px; margin-inline: auto; overflow: hidden; }
+.maintenance-emergency { margin-top: 24px; scroll-margin-top: 100px; }
+.maintenance-emergency .maintenance-heading { margin: 0; padding: 20px 16px 8px; }
+.maintenance-emergency .maintenance-change h4 { margin: 0 0 8px; color: #ead9b7; font-size: 18px; }
 .maintenance-times { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .maintenance-times p { margin: 0; padding: 28px 24px; text-align: center; border-right: 1px solid #5c4f3d; }
 .maintenance-times p:last-child { border-right: 0; }
