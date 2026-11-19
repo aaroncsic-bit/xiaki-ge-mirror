@@ -1,0 +1,14 @@
+.article-heading h1 { white-space: normal; font-size: clamp(1.75rem, 4vw, 3.4rem); }
+.content-section h2.section-banner { margin: 0 0 2rem; }
+.prose h3:not(:first-child) { margin-top: 2.5rem; }
+.prose h4 { margin-bottom: .35rem; font-size: 1.12rem; }
+.media-frame video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #0d0e10; }
+.screenshot { max-width: 720px; margin-inline: auto; }
+.prose table { min-width: 0; font-variant-numeric: tabular-nums; }
+.prose th, .prose td { padding: .7em .5em; }
+.prose th[scope="row"] { background: #f4f5f5; color: var(--ink); font-weight: 500; }
+kbd, code { font: .94em/1.4 Consolas, monospace; background: #f1f2f3; padding: .12em .35em; }
+@media (max-width: 600px) {
+  .prose table { font-size: .86rem; }
+  .prose th, .prose td { padding: .6em .3em; }
+}
