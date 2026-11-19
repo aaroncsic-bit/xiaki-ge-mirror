@@ -14,19 +14,22 @@ const initialFeed = buildFeed({
   now: '2026-10-28T10:00:00.000Z'
 });
 
-assert.equal(initialFeed.notices.length, 22, '應轉換 22 篇目前公告');
+assert.equal(initialFeed.notices.length, 21, '應轉換 21 篇目前公告');
 assert.equal(initialFeed.notices.filter(notice => notice.category === 'sea_event').length, 10);
 assert.equal(initialFeed.notices.filter(notice => notice.category === 'kr_update').length, 10);
-assert.equal(initialFeed.notices.filter(notice => notice.category === 'sea_maintenance').length, 2);
+assert.equal(initialFeed.notices.filter(notice => notice.category === 'sea_maintenance').length, 1);
 assert.ok(initialFeed.notices.every(notice => notice.revision === 1));
 assert.ok(initialFeed.notices.every(notice => notice.published_at === null));
 assert.ok(initialFeed.notices.filter(notice => notice.server_scope === 'KR').every(notice => notice.sea_release_status === 'unconfirmed'));
-const scheduledMaintenanceId = 'sea-maintenance-2026-11-18';
-const initialMaintenance = initialFeed.notices.find(notice => notice.id === scheduledMaintenanceId);
-assert.ok(initialMaintenance.content_text.includes('夏希漢化繁中活動頁'));
-assert.ok(initialMaintenance.content_text.includes('SEA 官方原文活動頁'));
-assert.ok(initialMaintenance.content_text.includes('高級魔法兵團多洛莉絲'));
-assert.ok(initialMaintenance.content_text.includes('我想成為大人！'));
+const maintenanceId = 'sea-maintenance-2026-11-19-temporary';
+const initialMaintenance = initialFeed.notices.find(notice => notice.id === maintenanceId);
+assert.equal(initialMaintenance.source_url, 'https://www.granadoespada.com/page/newsview.php?n=871');
+assert.equal(initialMaintenance.important, true);
+assert.equal(initialMaintenance.expires_at, '2026-11-19T14:45:00+08:00');
+assert.ok(initialMaintenance.content_text.includes('全伺服器'));
+assert.ok(initialMaintenance.content_text.includes('角色改名服務將免費開放至下次例行維修前'));
+assert.ok(initialMaintenance.content_text.includes('Ferruccio 伺服器補償'));
+assert.ok(initialMaintenance.content_text.includes('所有使用中的道具延長 10 小時'));
 const lorchEvent = initialFeed.notices.find(notice => notice.id === 'sea-event-2026-11-10-meister-lorch-demanding-customers');
 assert.equal(lorchEvent.category, 'sea_event');
 assert.ok(lorchEvent.content_text.includes('Superior B 經驗值卡片'));
@@ -36,43 +39,33 @@ assert.deepEqual(initialMaintenance.maintenance_windows, [
   {
     timezone_code: 'SGT',
     timezone_label: '台灣時間',
-    date: '2026-11-18',
-    start_time: '13:00',
-    end_time: '16:00',
-    display_text: '2026年11月18日 13:00～16:00'
+    date: '2026-11-19',
+    start_time: '14:30',
+    end_time: '14:45',
+    display_text: '2026年11月19日 14:30～14:45'
   },
   {
     timezone_code: 'EST',
     timezone_label: '美國東部時間',
-    date: '2026-11-18',
-    start_time: '00:00',
-    end_time: '03:00',
-    display_text: '2026年11月18日 00:00～03:00'
+    date: '2026-11-19',
+    start_time: '01:30',
+    end_time: '01:45',
+    display_text: '2026年11月19日 01:30～01:45'
   },
   {
     timezone_code: 'CET',
     timezone_label: '歐洲中部時間',
-    date: '2026-11-18',
-    start_time: '06:00',
-    end_time: '09:00',
-    display_text: '2026年11月18日 06:00～09:00'
+    date: '2026-11-19',
+    start_time: '07:30',
+    end_time: '07:45',
+    display_text: '2026年11月19日 07:30～07:45'
   }
 ]);
 assert.ok(initialFeed.notices.filter(notice => notice.category !== 'sea_maintenance').every(notice => !('maintenance_windows' in notice)));
-const emergencyMaintenance = initialFeed.notices.find(notice => notice.id === 'sea-maintenance-2026-11-18-emergency');
-assert.equal(emergencyMaintenance.category, 'sea_maintenance');
-assert.equal(emergencyMaintenance.important, true);
-assert.equal(emergencyMaintenance.source_url, 'https://www.granadoespada.com/page/newsview.php?n=870');
-assert.equal(emergencyMaintenance.expires_at, '2026-11-18T17:20:00+08:00');
-assert.deepEqual(
-  emergencyMaintenance.maintenance_windows.map(({ timezone_code, start_time, end_time }) => [timezone_code, start_time, end_time]),
-  [['SGT', '17:10', '17:20'], ['EST', '04:10', '04:20'], ['CET', '10:10', '10:20']]
-);
-assert.ok(emergencyMaintenance.content_text.includes('所有使用中的道具延長 10 小時'));
 validateFeed(initialFeed);
 
 const legacyFeed = structuredClone(initialFeed);
-delete legacyFeed.notices.find(notice => notice.id === scheduledMaintenanceId).maintenance_windows;
+delete legacyFeed.notices.find(notice => notice.id === maintenanceId).maintenance_windows;
 const migratedFeed = buildFeed({
   rootDir,
   indexHtml: originalHtml,
@@ -80,8 +73,8 @@ const migratedFeed = buildFeed({
   now: '2026-10-28T10:30:00.000Z'
 });
 assert.equal(migratedFeed.feed_revision, 2, '新增結構化維修時間時應增加 feed_revision');
-assert.equal(migratedFeed.notices.find(notice => notice.id === scheduledMaintenanceId).revision, 2, 'SEA 維修公告應增加修訂版號');
-assert.ok(migratedFeed.notices.filter(notice => notice.id !== scheduledMaintenanceId).every(notice => notice.revision === 1), '其他公告不得受到影響');
+assert.equal(migratedFeed.notices.find(notice => notice.id === maintenanceId).revision, 2, 'SEA 維修公告應增加修訂版號');
+assert.ok(migratedFeed.notices.filter(notice => notice.id !== maintenanceId).every(notice => notice.revision === 1), '其他公告不得受到影響');
 
 const unchangedFeed = buildFeed({
   rootDir,
@@ -109,8 +102,8 @@ assert.equal(lfFeed.feed_revision, 1, '換行格式不同不得增加 feed_revis
 assert.ok(lfFeed.notices.every(notice => notice.revision === 1), '換行格式不同不得增加公告修訂版號');
 
 const changedMaintenanceHtml = originalHtml.replace(
-  '2026年11月18日 13:00～16:00',
-  '2026年11月18日 13:30～16:00'
+  '2026年11月19日 14:30～14:45',
+  '2026年11月19日 14:35～14:45'
 );
 const changedMaintenanceFeed = buildFeed({
   rootDir,
@@ -118,13 +111,13 @@ const changedMaintenanceFeed = buildFeed({
   previousFeed: initialFeed,
   now: '2026-10-28T11:30:00.000Z'
 });
-const changedMaintenance = changedMaintenanceFeed.notices.find(notice => notice.id === scheduledMaintenanceId);
+const changedMaintenance = changedMaintenanceFeed.notices.find(notice => notice.id === maintenanceId);
 assert.equal(changedMaintenance.revision, 2, '維修時間變更應增加公告修訂版號');
-assert.equal(changedMaintenance.maintenance_windows[0].start_time, '13:30');
-assert.ok(changedMaintenanceFeed.notices.filter(notice => notice.id !== scheduledMaintenanceId).every(notice => notice.revision === 1));
+assert.equal(changedMaintenance.maintenance_windows[0].start_time, '14:35');
+assert.ok(changedMaintenanceFeed.notices.filter(notice => notice.id !== maintenanceId).every(notice => notice.revision === 1));
 
 const missingTimezoneHtml = originalHtml.replace(
-  /\s*<p><strong>CET／歐洲中部時間<\/strong><time[^>]*>2026年11月18日 06:00～09:00<\/time><\/p>/,
+  /\s*<p><strong>CET／歐洲中部時間<\/strong><time[^>]*>2026年11月19日 07:30～07:45<\/time><\/p>/,
   ''
 );
 assert.throws(
@@ -162,7 +155,7 @@ const withdrawnFeed = buildFeed({
   now: '2026-10-14T13:00:00.000Z'
 });
 const withdrawnNotice = withdrawnFeed.notices.find(notice => notice.id === escapedId);
-assert.equal(withdrawnFeed.notices.length, 22, '撤回公告應保留墓碑紀錄');
+assert.equal(withdrawnFeed.notices.length, 21, '撤回公告應保留墓碑紀錄');
 assert.equal(withdrawnNotice.revision, 3, '撤回時應再次增加修訂版號');
 assert.equal(withdrawnNotice.status, 'withdrawn');
 assert.equal(withdrawnNotice.withdrawn_at, '2026-10-14T13:00:00.000Z');
@@ -191,4 +184,4 @@ assert.equal(generalNotice.published_precision, 'datetime');
 assert.equal(generalNotice.published_at, '2026-10-14T21:00:00+08:00');
 validateFeed(allCategoryFeed);
 
-console.log('公告接口測試成功：22 篇轉換、例行與緊急維修時間、舊資料遷移、未變更、修改、撤回、五種分類與日期精度規則均通過。');
+console.log('公告接口測試成功：21 篇轉換、臨時維修時間、舊資料遷移、未變更、修改、撤回、五種分類與日期精度規則均通過。');
