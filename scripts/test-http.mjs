@@ -9,6 +9,8 @@ const expectedPaths = [
   '/data/notices.json',
   '/data/notices.schema.json',
   '/winter-2026-character-preview/',
+  '/senapati-camiel/',
+  '/senapati-camiel/styles.css',
   '/client-64bit-update/',
   '/client-64bit-update/styles.css',
   ...['hero', 'card', 'improvements', 'roadmap', 'rollout', 'zone-poster', 'battle-poster', 'launcher', 'system-info'].map(name => `/client-64bit-update/assets/${name}.webp`),
@@ -95,14 +97,14 @@ try {
     throw new Error('notices.json 的 Content-Type 不是 application/json。');
   }
   const feed = await feedResponse.json();
-  if (feed.schema_version !== 1 || feed.notices.length !== 25) {
+  if (feed.schema_version !== 1 || feed.notices.length !== 26) {
     throw new Error('HTTP 取得的公告 JSON 結構或數量錯誤。');
   }
 
   const schema = await (await fetch(`${baseUrl}/data/notices.schema.json`)).json();
   if (schema.title !== '夏希漢化公告 Feed') throw new Error('公告 schema 無法正確讀取。');
 
-  console.log('本機 HTTP 測試成功：首頁、7 個 SEA 活動頁、9 個韓版子頁、繁中配圖、BLACKOUT素材、25 篇公告 JSON 與 schema 均可正常讀取。');
+  console.log('本機 HTTP 測試成功：首頁、7 個 SEA 活動頁、10 個韓版子頁、繁中配圖、BLACKOUT素材、26 篇公告 JSON 與 schema 均可正常讀取。');
 } finally {
   await new Promise(resolve => server.close(resolve));
 }
