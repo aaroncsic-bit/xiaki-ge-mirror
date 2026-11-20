@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "feed_revision": 27,
-  "generated_at": "2026-11-19T07:01:41.744Z",
+  "feed_revision": 28,
+  "generated_at": "2026-11-20T08:45:51.596Z",
   "source": {
     "name": "夏希漢化 GitHub 鏡像站",
     "site_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/",
@@ -469,9 +469,58 @@
       "content_hash": "sha256:ee857143acefab9d2f20d4dabe08b4df6f96c959a27b6a93ff4c6e30e26b884a"
     },
     {
-      "id": "sea-maintenance-2026-11-19-temporary",
+      "id": "sea-maintenance-2026-11-20-temporary",
       "revision": 1,
       "status": "published",
+      "category": "sea_maintenance",
+      "category_label": "SEA 維修",
+      "server_scope": "SEA",
+      "sea_release_status": "confirmed",
+      "title": "2026年11月20日 SEA 臨時維修公告",
+      "summary": "全伺服器短暫維修，修正角色名稱等文字顯示。角色改名免費至下次例行維修前。維修日期依官方標題及時差換算。",
+      "content_text": "SGT／台灣時間 2026年11月20日 11:00～11:20\n\nEST／美國東部時間 2026年11月19日 22:00～22:20\n\nCET／歐洲中部時間 2026年11月20日 04:00～04:20\n\nTEMPORARY MAINTENANCE · 2026.11.20\n\n臨時維修內容\n\n官方更新版的標題日期為 11 月 20 日，時段欄則將三地都標為 11 月 19 日。依標題及時差換算，台灣與歐洲的維修時段落在 11 月 20 日，美東為 11 月 19 日晚間。\n\n文字顯示修正與免費改名\n\nimcGAMES 將在全伺服器進行短暫維修，修正部分文字（包括角色名稱）顯示不正確的問題。\n\n本次臨時維修結束後， 角色改名服務將免費開放至下次例行維修前 。\n\nFerruccio 伺服器補償\n\n因本次臨時維修，Ferruccio 伺服器將獲得以下補償。\n\n- 黃金時段增益（Golden Time Buff）持續 6 小時。\n\n- 所有使用中的道具延長 10 小時。\n\n若遊戲中遇到問題，請透過官方客服頁面提交回報，並說明遇到的情況。官方對維修造成的不便致歉。\n\n查看 SEA 官方臨時維修公告",
+      "published_at": null,
+      "published_date": "2026-11-20",
+      "published_precision": "date",
+      "updated_at": "2026-11-20T08:45:51.596Z",
+      "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/#maintenance",
+      "source_url": "https://www.granadoespada.com/page/newsview.php?n=872",
+      "image_url": null,
+      "important": true,
+      "expires_at": "2026-11-20T11:20:00+08:00",
+      "withdrawn_at": null,
+      "maintenance_windows": [
+        {
+          "timezone_code": "SGT",
+          "timezone_label": "台灣時間",
+          "date": "2026-11-20",
+          "start_time": "11:00",
+          "end_time": "11:20",
+          "display_text": "2026年11月20日 11:00～11:20"
+        },
+        {
+          "timezone_code": "EST",
+          "timezone_label": "美國東部時間",
+          "date": "2026-11-19",
+          "start_time": "22:00",
+          "end_time": "22:20",
+          "display_text": "2026年11月19日 22:00～22:20"
+        },
+        {
+          "timezone_code": "CET",
+          "timezone_label": "歐洲中部時間",
+          "date": "2026-11-20",
+          "start_time": "04:00",
+          "end_time": "04:20",
+          "display_text": "2026年11月20日 04:00～04:20"
+        }
+      ],
+      "content_hash": "sha256:d6788f782a28b321e6a2cc347e061386b453b583cf99a1a45093116f9255aaed"
+    },
+    {
+      "id": "sea-maintenance-2026-11-19-temporary",
+      "revision": 2,
+      "status": "withdrawn",
       "category": "sea_maintenance",
       "category_label": "SEA 維修",
       "server_scope": "SEA",
@@ -482,13 +531,13 @@
       "published_at": null,
       "published_date": "2026-11-19",
       "published_precision": "date",
-      "updated_at": "2026-11-19T07:01:41.744Z",
+      "updated_at": "2026-11-20T08:45:51.596Z",
       "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/#maintenance",
       "source_url": "https://www.granadoespada.com/page/newsview.php?n=871",
       "image_url": null,
       "important": true,
       "expires_at": "2026-11-19T14:45:00+08:00",
-      "withdrawn_at": null,
+      "withdrawn_at": "2026-11-20T08:45:51.596Z",
       "maintenance_windows": [
         {
           "timezone_code": "SGT",
@@ -515,7 +564,7 @@
           "display_text": "2026年11月19日 07:30～07:45"
         }
       ],
-      "content_hash": "sha256:6cdac3a9ebc9b47e11573c90b04cab33822b451ad8d6beb0f18402f9c3726ebe"
+      "content_hash": "sha256:50e0fb93286f3495b24219b522294b2176c96995760d769771fff2da4266f70a"
     },
     {
       "id": "sea-maintenance-2026-11-18",

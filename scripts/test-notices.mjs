@@ -21,11 +21,11 @@ assert.equal(initialFeed.notices.filter(notice => notice.category === 'sea_maint
 assert.ok(initialFeed.notices.every(notice => notice.revision === 1));
 assert.ok(initialFeed.notices.every(notice => notice.published_at === null));
 assert.ok(initialFeed.notices.filter(notice => notice.server_scope === 'KR').every(notice => notice.sea_release_status === 'unconfirmed'));
-const maintenanceId = 'sea-maintenance-2026-11-19-temporary';
+const maintenanceId = 'sea-maintenance-2026-11-20-temporary';
 const initialMaintenance = initialFeed.notices.find(notice => notice.id === maintenanceId);
-assert.equal(initialMaintenance.source_url, 'https://www.granadoespada.com/page/newsview.php?n=871');
+assert.equal(initialMaintenance.source_url, 'https://www.granadoespada.com/page/newsview.php?n=872');
 assert.equal(initialMaintenance.important, true);
-assert.equal(initialMaintenance.expires_at, '2026-11-19T14:45:00+08:00');
+assert.equal(initialMaintenance.expires_at, '2026-11-20T11:20:00+08:00');
 assert.ok(initialMaintenance.content_text.includes('全伺服器'));
 assert.ok(initialMaintenance.content_text.includes('角色改名服務將免費開放至下次例行維修前'));
 assert.ok(initialMaintenance.content_text.includes('Ferruccio 伺服器補償'));
@@ -39,26 +39,26 @@ assert.deepEqual(initialMaintenance.maintenance_windows, [
   {
     timezone_code: 'SGT',
     timezone_label: '台灣時間',
-    date: '2026-11-19',
-    start_time: '14:30',
-    end_time: '14:45',
-    display_text: '2026年11月19日 14:30～14:45'
+    date: '2026-11-20',
+    start_time: '11:00',
+    end_time: '11:20',
+    display_text: '2026年11月20日 11:00～11:20'
   },
   {
     timezone_code: 'EST',
     timezone_label: '美國東部時間',
     date: '2026-11-19',
-    start_time: '01:30',
-    end_time: '01:45',
-    display_text: '2026年11月19日 01:30～01:45'
+    start_time: '22:00',
+    end_time: '22:20',
+    display_text: '2026年11月19日 22:00～22:20'
   },
   {
     timezone_code: 'CET',
     timezone_label: '歐洲中部時間',
-    date: '2026-11-19',
-    start_time: '07:30',
-    end_time: '07:45',
-    display_text: '2026年11月19日 07:30～07:45'
+    date: '2026-11-20',
+    start_time: '04:00',
+    end_time: '04:20',
+    display_text: '2026年11月20日 04:00～04:20'
   }
 ]);
 assert.ok(initialFeed.notices.filter(notice => notice.category !== 'sea_maintenance').every(notice => !('maintenance_windows' in notice)));
@@ -102,8 +102,8 @@ assert.equal(lfFeed.feed_revision, 1, '換行格式不同不得增加 feed_revis
 assert.ok(lfFeed.notices.every(notice => notice.revision === 1), '換行格式不同不得增加公告修訂版號');
 
 const changedMaintenanceHtml = originalHtml.replace(
-  '2026年11月19日 14:30～14:45',
-  '2026年11月19日 14:35～14:45'
+  '2026年11月20日 11:00～11:20',
+  '2026年11月20日 11:05～11:20'
 );
 const changedMaintenanceFeed = buildFeed({
   rootDir,
@@ -113,11 +113,11 @@ const changedMaintenanceFeed = buildFeed({
 });
 const changedMaintenance = changedMaintenanceFeed.notices.find(notice => notice.id === maintenanceId);
 assert.equal(changedMaintenance.revision, 2, '維修時間變更應增加公告修訂版號');
-assert.equal(changedMaintenance.maintenance_windows[0].start_time, '14:35');
+assert.equal(changedMaintenance.maintenance_windows[0].start_time, '11:05');
 assert.ok(changedMaintenanceFeed.notices.filter(notice => notice.id !== maintenanceId).every(notice => notice.revision === 1));
 
 const missingTimezoneHtml = originalHtml.replace(
-  /\s*<p><strong>CET／歐洲中部時間<\/strong><time[^>]*>2026年11月19日 07:30～07:45<\/time><\/p>/,
+  /\s*<p><strong>CET／歐洲中部時間<\/strong><time[^>]*>2026年11月20日 04:00～04:20<\/time><\/p>/,
   ''
 );
 assert.throws(
