@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "feed_revision": 28,
-  "generated_at": "2026-11-20T08:45:51.596Z",
+  "feed_revision": 29,
+  "generated_at": "2026-11-22T04:29:11.586Z",
   "source": {
     "name": "夏希漢化 GitHub 鏡像站",
     "site_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/",
@@ -10,7 +10,7 @@
   "notices": [
     {
       "id": "sea-event-2026-11-18-autumn-double-treat-event",
-      "revision": 1,
+      "revision": 2,
       "status": "published",
       "category": "sea_event",
       "category_label": "SEA 活動",
@@ -18,18 +18,18 @@
       "sea_release_status": "confirmed",
       "title": "秋日雙重好禮",
       "summary": "麗貝卡與雷文的兩項秋季任務，各有每日與累計獎勵。",
-      "content_text": "Autumn Double Treat! Event\n\n秋日雙重好禮\n\n麗貝卡與雷文的兩項秋季任務同時開放，各有每日和累計獎勵。\n\n活動為期 4 週，所有家族皆可參加。\n\n開始 2026年11月18日 例行維護後\n\n結束 2026年12月16日 例行維護時\n\n我也能享受秋天了！\n\n進入城鎮後會收到活動任務郵件。到立普圖衛中央廣場與 NPC「麗貝卡（Rebecca）」對話，即可接取活動任務。\n每日任務獎勵\n\n道具 數量\n\n伊吉的法蘭諾粉末箱子 2\n\n活動用基礎提升藥劑 2\n\n累計完成獎勵\n\n完成次數 道具 數量\n\n3 活動用訓練卡片G 10\n\n5 活動用力量的戒指箱子 3\n\n5 活動用技術的戒指箱子 3\n\n5 活動用智力的戒指箱子 3\n\n7 活動用家族大廳增加許可證 5\n\n10 活動用卡勒希亞髮型箱子 1\n\n13 活動用掉落率教範－達人篇（7天） 1\n\n15 活動用南瓜頭爸爸（7日，背部造型） 1\n\n17 活動用附加獎勵券 2\n\n19 信任的象徵 1\n\n21 活動用卡勒希亞服飾箱子 1\n\n24 收藏用神聖角色卡箱兌換券 2\n\n25 活動用38等級武器箱子 2\n\n打起精神來！\n\n進入城鎮後會收到活動任務郵件。到立普圖衛中央廣場與 NPC「雷文（Raven）」對話，即可接取活動任務。\n每日任務獎勵\n\n道具 數量\n\n達人G經驗值卡片 5\n\n寵物飼料 5\n\n活動用強化生命力生成器 3\n\n累計完成獎勵\n\n完成次數 道具 數量\n\n3 活動用訓練卡片G 20\n\n4 活動用靈魂水晶 5\n\n6 活動用戰鬥手冊－達人版（7天） 1\n\n7 活動用家族大廳增加許可證 5\n\n9 收藏用神聖角色卡箱兌換券 1\n\n10 活動用莎拉的眼淚 1\n\n13 活動用神器研磨劑 5\n\n14 活動用提升藥劑箱子（單一角色） 2\n\n15 褪色的法蘭諾祝福－37級 2\n\n17 活動用客製化翅膀100點卡片 3\n\n19 活動用法蘭諾武器召喚石 2\n\n20 比鬼還可怕！（勳章） 1\n\n22 活動用星之淚 1\n\n24 褪色的法蘭諾祝福－38級 1\n\n25 活動用五元素武器召喚石 2\n\n「比鬼還可怕！」勳章效果：攻擊力＋3%、所有能力值＋2、免疫力＋2。\n\n夏希漢化｜非官方繁體中文整理\n\n查看 SEA 官方原文公告",
+      "content_text": "Autumn Double Treat! Event\n\n秋日雙重好禮\n\n麗貝卡與雷文的兩項秋季任務同時開放，各有每日和累計獎勵。\n\n活動為期 4 週，所有家族皆可參加。\n\n開始 2026年11月18日 例行維護後\n\n結束 2026年12月16日 例行維護時\n\n我也能享受秋天了！\n\n進入城鎮後會收到活動任務郵件。到立普圖衛中央廣場與 NPC「麗貝卡（Rebecca）」對話，即可接取活動任務。\n每日任務獎勵\n\n道具 數量\n\n瑞茲的法蘭諾粉末箱子 2\n\n活動用基礎提升藥劑 2\n\n累計完成獎勵\n\n完成次數 道具 數量\n\n3 活動用訓練卡片G 10\n\n5 活動用力量的戒指箱子 3\n\n5 活動用技術的戒指箱子 3\n\n5 活動用智力的戒指箱子 3\n\n7 活動用家族大廳增加許可證 5\n\n10 活動用卡勒希亞髮型箱子 1\n\n13 活動用掉落率教範－達人篇（7天） 1\n\n15 活動用南瓜頭爸爸（7日，背部造型） 1\n\n17 活動用附加獎勵券 2\n\n19 信任的象徵 1\n\n21 活動用卡勒希亞服飾箱子 1\n\n24 收藏用神聖角色卡箱兌換券 2\n\n25 活動用38等級武器箱子 2\n\n打起精神來！\n\n進入城鎮後會收到活動任務郵件。到立普圖衛中央廣場與 NPC「雷文（Raven）」對話，即可接取活動任務。\n每日任務獎勵\n\n道具 數量\n\n達人G經驗值卡片 5\n\n寵物飼料 5\n\n活動用強化生命力生成器 3\n\n累計完成獎勵\n\n完成次數 道具 數量\n\n3 活動用訓練卡片G 20\n\n4 活動用靈魂水晶 5\n\n6 活動用戰鬥手冊－達人版（7天） 1\n\n7 活動用家族大廳增加許可證 5\n\n9 收藏用神聖角色卡箱兌換券 1\n\n10 活動用莎拉的眼淚 1\n\n13 活動用神器研磨劑 5\n\n14 活動用提升藥劑箱子（單一角色） 2\n\n15 褪色的法蘭諾祝福－37級 2\n\n17 活動用客製化翅膀100點卡片 3\n\n19 活動用法蘭諾武器召喚石 2\n\n20 比鬼還可怕！（勳章） 1\n\n22 活動用星之淚 1\n\n24 褪色的法蘭諾祝福－38級 1\n\n25 活動用五元素武器召喚石 2\n\n「比鬼還可怕！」勳章效果：攻擊力＋3%、所有能力值＋2、免疫力＋2。\n\n夏希漢化｜非官方繁體中文整理\n\n查看 SEA 官方原文公告",
       "published_at": null,
       "published_date": "2026-11-18",
       "published_precision": "date",
-      "updated_at": "2026-11-18T03:00:02.109Z",
+      "updated_at": "2026-11-22T04:29:11.586Z",
       "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/autumn-double-treat-event/",
       "source_url": "https://www.granadoespada.com/page/newsview.php?n=866",
       "image_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/autumn-double-treat-event/assets/hero.jpg",
       "important": false,
       "expires_at": "2026-12-16T13:00:00+08:00",
       "withdrawn_at": null,
-      "content_hash": "sha256:922a4d09fd0d39c75da84db657785ef426291d51efff2f53266c442d6c8cbe3b"
+      "content_hash": "sha256:a9f836b38eafa8e96fa9b0d76153276b49ca648e3264d1bf6f7256e2614c897e"
     },
     {
       "id": "sea-event-2026-11-18-i-wanna-be-a-grown-up-event",
