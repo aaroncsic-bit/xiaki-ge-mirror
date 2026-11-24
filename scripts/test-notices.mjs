@@ -21,15 +21,15 @@ assert.equal(initialFeed.notices.filter(notice => notice.category === 'sea_maint
 assert.ok(initialFeed.notices.every(notice => notice.revision === 1));
 assert.ok(initialFeed.notices.every(notice => notice.published_at === null));
 assert.ok(initialFeed.notices.filter(notice => notice.server_scope === 'KR').every(notice => notice.sea_release_status === 'unconfirmed'));
-const maintenanceId = 'sea-maintenance-2026-11-20-temporary';
+const maintenanceId = 'sea-maintenance-2026-11-25';
 const initialMaintenance = initialFeed.notices.find(notice => notice.id === maintenanceId);
-assert.equal(initialMaintenance.source_url, 'https://www.granadoespada.com/page/newsview.php?n=872');
-assert.equal(initialMaintenance.important, true);
-assert.equal(initialMaintenance.expires_at, '2026-11-20T11:20:00+08:00');
-assert.ok(initialMaintenance.content_text.includes('全伺服器'));
-assert.ok(initialMaintenance.content_text.includes('角色改名服務將免費開放至下次例行維修前'));
-assert.ok(initialMaintenance.content_text.includes('Ferruccio 伺服器補償'));
-assert.ok(initialMaintenance.content_text.includes('所有使用中的道具延長 10 小時'));
+assert.equal(initialMaintenance.source_url, 'https://www.granadoespada.com/page/newsview.php?n=873');
+assert.equal(initialMaintenance.important, false);
+assert.equal(initialMaintenance.expires_at, '2026-11-25T15:00:00+08:00');
+assert.equal(initialMaintenance.published_date, '2026-11-24');
+assert.ok(initialMaintenance.content_text.includes('免費角色改名活動於本次維修結束'));
+assert.ok(initialMaintenance.content_text.includes('第 6,123 輪'));
+assert.ok(initialMaintenance.content_text.includes('帕傑藍尼的附魔卷軸召喚石'));
 const lorchEvent = initialFeed.notices.find(notice => notice.id === 'sea-event-2026-11-10-meister-lorch-demanding-customers');
 assert.equal(lorchEvent.category, 'sea_event');
 assert.ok(lorchEvent.content_text.includes('Superior B 經驗值卡片'));
@@ -39,26 +39,26 @@ assert.deepEqual(initialMaintenance.maintenance_windows, [
   {
     timezone_code: 'SGT',
     timezone_label: '台灣時間',
-    date: '2026-11-20',
-    start_time: '11:00',
-    end_time: '11:20',
-    display_text: '2026年11月20日 11:00～11:20'
+    date: '2026-11-25',
+    start_time: '13:00',
+    end_time: '15:00',
+    display_text: '2026年11月25日 13:00～15:00'
   },
   {
     timezone_code: 'EST',
     timezone_label: '美國東部時間',
-    date: '2026-11-19',
-    start_time: '22:00',
-    end_time: '22:20',
-    display_text: '2026年11月19日 22:00～22:20'
+    date: '2026-11-25',
+    start_time: '00:00',
+    end_time: '02:00',
+    display_text: '2026年11月25日 00:00～02:00'
   },
   {
     timezone_code: 'CET',
     timezone_label: '歐洲中部時間',
-    date: '2026-11-20',
-    start_time: '04:00',
-    end_time: '04:20',
-    display_text: '2026年11月20日 04:00～04:20'
+    date: '2026-11-25',
+    start_time: '06:00',
+    end_time: '08:00',
+    display_text: '2026年11月25日 06:00～08:00'
   }
 ]);
 assert.ok(initialFeed.notices.filter(notice => notice.category !== 'sea_maintenance').every(notice => !('maintenance_windows' in notice)));
@@ -102,8 +102,8 @@ assert.equal(lfFeed.feed_revision, 1, '換行格式不同不得增加 feed_revis
 assert.ok(lfFeed.notices.every(notice => notice.revision === 1), '換行格式不同不得增加公告修訂版號');
 
 const changedMaintenanceHtml = originalHtml.replace(
-  '2026年11月20日 11:00～11:20',
-  '2026年11月20日 11:05～11:20'
+  '2026年11月25日 13:00～15:00',
+  '2026年11月25日 13:05～15:00'
 );
 const changedMaintenanceFeed = buildFeed({
   rootDir,
@@ -113,11 +113,11 @@ const changedMaintenanceFeed = buildFeed({
 });
 const changedMaintenance = changedMaintenanceFeed.notices.find(notice => notice.id === maintenanceId);
 assert.equal(changedMaintenance.revision, 2, '維修時間變更應增加公告修訂版號');
-assert.equal(changedMaintenance.maintenance_windows[0].start_time, '11:05');
+assert.equal(changedMaintenance.maintenance_windows[0].start_time, '13:05');
 assert.ok(changedMaintenanceFeed.notices.filter(notice => notice.id !== maintenanceId).every(notice => notice.revision === 1));
 
 const missingTimezoneHtml = originalHtml.replace(
-  /\s*<p><strong>CET／歐洲中部時間<\/strong><time[^>]*>2026年11月20日 04:00～04:20<\/time><\/p>/,
+  /\s*<p><strong>CET／歐洲中部時間<\/strong><time[^>]*>2026年11月25日 06:00～08:00<\/time><\/p>/,
   ''
 );
 assert.throws(
@@ -184,4 +184,4 @@ assert.equal(generalNotice.published_precision, 'datetime');
 assert.equal(generalNotice.published_at, '2026-10-14T21:00:00+08:00');
 validateFeed(allCategoryFeed);
 
-console.log('公告接口測試成功：21 篇轉換、臨時維修時間、舊資料遷移、未變更、修改、撤回、五種分類與日期精度規則均通過。');
+console.log('公告接口測試成功：21 篇轉換、例行維修時間、舊資料遷移、未變更、修改、撤回、五種分類與日期精度規則均通過。');

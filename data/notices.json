@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "feed_revision": 29,
-  "generated_at": "2026-11-22T04:29:11.586Z",
+  "feed_revision": 30,
+  "generated_at": "2026-11-24T06:39:00.627Z",
   "source": {
     "name": "夏希漢化 GitHub 鏡像站",
     "site_url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/",
@@ -469,9 +469,58 @@
       "content_hash": "sha256:ee857143acefab9d2f20d4dabe08b4df6f96c959a27b6a93ff4c6e30e26b884a"
     },
     {
-      "id": "sea-maintenance-2026-11-20-temporary",
+      "id": "sea-maintenance-2026-11-25",
       "revision": 1,
       "status": "published",
+      "category": "sea_maintenance",
+      "category_label": "SEA 維修",
+      "server_scope": "SEA",
+      "sea_release_status": "confirmed",
+      "title": "2026年11月25日 SEA 例行維修公告",
+      "summary": "林頓箱子第 6,123 輪獎勵由 5 顆增至 10 顆，免費角色改名活動於本次維修結束。",
+      "content_text": "SGT／台灣時間 2026年11月25日 13:00～15:00\n\nEST／美國東部時間 2026年11月25日 00:00～02:00\n\nCET／歐洲中部時間 2026年11月25日 06:00～08:00\n\nSCHEDULED MAINTENANCE · 2026.11.25\n\n例行維修內容\n\n商城\n\n調整林頓箱子特別販售的部分輪次獎勵。第 6,123 輪的「帕傑藍尼的附魔卷軸召喚石」由 5 顆增至 10 顆 。\n\n活動\n\n免費角色改名活動於本次維修結束。\n\n系統維護\n\n官方將對內部伺服器與系統進行例行維護。\n\n查看 SEA 官方維修公告",
+      "published_at": null,
+      "published_date": "2026-11-24",
+      "published_precision": "date",
+      "updated_at": "2026-11-24T06:39:00.627Z",
+      "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/#maintenance",
+      "source_url": "https://www.granadoespada.com/page/newsview.php?n=873",
+      "image_url": null,
+      "important": false,
+      "expires_at": "2026-11-25T15:00:00+08:00",
+      "withdrawn_at": null,
+      "maintenance_windows": [
+        {
+          "timezone_code": "SGT",
+          "timezone_label": "台灣時間",
+          "date": "2026-11-25",
+          "start_time": "13:00",
+          "end_time": "15:00",
+          "display_text": "2026年11月25日 13:00～15:00"
+        },
+        {
+          "timezone_code": "EST",
+          "timezone_label": "美國東部時間",
+          "date": "2026-11-25",
+          "start_time": "00:00",
+          "end_time": "02:00",
+          "display_text": "2026年11月25日 00:00～02:00"
+        },
+        {
+          "timezone_code": "CET",
+          "timezone_label": "歐洲中部時間",
+          "date": "2026-11-25",
+          "start_time": "06:00",
+          "end_time": "08:00",
+          "display_text": "2026年11月25日 06:00～08:00"
+        }
+      ],
+      "content_hash": "sha256:1217d110a246cc0a414c82ffa5ca257827f67da42ed298abcca91971f67ba062"
+    },
+    {
+      "id": "sea-maintenance-2026-11-20-temporary",
+      "revision": 2,
+      "status": "withdrawn",
       "category": "sea_maintenance",
       "category_label": "SEA 維修",
       "server_scope": "SEA",
@@ -482,13 +531,13 @@
       "published_at": null,
       "published_date": "2026-11-20",
       "published_precision": "date",
-      "updated_at": "2026-11-20T08:45:51.596Z",
+      "updated_at": "2026-11-24T06:39:00.627Z",
       "url": "https://aaroncsic-bit.github.io/xiaki-ge-mirror/#maintenance",
       "source_url": "https://www.granadoespada.com/page/newsview.php?n=872",
       "image_url": null,
       "important": true,
       "expires_at": "2026-11-20T11:20:00+08:00",
-      "withdrawn_at": null,
+      "withdrawn_at": "2026-11-24T06:39:00.627Z",
       "maintenance_windows": [
         {
           "timezone_code": "SGT",
@@ -515,7 +564,7 @@
           "display_text": "2026年11月20日 04:00～04:20"
         }
       ],
-      "content_hash": "sha256:d6788f782a28b321e6a2cc347e061386b453b583cf99a1a45093116f9255aaed"
+      "content_hash": "sha256:e17c4bfa63769123f2eb1817e43d998df9e98fcad7bcd7c1f0b328a5806656f6"
     },
     {
       "id": "sea-maintenance-2026-11-19-temporary",
